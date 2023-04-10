@@ -18,6 +18,7 @@ reunir nuevas personas para jugar juntos.
 ### Back-End
  * JS API Web que rellene datos.
  * Larabel y PHP como MVC.
+ * MySQL 
  * Despliegue de la aplicacion en AWS
 ### Front-end
  * CSS3
