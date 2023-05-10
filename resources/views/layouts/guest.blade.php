@@ -12,6 +12,7 @@
 
         <!-- Scripts -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" >
+        <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
     </head>
     <body>
         <div class="font-sans text-gray-900 antialiased">
