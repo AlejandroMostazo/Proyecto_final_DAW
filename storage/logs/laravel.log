@@ -1,0 +1,35 @@
+[2023-05-09 17:35:24] local.ERROR: Command "server" is not defined.
+
+Did you mean one of these?
+    make:observer
+    serve {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"server\" is not defined.
+
+Did you mean one of these?
+    make:observer
+    serve at C:\\Users\\Monsty\\Desktop\\sportmeetup2\\sportmeetup\\vendor\\symfony\\console\\Application.php:720)
+[stacktrace]
+#0 C:\\Users\\Monsty\\Desktop\\sportmeetup2\\sportmeetup\\vendor\\symfony\\console\\Application.php(259): Symfony\\Component\\Console\\Application->find('server')
+#1 C:\\Users\\Monsty\\Desktop\\sportmeetup2\\sportmeetup\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 C:\\Users\\Monsty\\Desktop\\sportmeetup2\\sportmeetup\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\Users\\Monsty\\Desktop\\sportmeetup2\\sportmeetup\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 C:\\Users\\Monsty\\Desktop\\sportmeetup2\\sportmeetup\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2023-05-09 17:40:16] local.ERROR: Command "watch" is not defined. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"watch\" is not defined. at C:\\Users\\Monsty\\Desktop\\sportmeetup2\\sportmeetup\\vendor\\symfony\\console\\Application.php:720)
+[stacktrace]
+#0 C:\\Users\\Monsty\\Desktop\\sportmeetup2\\sportmeetup\\vendor\\symfony\\console\\Application.php(259): Symfony\\Component\\Console\\Application->find('watch')
+#1 C:\\Users\\Monsty\\Desktop\\sportmeetup2\\sportmeetup\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 C:\\Users\\Monsty\\Desktop\\sportmeetup2\\sportmeetup\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\Users\\Monsty\\Desktop\\sportmeetup2\\sportmeetup\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 C:\\Users\\Monsty\\Desktop\\sportmeetup2\\sportmeetup\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2023-05-09 17:40:29] local.ERROR: Command "wach" is not defined. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"wach\" is not defined. at C:\\Users\\Monsty\\Desktop\\sportmeetup2\\sportmeetup\\vendor\\symfony\\console\\Application.php:720)
+[stacktrace]
+#0 C:\\Users\\Monsty\\Desktop\\sportmeetup2\\sportmeetup\\vendor\\symfony\\console\\Application.php(259): Symfony\\Component\\Console\\Application->find('wach')
+#1 C:\\Users\\Monsty\\Desktop\\sportmeetup2\\sportmeetup\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 C:\\Users\\Monsty\\Desktop\\sportmeetup2\\sportmeetup\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\Users\\Monsty\\Desktop\\sportmeetup2\\sportmeetup\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 C:\\Users\\Monsty\\Desktop\\sportmeetup2\\sportmeetup\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
