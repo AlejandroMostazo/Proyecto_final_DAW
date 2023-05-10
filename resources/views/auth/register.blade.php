@@ -19,6 +19,25 @@
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
             </div>
 
+             <!-- Fecha de nacimiento -->
+            <div class="mt-4">
+                <x-label for="nacimiento" :value="__('Fecha de Nacimiento')" />
+
+                <x-input id="nacimiento" class="block mt-1 w-full" type="date" name="nacimiento" :value="old('nacimiento')" />
+            </div>
+
+            <!-- Genero -->
+            <div class="mt-4">
+                <x-label for="genero" :value="__('Genero')" />
+
+                <!-- <x-input id="genero" class="block mt-1 w-full" type="text" name="genero" :value="old('genero')" /> -->
+                <select id="genero" class="block mt-1 w-full" name="genero" :value="old('genero')" >
+                                    <option selected></option>
+                                    <option>Male</option>
+                                    <option>Fmale</option>
+                </select>
+            </div>
+
             <!-- Email Address -->
             <div class="mt-4">
                 <x-label for="email" :value="__('Email')" />
