@@ -23,6 +23,7 @@ class User extends Authenticatable
         'password',
         'nacimiento',
         'genero',
+        'admin',
     ];
 
     /**
@@ -43,4 +44,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function deportesFav()
+    {
+        return $this->belongsToMany(Deporte::class, 'deportes_fav', 'user_id', 'deporte_id')->withTimestamps();
+    }
+
 }

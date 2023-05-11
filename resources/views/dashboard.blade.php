@@ -12,8 +12,20 @@
                     You're logged in!
                     <p>{{ Auth::user()->nacimiento }}</p>
                     <p>{{ Auth::user()->genero }}</p>
+                    <div>
+                        <h2 class="text-lg font-medium text-gray-900">Deportes favoritos:</h2>
+                        <ul class="mt-2 text-gray-600">
+                            @forelse (Auth::user()->deportesFav as $deporte)
+                                <li>{{ $deporte->nombre }}</li>
+                            @empty
+                                <li>No se han añadido deportes favoritos</li>
+                            @endforelse
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    
+
 </x-app-layout>
