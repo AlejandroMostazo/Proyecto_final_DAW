@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\Auth\PublicacionesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Deporte\DeporteController;
-use App\Http\Controllers\Deporte\DeportesFavController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Controllers\UbicacionController;
 
 
 /*
@@ -28,6 +29,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/deportes/fav', [App\Http\Controllers\Deporte\DeportesFavController::class, 'store'])->name('deportes.fav.store');
 });
 
+Route::middleware(['auth'])->group(function () {
+//crear nuevas ubicaciones
+    Route::get('/ubicaciones/create', [UbicacionController::class, 'create'])->name('ubicaciones.create')->middleware(AdminMiddleware::class);;
+    Route::post('/ubicaciones', [UbicacionController::class, 'store'])->name('ubicaciones.store')->middleware(AdminMiddleware::class);;
+});
+
+
 
 
 Route::get('/', function () {
@@ -37,5 +45,10 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+//ruta para ver las ubicaciones
+Route::get('/ubicaciones', [UbicacionController::class,"mostrarUbicaciones"])->middleware(['auth'])->name('ubicaciones');
+
+Route::get('/publicaciones', [PublicacionesController::class,"mostrarPublicaciones"])->middleware(['auth'])->name('publicaciones');
 
 require __DIR__.'/auth.php';

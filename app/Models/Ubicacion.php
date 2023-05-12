@@ -5,22 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Deporte extends Model
+class Ubicacion extends Model
 {
     use HasFactory;
 
-    protected $table = 'deportes';
+    protected $table = 'ubicaciones';
 
     protected $fillable = [
         'nombre',
+        'calle',
+        'localidad'
     ];
 
-    public function deportesFav()
-    {
-        return $this->belongsToMany(Deporte::class, 'deportes_fav', 'user_id', 'deporte_id')->withTimestamps();
-    }
-
-    // hasMany porque es una relacion N:N
     public function publicaciones()
     {
         return $this->hasMany(Publicacion::class);

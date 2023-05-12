@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -47,7 +46,14 @@ class User extends Authenticatable
 
     public function deportesFav()
     {
+        //belongsToMany porque es una relacion mucho a muchos
         return $this->belongsToMany(Deporte::class, 'deportes_fav', 'user_id', 'deporte_id')->withTimestamps();
+    }
+
+    //hasone porque es una relacion 1:1
+    public function publicacion()
+    {
+        return $this->hasOne(Publicacion::class);
     }
 
 }
