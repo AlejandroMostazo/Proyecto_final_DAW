@@ -27,3 +27,13 @@ reunir nuevas personas para jugar juntos.
  * Imágenes SVG
 ### Mockup
   * [Figma](https://www.figma.com/file/dGRJeVoflwP4UJdbVSi5re/Proyecto-TM1?t=0vOpSHlQzwZyoJ01-0)
+
+### Revisión (checkpoint)
+ - Realizado hasta ahora:
+
+ * Creación de migrates, junto con la estructura de la base de datos.
+ * Crear y vincular con instancia de base de datos RDS en AWS.
+ * Creación de instancia EC2 en AWS configurada con php, composer y Apache2 (no soy capaz de hacer que una vez subido el proyecto este se pueda visualizar).
+ * Creación de lógica para login, formularios, para crear publicaciones y añadir Deportes y Ubicaciones (haciendo que solo sea el administrador el que pueda añadir en estad dos últimas) ademas de mostrar el contenido de estas tablas con sus respectivas vistas y rutas.
+ * Creación de los controladores y modelos correspondientes.
+
