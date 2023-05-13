@@ -29,7 +29,7 @@ reunir nuevas personas para jugar juntos.
   * [Figma](https://www.figma.com/file/dGRJeVoflwP4UJdbVSi5re/Proyecto-TM1?t=0vOpSHlQzwZyoJ01-0)
 
 ### Revisión (checkpoint)
- ** Realizado hasta ahora:
+ - Realizado hasta ahora:
 
  * Creación de migrates, junto con la estructura de la base de datos.
  * Crear y vincular con instancia de base de datos RDS en AWS.
