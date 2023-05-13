@@ -27,3 +27,9 @@ reunir nuevas personas para jugar juntos.
  * Imágenes SVG
 ### Mockup
   * [Figma](https://www.figma.com/file/dGRJeVoflwP4UJdbVSi5re/Proyecto-TM1?t=0vOpSHlQzwZyoJ01-0)
+
+### Revisión (checkpoint)
+ * Crear los migrates, junto con la estructura de la base de daros
+ * Crear y vincular instsncis de base de datos con RDS de AWS
+ * Creación de logica, para login, formularios para la creación de publicaciones y añadir Deportes y Ubicaciones, a las tablas (haciendo que solo sea el administrador el que pueda añadir en estad dos últimas) ademas de mostrar el contenido de estas tablas con sus respectivas vistas, rutas y controladores.
+
