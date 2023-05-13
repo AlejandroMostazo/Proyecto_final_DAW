@@ -49,6 +49,6 @@ Route::get('/dashboard', function () {
 //ruta para ver las ubicaciones
 Route::get('/ubicaciones', [UbicacionController::class,"mostrarUbicaciones"])->middleware(['auth'])->name('ubicaciones');
 
-Route::get('/publicaciones', [PublicacionesController::class,"mostrarPublicaciones"])->middleware(['auth'])->name('publicaciones');
+Route::get('/publicaciones', [PublicacionesController::class,"mostrarPublicacionesConBorrado"])->middleware(['auth'])->name('publicaciones');
 
 require __DIR__.'/auth.php';

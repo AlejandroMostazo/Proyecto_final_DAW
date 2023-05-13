@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Deporte;
-use App\Models\User;
 use App\Models\Ubicacion;
 
 class Publicacion extends Model
@@ -23,4 +22,15 @@ class Publicacion extends Model
         'ubicacion_id',
         'deporte_id',
     ];
+
+    public function deporte()
+    {
+        return $this->belongsTo(Deporte::class);
+    }
+
+    public function ubicacion()
+    {
+        return $this->belongsTo(Ubicacion::class);
+    }
+
 }

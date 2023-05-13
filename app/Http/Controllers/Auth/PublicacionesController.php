@@ -7,6 +7,8 @@ use App\Models\Publicacion;
 use App\Http\Controllers\Controller;
 use App\Models\Deporte;
 use App\Models\Ubicacion;
+use Carbon\Carbon;
+
 
 class PublicacionesController extends Controller
 {
@@ -58,4 +60,19 @@ class PublicacionesController extends Controller
         $publicaciones = Publicacion::all();
         return view('publicaciones', ['publicaciones' => $publicaciones]);
     }
+
+    public function deletePublicacionFechaHora()
+    {
+        $publicaciones = Publicacion::where('fecha_hora', '<', Carbon::now())->get();
+
+        foreach ($publicaciones as $publicacion) {
+            $publicacion->delete();
+        }
+    }
+    // Borra las publicacionse que ya hayan pasado de la fecha a la que fueron programadas antes de mostrarlas 
+    public function mostrarPublicacionesConBorrado() {
+        $this->deletePublicacionFechaHora();
+        return $this->mostrarPublicaciones();
+    }
+
 }

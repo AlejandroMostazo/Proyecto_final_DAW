@@ -26,7 +26,7 @@
                                 <tr>
                                     <td class="border px-4 py-2">{{ $publicacion->deporte->nombre }}</td>
                                     <td class="border px-4 py-2">{{ $publicacion->nivel }}</td>
-                                    <td class="border px-4 py-2">{{ $publicacion->fecha_hora->format('d/m/Y H:i') }}</td>
+                                    <td class="border px-4 py-2">{{ $publicacion->fecha_hora }}</td>
                                     <td class="border px-4 py-2">{{ $publicacion->ubicacion->nombre }}</td>
                                     <td class="border px-4 py-2">{{ $publicacion->ac_apuntados }}</td>
                                     <td class="border px-4 py-2">{{ $publicacion->num_max_apuntados }}</td>
