@@ -21,7 +21,7 @@ class UbicacionController extends Controller
         $ubicacion->localidad = $request->input('localidad');
         $ubicacion->save();
 
-        return redirect()->route('dashboard');
+        return redirect()->route('ubicaciones');
     }
 
     public function mostrarUbicaciones()
@@ -30,6 +30,29 @@ class UbicacionController extends Controller
         return view('ubicaciones', ['ubicaciones' => $ubicaciones]);
     }
 
+    public function edit($id)
+    {
+        $ubicacion = Ubicacion::find($id);
+        return view('ubicaciones.edit', ['ubicacion' => $ubicacion]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $ubicacion = Ubicacion::find($id);
+        $ubicacion->nombre = $request->input('nombre');
+        $ubicacion->calle = $request->input('calle');
+        $ubicacion->localidad = $request->input('localidad');
+        $ubicacion->save();
+
+        return redirect()->route('ubicaciones');
+    }
+
+    public function delete($id)
+{
+    $ubicacion = Ubicacion::findOrFail($id);
+    $ubicacion->delete();
+    return redirect()->back();
+}
 
 
 }

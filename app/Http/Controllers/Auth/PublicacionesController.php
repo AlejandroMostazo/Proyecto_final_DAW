@@ -75,4 +75,12 @@ class PublicacionesController extends Controller
         return $this->mostrarPublicaciones();
     }
 
+    public function apuntarsePublicacion($id)
+    {
+        $publicacion = Publicacion::find($id);
+        $publicacion->ac_apuntados += 1;
+        $publicacion->save();
+        return redirect()->route('publicaciones');
+    }
+
 }

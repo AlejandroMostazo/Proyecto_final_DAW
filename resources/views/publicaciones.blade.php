@@ -30,6 +30,14 @@
                                     <td class="border px-4 py-2">{{ $publicacion->ubicacion->nombre }}</td>
                                     <td class="border px-4 py-2">{{ $publicacion->ac_apuntados }}</td>
                                     <td class="border px-4 py-2">{{ $publicacion->num_max_apuntados }}</td>
+                                    @if(!($publicacion->ac_apuntados >= $publicacion->num_max_apuntados))
+                                        <td class="border px-4 py-2">
+                                            <form method="POST" action="{{ route('publicacion.apuntarse', ['id' => $publicacion->id]) }}">
+                                                @csrf
+                                                <button type="submit">Apuntarse</button>
+                                            </form>
+                                        </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>

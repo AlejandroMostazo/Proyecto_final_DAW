@@ -25,6 +25,16 @@
                                     <td class="border px-4 py-2">{{ $ubicacion->nombre }}</td>
                                     <td class="border px-4 py-2">{{ $ubicacion->calle }}</td>
                                     <td class="border px-4 py-2">{{ $ubicacion->localidad }}</td>
+                                    @if (Auth::user()->admin)
+                                        <td class="border px-4 py-2">
+                                            <a href="{{ route('ubicaciones.edit', $ubicacion->id) }}" class="text-blue-500 hover:text-blue-700">Editar</a>
+                                            <form action="{{ route('ubicaciones.delete', $ubicacion->id) }}" method="POST" class="inline-block">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" style="background-color: red;" class="bg-red hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Eliminar</button>
+                                            </form>
+                                        </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>

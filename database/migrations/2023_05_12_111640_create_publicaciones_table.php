@@ -26,9 +26,9 @@ class CreatePublicacionesTable extends Migration
             
             $table->foreign('id_usuario')->references('id')->on('users')->onDelete('cascade');
                 
-            $table->foreign('ubicacion')->references('id')->on('ubicaciones_id')->onDelete('cascade');
+            $table->foreign('ubicacion_id')->references('id')->on('ubicaciones')->onDelete('cascade');
                 
-            $table->foreign('deporte')->references('id')->on('deportes_id')->onDelete('cascade');
+            $table->foreign('deporte_id')->references('id')->on('deportes')->onDelete('cascade');
         });
     }
 
