@@ -17,6 +17,11 @@
                         <ul class="mt-2 text-gray-600">
                             @forelse (Auth::user()->deportesFav as $deporte)
                                 <li>{{ $deporte->nombre }}</li>
+                                <form action="{{ route('deportes-fav.delete', $deporte->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit">Delete {{ $deporte->nombre }}</button>
+                                </form>
                             @empty
                                 <li>No se han añadido deportes favoritos</li>
                             @endforelse

@@ -17,34 +17,35 @@ use App\Http\Controllers\UbicacionController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//ruta para añadir deportes como administrador
-Route::middleware(['auth'])->group(function () {
-    Route::get('/create', [DeporteController::class, 'create'])->name('deporte.create')->middleware(AdminMiddleware::class);
-    Route::post('/deportes', [DeporteController::class, 'store'])->name('deportes.store')->middleware(AdminMiddleware::class);
+//ruta para añadir, mostrar, editar y borrar deportes como administrador
+Route::middleware(['auth', AdminMiddleware::class])->group(function () {
+    Route::get('/deportes/create', [DeporteController::class, 'create'])->name('deporte.create');
+    Route::post('/deportes', [DeporteController::class, 'store'])->name('deportes.store');
+    Route::get('/deportes/mostrar', [DeporteController::class, 'mostrar'])->name('deportes.mostrar');
+    Route::get('/deportes/edit/{id}', [DeporteController::class, 'edit'])->name('deportes.edit');
+    Route::put('/deportes/update/{id}', [DeporteController::class, 'update'])->name('deportes.update');
+    Route::delete('/deportes/delete/{id}', [DeporteController::class, 'delete'])->name('deportes.delete');
 });
 
 //ruta para añadir los deportes que mas te gustan
 Route::middleware(['auth'])->group(function () {
     Route::get('/deportes/fav', [App\Http\Controllers\Deporte\DeportesFavController::class, 'create'])->name('deportes.fav');
     Route::post('/deportes/fav', [App\Http\Controllers\Deporte\DeportesFavController::class, 'store'])->name('deportes.fav.store');
+    Route::delete('/deportes-fav/{deporteId}', [\App\Http\Controllers\Deporte\DeportesFavController::class, 'eliminarDeporteFav'])->name('deportes-fav.delete');
 });
 
-Route::middleware(['auth'])->group(function () {
-//crear nuevas ubicaciones
-    Route::get('/ubicaciones/create', [UbicacionController::class, 'create'])->name('ubicaciones.create')->middleware(AdminMiddleware::class);
-    Route::post('/ubicaciones', [UbicacionController::class, 'store'])->name('ubicaciones.store')->middleware(AdminMiddleware::class);
+// Ubicaciones
+Route::middleware(['auth', AdminMiddleware::class])->group(function () {
+    //crear nuevas ubicaciones
+    Route::get('/ubicaciones/create', [UbicacionController::class, 'create'])->name('ubicaciones.create');
+    Route::post('/ubicaciones', [UbicacionController::class, 'store'])->name('ubicaciones.store');
+    // Editar ubicaciones
+    Route::get('/ubicaciones/{id}/edit', [UbicacionController::class, 'edit'])->name('ubicaciones.edit');
+    Route::put('/ubicaciones/{id}', [UbicacionController::class, 'update'])->name('ubicaciones.update');
+
+    // Eliminar ubicaciones 
+    Route::delete('/ubicaciones/{id}', [UbicacionController::class, 'delete'])->name('ubicaciones.delete');
 });
-
-Route::middleware(['auth'])->group(function () {
-// Editar ubicaciones
-Route::get('/ubicaciones/{id}/edit', [UbicacionController::class, 'edit'])->name('ubicaciones.edit')->middleware(AdminMiddleware::class);
-Route::put('/ubicaciones/{id}', [UbicacionController::class, 'update'])->name('ubicaciones.update')->middleware(AdminMiddleware::class);
-
-// Eliminar ubicaciones 
-Route::delete('/ubicaciones/{id}', [UbicacionController::class, 'delete'])->name('ubicaciones.delete')->middleware(AdminMiddleware::class);
-});
-
-
 
 Route::get('/', function () {
     return view('welcome');

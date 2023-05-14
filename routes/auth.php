@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\PublicacionesController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\UserController;
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
@@ -59,7 +60,11 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/publicacion/create', [PublicacionesController::class, 'create'])->name('auth.publicacion.create');
     Route::post('/publicacion', [PublicacionesController::class, 'store'])->name('publicacion.store');
+    Route::post('/publicaciones/{id}/apuntarse', [PublicacionesController::class, 'apuntarsePublicacion'])->name('publicacion.apuntarse');
 });
 
-Route::post('/publicaciones/{id}/apuntarse', [PublicacionesController::class, 'apuntarsePublicacion'])->name('publicacion.apuntarse');
-
+Route::middleware(['auth'])->group(function () {
+    Route::get('/editarusuario', [UserController::class, 'edit'])->name('editarusuario');
+    Route::put('/editarusuario/{id}', [UserController::class, 'update'])->name('actualizarusuario');
+    Route::delete('/eliminarusuario/{id}', [UserController::class, 'delete'])->name('eliminarusuario');
+});

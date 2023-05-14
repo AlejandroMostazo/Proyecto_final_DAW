@@ -29,4 +29,39 @@ class DeporteController extends Controller
         return redirect()->route('dashboard')
             ->with('success', 'Deporte agregado exitosamente');
     }
+
+    public function mostrar()
+    {
+        $deportes = Deporte::all();
+
+        return view('Deporte.deportes', compact('deportes'));
+    }
+
+    public function edit($id)
+    {
+        $deporte = Deporte::findOrFail($id);
+        return view('Deporte.editar', compact('deporte'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nombre' => ['required', 'string', 'max:255', 'unique:deportes,nombre,' . $id],
+        ]);
+
+        $deporte = Deporte::findOrFail($id);
+        $deporte->nombre = $request->input('nombre');
+        $deporte->save();
+
+        return redirect()->route('deportes.mostrar');
+    }
+
+    public function delete($id)
+    {
+        $deporte = Deporte::findOrFail($id);
+        $deporte->delete();
+
+        return redirect()->route('deportes.mostrar');
+    }
+
 }

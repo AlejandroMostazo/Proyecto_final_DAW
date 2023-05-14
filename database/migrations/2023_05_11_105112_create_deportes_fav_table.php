@@ -16,8 +16,8 @@ class CreateDeportesFavTable extends Migration
         Schema::create('deportes_fav', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('deporte_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('deporte_id')->references('id')->on('deportes');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('deporte_id')->references('id')->on('deportes')->onDelete('cascade');
             $table->primary(['user_id', 'deporte_id']);
             $table->timestamps();
         });
