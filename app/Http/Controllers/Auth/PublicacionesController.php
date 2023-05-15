@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Deporte;
 use App\Models\Ubicacion;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class PublicacionesController extends Controller
 {
@@ -39,7 +39,8 @@ class PublicacionesController extends Controller
             'ac_apuntados' => ['required', 'integer', 'max:' . $request->input('num_max_apuntados')-1],
             'fecha_hora' => ['required'],
             'ubicacion_id' => ['required', 'exists:ubicaciones,id', 'string'], 
-            'deporte_id' => ['required', 'exists:deportes,id', 'string']
+            'deporte_id' => ['required', 'exists:deportes,id', 'string'],
+            'user_id' => ['required', 'exists:users,id', 'integer', 'unique:publicaciones'],
          ]);
 
         $publicacion = new Publicacion();
@@ -49,7 +50,7 @@ class PublicacionesController extends Controller
         $publicacion->fecha_hora = $request->fecha_hora;
         $publicacion->ubicacion_id = $request->ubicacion_id;
         $publicacion->deporte_id = $request->deporte_id;
-        $publicacion->id_usuario = auth()->id();
+        $publicacion->user_id = auth()->id();
         $publicacion->save();
 
         return redirect()->route('dashboard');
@@ -79,9 +80,27 @@ class PublicacionesController extends Controller
 
     public function apuntarsePublicacion($id)
     {
+        $user = auth()->user();
+
+        // Verificar si el usuario ya se ha unido a alguna publicación
+        $publicacionUnida = Publicacion::whereHas('usuariosApuntados', function ($query) use ($user) {
+            $query->where('user_id', $user->id);
+        })->exists();
+
+        if ($publicacionUnida) {
+            return redirect()->back()->withErrors('Ya estás unido a una publicación.');
+        }
+
+        // Obtener la publicación específica por ID
         $publicacion = Publicacion::find($id);
+
+        // Unir al usuario a la publicación
+        $publicacion->usuariosApuntados()->attach($user);
+
+        // Incrementar el contador de apuntados de la publicación
         $publicacion->ac_apuntados += 1;
         $publicacion->save();
+
         return redirect()->route('publicaciones');
     }
 
