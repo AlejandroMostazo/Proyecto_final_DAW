@@ -11,7 +11,7 @@
 
         <form method="POST" action="{{ route('publicacion.store') }}">
             @csrf
-
+            <input type="hidden" name="user_id" value="{{ auth()->id() }}">
             <!-- Nivel -->
             <div>
                 <x-label for="nivel" :value="__('Nivel')" />

@@ -53,7 +53,7 @@ class User extends Authenticatable
     //hasone porque es una relacion 1:1
     public function publicacion()
     {
-        return $this->hasOne(Publicacion::class);
+        return $this->hasOne(Publicacion::class, 'user_id');
     }
 
 }

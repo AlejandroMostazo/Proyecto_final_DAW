@@ -26,8 +26,7 @@ class DeporteController extends Controller
         $deporte->nombre = $request->input('nombre');
         $deporte->save();
 
-        return redirect()->route('dashboard')
-            ->with('success', 'Deporte agregado exitosamente');
+        return redirect()->route('dashboard');
     }
 
     public function mostrar()

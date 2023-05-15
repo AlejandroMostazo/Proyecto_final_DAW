@@ -15,7 +15,7 @@ class CreatePublicacionesTable extends Migration
     {
         Schema::create('publicaciones', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_usuario');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('ubicacion_id');
             $table->unsignedBigInteger('deporte_id');
             $table->string('nivel');
@@ -24,7 +24,7 @@ class CreatePublicacionesTable extends Migration
             $table->dateTime('fecha_hora');
             $table->timestamps();
             
-            $table->foreign('id_usuario')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
                 
             $table->foreign('ubicacion_id')->references('id')->on('ubicaciones')->onDelete('cascade');
                 

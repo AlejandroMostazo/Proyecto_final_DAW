@@ -14,7 +14,7 @@ class Publicacion extends Model
     protected $table = 'publicaciones';
 
     protected $fillable = [
-        'id_usuario',
+        'user_id',
         'nivel',
         'num_max_apuntados',
         'ac_apuntados',
@@ -32,5 +32,11 @@ class Publicacion extends Model
     {
         return $this->belongsTo(Ubicacion::class);
     }
+
+    public function usuariosApuntados()
+    {
+        return $this->belongsToMany(User::class, 'publicacion_usuario', 'publicacion_id', 'user_id')->withTimestamps();
+    }
+
 
 }
