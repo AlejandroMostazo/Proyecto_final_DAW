@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Deporte;
 use App\Models\Ubicacion;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\DB;
 
 class PublicacionesController extends Controller
 {
@@ -58,7 +58,9 @@ class PublicacionesController extends Controller
     public function mostrarPublicaciones()
     {
         $publicaciones = Publicacion::all();
-        return view('publicaciones', ['publicaciones' => $publicaciones]);
+        $deportes = Deporte::all();
+        $ubicaciones = Ubicacion::all();
+        return view('publicaciones', ['publicaciones' => $publicaciones, 'deportes' => $deportes, 'ubicaciones' => $ubicaciones]);
     }
 
     public function deletePublicacionFechaHora()
@@ -81,6 +83,37 @@ class PublicacionesController extends Controller
         $publicacion->ac_apuntados += 1;
         $publicacion->save();
         return redirect()->route('publicaciones');
+    }
+
+    public function mostrarPublicacionesConFiltro(Request $request)
+    {
+
+        if ($request->filled('deporte') || $request->filled('ubicacion') || $request->filled('nivel') || $request->filled('fecha')) {
+
+            if ($request->filled('deporte')) {
+                $query = Publicacion::where('deporte_id', $request->input('deporte_id'));
+            }
+
+            if ($request->filled('ubicacion')) {
+                $query = Publicacion::where('ubicacion_id', $request->input('ubicacion'));
+            }
+
+            if ($request->filled('nivel')) {
+                $query = Publicacion::where('nivel', $request->input('nivel'));
+            }
+
+            if ($request->filled('fecha')) {
+                $query = Publicacion::whereDate('fecha_hora', $request->input('fecha'));
+            }
+        } else {
+            return $this->mostrarPublicacionesConBorrado();
+        }
+
+        $publicaciones = $query->get();
+    
+        $deportes = Deporte::all();
+        $ubicaciones = Ubicacion::all();
+        return view('publicaciones', compact('publicaciones', 'deportes', 'ubicaciones'));
     }
 
 }

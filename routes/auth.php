@@ -61,6 +61,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/publicacion/create', [PublicacionesController::class, 'create'])->name('auth.publicacion.create');
     Route::post('/publicacion', [PublicacionesController::class, 'store'])->name('publicacion.store');
     Route::post('/publicaciones/{id}/apuntarse', [PublicacionesController::class, 'apuntarsePublicacion'])->name('publicacion.apuntarse');
+    Route::get('/publicaciones/filtro', [PublicacionesController::class, 'mostrarPublicacionesConFiltro'])->name('publicaciones.filtrar');
 });
 
 Route::middleware(['auth'])->group(function () {
