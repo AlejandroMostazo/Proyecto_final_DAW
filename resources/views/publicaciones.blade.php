@@ -10,7 +10,6 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h2 class="text-lg font-medium text-gray-900">Publicaciones:</h2>
-
                      <!-- Filtros -->
                      <form method="GET" action="{{ route('publicaciones.filtrar') }}">
                         <div class="flex items-center space-x-4 mb-4">
@@ -71,7 +70,21 @@
                                     <td class="border px-4 py-2">{{ $publicacion->ubicacion->nombre }}</td>
                                     <td class="border px-4 py-2">{{ $publicacion->ac_apuntados }}</td>
                                     <td class="border px-4 py-2">{{ $publicacion->num_max_apuntados }}</td>
-                                    @if(!($publicacion->ac_apuntados >= $publicacion->num_max_apuntados))
+                                    @php
+                                        $apuntado = \App\Models\Publicacion::whereHas('usuariosApuntados', function ($query) use ($publicacion) {
+                                            $query->where('user_id', Auth::user()->id)->where('publicacion_id', $publicacion->id);
+                                        })->exists();
+                                        $apuntadoencualquiera = \App\Models\Publicacion::whereHas('usuariosApuntados', function ($query) use ($publicacion) {
+                                            $query->where('user_id', Auth::user()->id);
+                                        })->exists();
+                                    @endphp
+
+                                    @if ($apuntado)
+                                        <td class="border px-4 py-2">
+                                            <a href="{{ route('publicacion.desapuntarse', $publicacion->id) }}">Desapuntarse</a>
+                                        </td>
+                                    @endif
+                                    @if(!($publicacion->ac_apuntados >= $publicacion->num_max_apuntados) && !($apuntadoencualquiera))
                                         <td class="border px-4 py-2">
                                             <form method="POST" action="{{ route('publicacion.apuntarse', ['id' => $publicacion->id]) }}">
                                                 @csrf

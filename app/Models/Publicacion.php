@@ -35,7 +35,7 @@ class Publicacion extends Model
 
     public function usuariosApuntados()
     {
-        return $this->belongsToMany(User::class, 'publicacion_usuario', 'publicacion_id', 'user_id')->withTimestamps();
+        return $this->belongsToMany(User::class, 'apuntados', 'publicacion_id', 'user_id')->withTimestamps();
     }
 
 

@@ -36,7 +36,7 @@ class PublicacionesController extends Controller
         $request->validate([
             'nivel' => ['required', 'string'],
             'num_max_apuntados' => ['required', 'integer'],
-            'ac_apuntados' => ['required', 'integer', 'max:' . $request->input('num_max_apuntados')-1],
+            'ac_apuntados' => ['required', 'integer', 'min:1', 'max:' . $request->input('num_max_apuntados')-1],
             'fecha_hora' => ['required'],
             'ubicacion_id' => ['required', 'exists:ubicaciones,id', 'string'], 
             'deporte_id' => ['required', 'exists:deportes,id', 'string'],
@@ -61,6 +61,7 @@ class PublicacionesController extends Controller
         $publicaciones = Publicacion::all();
         $deportes = Deporte::all();
         $ubicaciones = Ubicacion::all();
+        
         return view('publicaciones', ['publicaciones' => $publicaciones, 'deportes' => $deportes, 'ubicaciones' => $ubicaciones]);
     }
 
@@ -88,8 +89,10 @@ class PublicacionesController extends Controller
         })->exists();
 
         if ($publicacionUnida) {
-            return redirect()->back()->withErrors('Ya estás unido a una publicación.');
+            return redirect()->back();
         }
+
+        
 
         // Obtener la publicación específica por ID
         $publicacion = Publicacion::find($id);
@@ -99,6 +102,32 @@ class PublicacionesController extends Controller
 
         // Incrementar el contador de apuntados de la publicación
         $publicacion->ac_apuntados += 1;
+        $publicacion->save();
+
+        return redirect()->route('publicaciones');
+    }
+
+    public function desapuntarsePublicacion($id)
+    {
+        $user = auth()->user();
+
+        // Verificar si el usuario ya se ha unido a alguna publicación
+        $publicacionUnida = Publicacion::whereHas('usuariosApuntados', function ($query) use ($user) {
+            $query->where('user_id', $user->id);
+        })->exists();
+
+        if ($publicacionUnida) {
+            return redirect()->back()->withErrors('Ya estás unido a una publicación.');
+        }
+
+        // Obtener la publicación específica por ID
+        $publicacion = Publicacion::find($id);
+
+        // Desapuntar al usuario de la publicación
+        $publicacion->usuariosApuntados()->detach($user);
+
+        // Incrementar el contador de apuntados de la publicación
+        $publicacion->ac_apuntados -= 1;
         $publicacion->save();
 
         return redirect()->route('publicaciones');
