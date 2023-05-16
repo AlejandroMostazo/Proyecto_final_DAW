@@ -34,19 +34,19 @@ class DeportesFavController extends Controller
     }
 
     public function eliminarDeporteFav(Request $request, $id)
-{
-    $user = $request->user();
+    {
+        $user = $request->user();
 
-    // Busca el deporte favorito que el usuario desea eliminar
-    $deporteFav = $user->deportesFav()->find($id);
+        // Busca el deporte favorito que el usuario desea eliminar
+        $deporteFav = $user->deportesFav()->find($id);
 
-    // Si el deporte favorito existe, lo elimina
-    if ($deporteFav) {
-        $user->deportesFav()->detach($id);
+        // Si el deporte favorito existe, lo elimina
+        if ($deporteFav) {
+            $user->deportesFav()->detach($id);
+        }
+
+        return redirect()->route('dashboard');
     }
-
-    return redirect()->route('dashboard');
-}
 
 
 }

@@ -17,6 +17,9 @@ class AddNewFieldsToUsersTable extends Migration
             $table->date('nacimiento')->nullable();
             $table->string('genero')->nullable();
             $table->boolean('admin')->default(false);
+            $table->unsignedBigInteger('publicacion_id')->nullable();
+
+            $table->foreign('publicacion_id')->references('id')->on('publicaciones')->onDelete('set null');
         });
     }
 

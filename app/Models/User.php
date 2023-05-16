@@ -50,10 +50,16 @@ class User extends Authenticatable
         return $this->belongsToMany(Deporte::class, 'deportes_fav', 'user_id', 'deporte_id')->withTimestamps();
     }
 
-    //hasone porque es una relacion 1:1
-    public function publicacion()
+    //hasone porque es una relacion 1:1 para crear la publicacion
+    public function publicacioncreate()
     {
         return $this->hasOne(Publicacion::class, 'user_id');
     }
+
+    public function publicacion()
+    {
+        return $this->belongsTo(Publicacion::class, 'publicacion_id');
+    }
+
 
 }

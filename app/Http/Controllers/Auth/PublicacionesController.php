@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Deporte;
 use App\Models\Ubicacion;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
+
 
 class PublicacionesController extends Controller
 {
@@ -32,16 +32,14 @@ class PublicacionesController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
             'nivel' => ['required', 'string'],
             'num_max_apuntados' => ['required', 'integer'],
-            'ac_apuntados' => ['required', 'integer', 'min:1', 'max:' . $request->input('num_max_apuntados')-1],
+            'ac_apuntados' => ['required', 'integer', 'min:1', 'max:' . ($request->input('num_max_apuntados') - 1)],
             'fecha_hora' => ['required'],
-            'ubicacion_id' => ['required', 'exists:ubicaciones,id', 'string'], 
-            'deporte_id' => ['required', 'exists:deportes,id', 'string'],
-            'user_id' => ['required', 'exists:users,id', 'integer', 'unique:publicaciones'],
-         ]);
+            'ubicacion_id' => ['required', 'exists:ubicaciones,id'],
+            'deporte_id' => ['required', 'exists:deportes,id'],
+        ]);
 
         $publicacion = new Publicacion();
         $publicacion->nivel = $request->nivel;
@@ -56,13 +54,23 @@ class PublicacionesController extends Controller
         return redirect()->route('dashboard');
     }
 
-    public function mostrarPublicaciones()
+    public function mostrarPublicaciones($publicaciones = null)
     {
+        $user = auth()->user();
         $publicaciones = Publicacion::all();
         $deportes = Deporte::all();
         $ubicaciones = Ubicacion::all();
         
-        return view('publicaciones', ['publicaciones' => $publicaciones, 'deportes' => $deportes, 'ubicaciones' => $ubicaciones]);
+        return view('publicaciones', ['publicaciones' => $publicaciones, 'deportes' => $deportes, 'ubicaciones' => $ubicaciones], compact('user'));
+    }
+
+    public function deletePublicacion()
+    {
+            $user = auth()->user();
+            $publicacion = Publicacion::where('user_id', '=', $user->id);
+            $publicacion->delete();
+
+            return redirect()->route('publicaciones');
     }
 
     public function deletePublicacionFechaHora()
@@ -82,56 +90,50 @@ class PublicacionesController extends Controller
     public function apuntarsePublicacion($id)
     {
         $user = auth()->user();
-
-        // Verificar si el usuario ya se ha unido a alguna publicación
-        $publicacionUnida = Publicacion::whereHas('usuariosApuntados', function ($query) use ($user) {
-            $query->where('user_id', $user->id);
-        })->exists();
-
-        if ($publicacionUnida) {
+    
+        // Verificar que el usuario no esta unido a ninguna publicacion
+        if ($user->publicacion_id != null) {
             return redirect()->back();
         }
 
-        
-
         // Obtener la publicación específica por ID
         $publicacion = Publicacion::find($id);
 
+        // Verificar que no es el creador 
+        if ($publicacion->user_id == $user->id) {
+            return redirect()->back();
+        }
+    
         // Unir al usuario a la publicación
-        $publicacion->usuariosApuntados()->attach($user);
-
+        $publicacion->usuariosApuntados()->save($user);
+    
         // Incrementar el contador de apuntados de la publicación
         $publicacion->ac_apuntados += 1;
         $publicacion->save();
-
+    
         return redirect()->route('publicaciones');
     }
+    
 
-    public function desapuntarsePublicacion($id)
+    public function desapuntarsePublicacion()
     {
         $user = auth()->user();
 
-        // Verificar si el usuario ya se ha unido a alguna publicación
-        $publicacionUnida = Publicacion::whereHas('usuariosApuntados', function ($query) use ($user) {
-            $query->where('user_id', $user->id);
-        })->exists();
-
-        if ($publicacionUnida) {
-            return redirect()->back()->withErrors('Ya estás unido a una publicación.');
-        }
-
         // Obtener la publicación específica por ID
-        $publicacion = Publicacion::find($id);
+        $publicacion = Publicacion::find($user->publicacion_id);
 
-        // Desapuntar al usuario de la publicación
-        $publicacion->usuariosApuntados()->detach($user);
+        // Desasociar al usuario de la publicación
+        $user->publicacion_id = null;
+        $user->save();
 
-        // Incrementar el contador de apuntados de la publicación
+        // Decrementar el contador de apuntados de la publicación
         $publicacion->ac_apuntados -= 1;
         $publicacion->save();
 
         return redirect()->route('publicaciones');
     }
+
+
 
     public function mostrarPublicacionesConFiltro(Request $request)
     {
@@ -158,10 +160,10 @@ class PublicacionesController extends Controller
         }
 
         $publicaciones = $query->get();
-    
+        $user = auth()->user();
         $deportes = Deporte::all();
         $ubicaciones = Ubicacion::all();
-        return view('publicaciones', compact('publicaciones', 'deportes', 'ubicaciones'));
+        return view('publicaciones', compact('publicaciones', 'deportes', 'ubicaciones', 'user'));
     }
 
 }

@@ -59,6 +59,20 @@
                                 <th class="px-4 py-2">Ubicación</th>
                                 <th class="px-4 py-2">Apuntados</th>
                                 <th class="px-4 py-2">Max. Apuntados</th>
+                                @if ($user->publicacion_id != null)
+                                    <th style="background-color:salmon;" class="px-4 py-2">
+                                        <a href="{{ route('publicacion.desapuntarse') }}">Desapuntarse</a>
+                                    </th>
+                                @endif
+                                @if ($publicaciones->where('user_id', '=', $user->id)->count() > 0)
+                                    <th>
+                                        <form action="{{ route('publicacion.delete')}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button style="background-color:tomato;" class="ml-4 px-4 py-2 bg-blue-500 text-white rounded bg-blue-700" type="submit">Eliminar Publicaccion</button>
+                                        </form>
+                                    </th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -70,21 +84,7 @@
                                     <td class="border px-4 py-2">{{ $publicacion->ubicacion->nombre }}</td>
                                     <td class="border px-4 py-2">{{ $publicacion->ac_apuntados }}</td>
                                     <td class="border px-4 py-2">{{ $publicacion->num_max_apuntados }}</td>
-                                    @php
-                                        $apuntado = \App\Models\Publicacion::whereHas('usuariosApuntados', function ($query) use ($publicacion) {
-                                            $query->where('user_id', Auth::user()->id)->where('publicacion_id', $publicacion->id);
-                                        })->exists();
-                                        $apuntadoencualquiera = \App\Models\Publicacion::whereHas('usuariosApuntados', function ($query) use ($publicacion) {
-                                            $query->where('user_id', Auth::user()->id);
-                                        })->exists();
-                                    @endphp
-
-                                    @if ($apuntado)
-                                        <td class="border px-4 py-2">
-                                            <a href="{{ route('publicacion.desapuntarse', $publicacion->id) }}">Desapuntarse</a>
-                                        </td>
-                                    @endif
-                                    @if(!($publicacion->ac_apuntados >= $publicacion->num_max_apuntados) && !($apuntadoencualquiera))
+                                    @if ($user->publicacion_id == null && $publicacion->user_id != $user->id)
                                         <td class="border px-4 py-2">
                                             <form method="POST" action="{{ route('publicacion.apuntarse', ['id' => $publicacion->id]) }}">
                                                 @csrf
