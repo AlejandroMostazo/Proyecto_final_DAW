@@ -15,7 +15,7 @@
                         <div class="flex items-center space-x-4 mb-4">
                             <div>
                                 <label class="text-gray-700" for="deporte">Deporte:</label>
-                                <select name="deporte_id" id="deporte_id" class="block w-full mt-1">
+                                <select name="deporte" id="deporte" class="block w-full mt-1">
                                     <option value="">Todos</option>
                                     @foreach($deportes as $deporte)
                                         <option value="{{ $deporte->id }}">{{ $deporte->nombre }}</option>

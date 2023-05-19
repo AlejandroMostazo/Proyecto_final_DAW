@@ -40,6 +40,12 @@ class PublicacionesController extends Controller
             'ubicacion_id' => ['required', 'exists:ubicaciones,id'],
             'deporte_id' => ['required', 'exists:deportes,id'],
         ]);
+	
+	$user = auth()->user();
+		
+        if(Publicacion::where('user_id', '=', $user->id)->count() > 0) {
+            return redirect('publicaciones');
+        }
 
         $publicacion = new Publicacion();
         $publicacion->nivel = $request->nivel;
@@ -48,9 +54,9 @@ class PublicacionesController extends Controller
         $publicacion->fecha_hora = $request->fecha_hora;
         $publicacion->ubicacion_id = $request->ubicacion_id;
         $publicacion->deporte_id = $request->deporte_id;
-        $publicacion->user_id = auth()->id();
+        $publicacion->user_id = auth()->id(); 
         $publicacion->save();
-
+	
         return redirect()->route('dashboard');
     }
 
@@ -68,6 +74,8 @@ class PublicacionesController extends Controller
     {
             $user = auth()->user();
             $publicacion = Publicacion::where('user_id', '=', $user->id);
+	    $user->publicacion_id = null;
+	    $user->update;
             $publicacion->delete();
 
             return redirect()->route('publicaciones');
@@ -141,7 +149,7 @@ class PublicacionesController extends Controller
         if ($request->filled('deporte') || $request->filled('ubicacion') || $request->filled('nivel') || $request->filled('fecha')) {
 
             if ($request->filled('deporte')) {
-                $query = Publicacion::where('deporte_id', $request->input('deporte_id'));
+                $query = Publicacion::where('deporte_id', $request->input('deporte'));
             }
 
             if ($request->filled('ubicacion')) {
