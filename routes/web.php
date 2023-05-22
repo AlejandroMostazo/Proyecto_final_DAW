@@ -59,5 +59,7 @@ Route::get('/dashboard', function () {
 Route::get('/ubicaciones', [UbicacionController::class,"mostrarUbicaciones"])->middleware(['auth'])->name('ubicaciones');
 
 Route::get('/publicaciones', [PublicacionesController::class,"mostrarPublicacionesConBorrado"])->middleware(['auth'])->name('publicaciones');
+Route::get('/publicacion/apuntados{id}', [PublicacionesController::class,"mostrarApuntados"])->middleware(['auth'])->name('apuntados');
+
 
 require __DIR__.'/auth.php';

@@ -78,6 +78,12 @@
                         <tbody>
                             @foreach($publicaciones as $publicacion)
                                 <tr>
+                                    <td>
+                                        <form method="GET" action="{{ route('apuntados', ['id' => $publicacion->id]) }}">
+                                            @csrf
+                                            <button type="submit">VER</button>
+                                        </form>
+                                    </td>
                                     <td class="border px-4 py-2">{{ $publicacion->deporte->nombre }}</td>
                                     <td class="border px-4 py-2">{{ $publicacion->nivel }}</td>
                                     <td class="border px-4 py-2">{{ $publicacion->fecha_hora }}</td>

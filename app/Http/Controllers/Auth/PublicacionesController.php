@@ -7,6 +7,7 @@ use App\Models\Publicacion;
 use App\Http\Controllers\Controller;
 use App\Models\Deporte;
 use App\Models\Ubicacion;
+use App\Models\User;
 use Carbon\Carbon;
 
 
@@ -68,6 +69,13 @@ class PublicacionesController extends Controller
         $ubicaciones = Ubicacion::all();
         
         return view('publicaciones', ['publicaciones' => $publicaciones, 'deportes' => $deportes, 'ubicaciones' => $ubicaciones], compact('user'));
+    }
+
+    public function mostrarApuntados($id)
+    {
+        $users = User::where('publicacion_id', '=', $id)->get();
+        
+        return view('apuntados', compact('users'));
     }
 
     public function deletePublicacion()
