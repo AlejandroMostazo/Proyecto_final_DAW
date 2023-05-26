@@ -61,14 +61,14 @@ class PublicacionesController extends Controller
         return redirect()->route('dashboard');
     }
 
-    public function mostrarPublicaciones($publicaciones = null)
+    public function allPublicaciones()
     {
         $user = auth()->user();
         $publicaciones = Publicacion::all();
         $deportes = Deporte::all();
         $ubicaciones = Ubicacion::all();
         
-        return view('publicaciones', ['publicaciones' => $publicaciones, 'deportes' => $deportes, 'ubicaciones' => $ubicaciones], compact('user'));
+        return view('publicaciones', compact('user', 'publicaciones', 'deportes', 'ubicaciones'));
     }
 
     public function mostrarApuntados($id)
@@ -98,9 +98,9 @@ class PublicacionesController extends Controller
         }
     }
     // Borra las publicacionse que ya hayan pasado de la fecha a la que fueron programadas antes de mostrarlas 
-    public function mostrarPublicacionesConBorrado() {
+    public function mostrarPublicaciones() {
         $this->deletePublicacionFechaHora();
-        return $this->mostrarPublicaciones();
+        return $this->allPublicaciones();
     }
 
     public function apuntarsePublicacion($id)
@@ -151,35 +151,43 @@ class PublicacionesController extends Controller
 
 
 
-    public function mostrarPublicacionesConFiltro(Request $request)
+    public function publicacionesConFiltro(Request $request)
     {
+        $deportes = $request->input('deportes', []);
+        $ubicaciones = $request->input('ubicaciones', []);
+        $nivel = $request->input('nivel', []);
+        $fecha = $request->input('fecha');
 
-        if ($request->filled('deporte') || $request->filled('ubicacion') || $request->filled('nivel') || $request->filled('fecha')) {
+        $query = Publicacion::query();
 
-            if ($request->filled('deporte')) {
-                $query = Publicacion::where('deporte_id', $request->input('deporte'));
-            }
-
-            if ($request->filled('ubicacion')) {
-                $query = Publicacion::where('ubicacion_id', $request->input('ubicacion'));
-            }
-
-            if ($request->filled('nivel')) {
-                $query = Publicacion::where('nivel', $request->input('nivel'));
-            }
-
-            if ($request->filled('fecha')) {
-                $query = Publicacion::whereDate('fecha_hora', $request->input('fecha'));
-            }
-        } else {
-            return $this->mostrarPublicacionesConBorrado();
+        if ($request->filled('fecha')) {
+            $query->whereDate('fecha_hora', '=', $fecha);
         }
 
-        $publicaciones = $query->get();
+        if (!empty($deportes)) {
+            $query->whereIn('deporte_id', $deportes);
+        }
+
+        if (!empty($ubicaciones)) {
+            $query->whereIn('ubicacion_id', $ubicaciones);
+        }
+
+        if (!empty($nivel)) {
+            $query->whereIn('nivel', $nivel);
+        }
+
+        $publicaciones = $query->with('deporte')->get();
+        $publicaciones = $query->with('ubicacion')->get();
         $user = auth()->user();
-        $deportes = Deporte::all();
-        $ubicaciones = Ubicacion::all();
-        return view('publicaciones', compact('publicaciones', 'deportes', 'ubicaciones', 'user'));
+
+        if ($request->ajax()) {
+            return response()->json([
+                'publicaciones' => $publicaciones,
+                'user' => $user,
+            ]);
+        }
+        
+        return view('publicaciones', compact('publicaciones', 'user'));
     }
 
 }

@@ -26,8 +26,19 @@ class DeporteController extends Controller
         $deporte->nombre = $request->input('nombre');
         $deporte->save();
 
+        $tags = $request->input('tags', []);
+
+        if (!empty($tags)) {
+            foreach ($tags as $tag) {
+                $deporteDinamico = new Deporte();
+                $deporteDinamico->nombre = $tag;
+                $deporteDinamico->save();
+            }
+        }
+
         return redirect()->route('dashboard');
     }
+
 
     public function mostrar()
     {

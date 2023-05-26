@@ -1,3 +1,4 @@
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -11,48 +12,55 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h2 class="text-lg font-medium text-gray-900">Publicaciones:</h2>
                      <!-- Filtros -->
-                     <form method="GET" action="{{ route('publicaciones.filtrar') }}">
+                     <form method="POST" id="formfiltro" action="{{ route('publicaciones.filtrar') }}">
                         <div class="flex items-center space-x-4 mb-4">
                             <div>
                                 <label class="text-gray-700" for="deporte">Deporte:</label>
-                                <select name="deporte" id="deporte" class="block w-full mt-1">
-                                    <option value="">Todos</option>
                                     @foreach($deportes as $deporte)
-                                        <option value="{{ $deporte->id }}">{{ $deporte->nombre }}</option>
+                                        <div>
+                                            <input type="checkbox" name="deportes[]" value="{{ $deporte->id }}" id=" $deporte->id ">
+                                            <label for="checkbox{{ $deporte->id }}" >{{ $deporte->nombre }}</label>
+                                        </div>
                                     @endforeach
-                                </select>
+
+
+                                <!-- </select> -->
                             </div>
                             <div>
                                 <label class="text-gray-700" for="ubicacion">Ubicación:</label>
-                                <select name="ubicacion" id="ubicacion" class="block w-full mt-1">
-                                    <option value="">Todas</option>
-                                    @foreach($ubicaciones as $ubicacion)
-                                        <option value="{{ $ubicacion->id }}">{{ $ubicacion->nombre }}</option>
-                                    @endforeach
-                                </select>
+                                @foreach($ubicaciones as $ubicacion)
+                                    <div>
+                                        <input type="checkbox" name="ubicaciones[]" value="{{ $ubicacion->id }}" id=" $ubicacion->id">
+                                        <label for="checkbox{{ $ubicacion->id }}">{{ $ubicacion->nombre }}</label>
+                                    </div>
+                                @endforeach
                             </div>
                             <div>
                                 <label class="text-gray-700" for="nivel">Nivel:</label>
-                                <select name="nivel" id="nivel" class="block w-full mt-1">
-                                    <option value="">Todos</option>
-                                    <option value="Principiante">Principiante</option>
-                                    <option value="Intermedio">Intermedio</option>
-                                    <option value="Profesional">Profesional</option>
-                                </select>
+                                <div>
+                                    <input type="checkbox" name="nivel[]" value="Principiante" id="Principiante">
+                                    <label for="Principiante">Principiante</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="nivel[]" value="Intermedio" id="Intermedio">
+                                    <label for="Intermedio">Intermedio</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="nivel[]" value="Profesional" id="Profesional">
+                                    <label for="Profesional">Profesional</label>
+                                </div>      
                             </div>
                             <div>
                                 <label class="text-gray-700" for="fecha">Fecha:</label>
                                 <input type="date" name="fecha" id="fecha" class="block w-full mt-1">
                             </div>
-                            <div>
-                                <button style="background-color: teal;" type="submit" class="ml-4 px-4 py-2 bg-blue-500 text-white rounded bg-blue-700">Filtrar</button>
-                            </div>
                         </div>
                     </form>
 
-                    <table class="table-auto w-full">
+                    <table id="tablaPublicaciones" class="table-auto w-full">
                         <thead>
                             <tr>
+                                <th class="px-4 py-2"></th>
                                 <th class="px-4 py-2">Deporte</th>
                                 <th class="px-4 py-2">Nivel</th>
                                 <th class="px-4 py-2">Fecha y Hora</th>
@@ -79,10 +87,7 @@
                             @foreach($publicaciones as $publicacion)
                                 <tr>
                                     <td>
-                                        <form method="GET" action="{{ route('apuntados', ['id' => $publicacion->id]) }}">
-                                            @csrf
-                                            <button type="submit">VER</button>
-                                        </form>
+                                        <a href="{{ route('apuntados', ['id' => $publicacion->id]) }}">VER</a>
                                     </td>
                                     <td class="border px-4 py-2">{{ $publicacion->deporte->nombre }}</td>
                                     <td class="border px-4 py-2">{{ $publicacion->nivel }}</td>
@@ -107,3 +112,6 @@
         </div>
     </div>
 </x-app-layout>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{{ mix('js/filtro.js') }}"></script>
+
