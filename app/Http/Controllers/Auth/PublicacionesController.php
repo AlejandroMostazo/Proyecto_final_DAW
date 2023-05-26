@@ -150,6 +150,31 @@ class PublicacionesController extends Controller
     }
 
 
+    public function buscar(Request $request)
+    {
+
+        $request = $request->input('buscador');
+
+        $query = Publicacion::query();
+
+        $query->join('deportes', 'deportes.id', '=', 'publicaciones.deporte_id')
+            ->join('ubicaciones', 'ubicaciones.id', '=', 'publicaciones.ubicacion_id')
+            ->select('publicaciones.*');
+
+        // Aplica los filtros necesarios
+        $query->orWhere('deportes.nombre', 'LIKE', '%'.$request.'%');
+        $query->orWhere('ubicaciones.nombre', 'LIKE', '%'.$request.'%');
+        $query->orWhere('ubicaciones.calle', 'LIKE', '%'.$request.'%');
+        $query->orWhere('ubicaciones.localidad', 'LIKE', '%'.$request.'%');
+
+        $publicaciones = $query->get();
+        $deportes = Deporte::all();
+        $ubicaciones = Ubicacion::all();
+        $user = auth()->user();
+
+        return view('publicaciones', compact('publicaciones', 'deportes', 'ubicaciones', 'user'));
+    }
+
 
     public function publicacionesConFiltro(Request $request)
     {

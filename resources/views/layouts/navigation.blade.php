@@ -34,6 +34,12 @@
                         </x-nav-link>
                     </div>
                 @endif
+
+                <form method="GET" action="{{ route('publicacion.buscar') }}">
+                        <input type="text" id="buscador" name="buscador" placeholder="Buscar...">
+                </form>
+
+
             </div>
 
             <!-- Settings Dropdown -->

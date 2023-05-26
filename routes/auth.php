@@ -62,6 +62,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/publicacion', [PublicacionesController::class, 'store'])->name('publicacion.store');
     Route::post('/publicaciones/{id}/apuntarse', [PublicacionesController::class, 'apuntarsePublicacion'])->name('publicacion.apuntarse');
     Route::get('/publicacion/desapuntarse', [PublicacionesController::class, 'desapuntarsePublicacion'])->name('publicacion.desapuntarse');
+    Route::get('/publicacion/buscar', [PublicacionesController::class, 'buscar'])->name('publicacion.buscar');
     Route::post('/publicaciones/filtro', [PublicacionesController::class, 'publicacionesConFiltro'])->name('publicaciones.filtrar');
     Route::delete('/publicacion/delete', [PublicacionesController::class, 'deletePublicacion'])->name('publicacion.delete');
 });
