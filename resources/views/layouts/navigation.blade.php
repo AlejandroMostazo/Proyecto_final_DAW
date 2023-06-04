@@ -35,6 +35,12 @@
                     </div>
                 @endif
 
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('noticias')">
+                        {{ __('Noticias') }}
+                    </x-nav-link>
+                </div>
+
                 <form method="GET" action="{{ route('publicacion.buscar') }}">
                         <input type="text" id="buscador" name="buscador" placeholder="Buscar...">
                 </form>
