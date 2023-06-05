@@ -66,7 +66,7 @@
                         <td class="title-publicacion" >{{ $publicacion->deporte->nombre }}
                             <a class="verapuntados" href="{{ route('apuntados', ['id' => $publicacion->id]) }}"></a>
                             <p class="text-publicacion"><i class="fa-solid fa-location-dot"></i> {{ $publicacion->ubicacion->calle }}</p>
-                            <p class="text-publicacion"><i class="fa-regular fa-clock"></i> {{ $publicacion->fecha_hora }}</p>
+                            <p class="text-publicacion"><i class="fa-regular fa-clock"></i> {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $publicacion->fecha_hora)->format('d/m/Y H:i') }}</p>
                         </td>
                         <td style="text-align: center;">
                                 <div class="principiante inline-flex"></div>
