@@ -64,7 +64,7 @@ class PublicacionesController extends Controller
     public function allPublicaciones()
     {
         $user = auth()->user();
-        $publicaciones = Publicacion::all();
+        $publicaciones = Publicacion::orderBy('created_at', 'desc')->get();
         $deportes = Deporte::all();
         $ubicaciones = Ubicacion::all();
         

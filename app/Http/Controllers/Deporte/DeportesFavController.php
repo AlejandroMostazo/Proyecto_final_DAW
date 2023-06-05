@@ -23,7 +23,7 @@ class DeportesFavController extends Controller
 
         $user->deportesFav()->attach($deportesFavIds);
 
-        return redirect()->route('dashboard');
+        return redirect()->route('perfil');
     }
 
     public function show(User $user)

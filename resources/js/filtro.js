@@ -57,7 +57,7 @@ $(document).ready(function () {
                         apuntarse = '<td ">' +
                                         '<form method="POST" action="publicaciones/'+publicacion.id+'/apuntarse">' +
                                             '<input type="hidden" name="_token" value="' + csrfToken + '">' +
-                                            '<button type="submit">Apuntarse</button>' +
+                                            '<button type="submit"><i class="fa-solid fa-plus"></i></button>' +
                                         '</form>'+ 
                                     '</td>'
                     }
@@ -81,8 +81,8 @@ $(document).ready(function () {
                             '</td>' +
                             '<td ">' + publicacion.ac_apuntados + '</td>' +
                             '<td ">' + publicacion.num_max_apuntados + '</td>' +
-                        apuntarse +
-                        +'</tr>';
+                            apuntarse +
+                            +'</tr>';
             
                     tabla.append(row);
                 });

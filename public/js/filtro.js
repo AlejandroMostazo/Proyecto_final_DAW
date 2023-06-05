@@ -46,7 +46,7 @@ $(document).ready(function () {
         publicaciones.forEach(function (publicacion) {
           var apuntarse = "";
           if (user.publicacion_id == null && publicacion.user_id != user.id) {
-            apuntarse = '<td ">' + '<form method="POST" action="publicaciones/' + publicacion.id + '/apuntarse">' + '<input type="hidden" name="_token" value="' + csrfToken + '">' + '<button type="submit">Apuntarse</button>' + '</form>' + '</td>';
+            apuntarse = '<td ">' + '<form method="POST" action="publicaciones/' + publicacion.id + '/apuntarse">' + '<input type="hidden" name="_token" value="' + csrfToken + '">' + '<button type="submit"><i class="fa-solid fa-plus"></i></button>' + '</form>' + '</td>';
           }
           var row = '<tr class="border-publicaciones">' + '<td ">' + '<a href="publicacion/apuntados/' + publicacion.id + '">VER</a>' + '</td>' + '<td class="title-publicacion">' + '<a href="{{ route(\'apuntados\', [\'id\' => ' + publicacion.id + ']) }}">' + publicacion.deporte.nombre + '</a>' + '<p class="text-publicacion">' + publicacion.ubicacion.nombre + '</p>' + '<p class="text-publicacion">' + publicacion.fecha_hora + '</p>' + '</td>' + '<td style="text-align: center;">' + '<div class="principiante inline-flex"></div>' + '<div class="intermedio inline-flex"></div>' + '<div class="profesional inline-block"></div>' + '<p>' + publicacion.nivel + '</p>' + '</td>' + '<td ">' + publicacion.ac_apuntados + '</td>' + '<td ">' + publicacion.num_max_apuntados + '</td>' + apuntarse + +'</tr>';
           tabla.append(row);

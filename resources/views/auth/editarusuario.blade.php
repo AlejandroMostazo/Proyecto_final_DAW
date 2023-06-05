@@ -1,8 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Actualizar información') }}
-        </h2>
+    <x-slot name="header">  
     </x-slot>
 
     <div class="py-12">
@@ -42,7 +39,17 @@
                                 <span class="text-red-500 text-xs">{{ $message }}</span>
                             @enderror
                         </div>
-                        <button type="submit" style="background-color: orange;" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        @forelse (Auth::user()->deportesFav as $deporte)
+                            <li>{{ $deporte->nombre }}</li>
+                            <form action="{{ route('deportes-fav.delete', $deporte->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">Delete {{ $deporte->nombre }}</button>
+                            </form>
+                        @empty
+                        <a href="{{ route('deportes.fav') }}">Añadir Deporte Favorito</a>
+                        @endforelse
+                    <button type="submit" style="background-color: orange;" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                             Actualizar información
                         </button>
                     </form>

@@ -50,43 +50,42 @@
         </form>
 
         @if ($user->publicacion_id != null)
-                <a style="background-color:salmon;" class="px-4 py-2" href="{{ route('publicacion.desapuntarse') }}">Desapuntarse</a>
+                <a style="background-color:salmon;" class="px-4 py-2" href="{{ route('publicacion.desapuntarse') }}"><i class="fa-solid fa-user-minus"></i> Desapuntarse</a>
         @endif
         @if ($publicaciones->where('user_id', '=', $user->id)->count() > 0)
                 <form action="{{ route('publicacion.delete')}}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button style="background-color:tomato;" class="ml-4 px-4 py-2 bg-blue-500 text-white rounded bg-blue-700" type="submit">Eliminar Publicaccion</button>
+                    <button style="background-color:tomato;" class="ml-4 px-4 py-2 bg-blue-500 text-white rounded bg-blue-700" type="submit"><i class="fa-solid fa-trash"></i> Eliminar Publicaccion</button>
                 </form>
         @endif
         <table id="tablaPublicaciones" class="table-auto w-full">
             <tbody>
                 @foreach($publicaciones as $publicacion)
-                    <tr class="border-publicaciones">
-                        <td>
-                            <a href="{{ route('apuntados', ['id' => $publicacion->id]) }}">VER</a>
-                        </td>
-                        <td class="title-publicacion" >{{ $publicacion->deporte->nombre }}
-                            <p class="text-publicacion"><i class="fa-solid fa-location-dot"></i> {{ $publicacion->ubicacion->calle }}</p>
-                            <p class="text-publicacion"><i class="fa-regular fa-clock"></i> {{ $publicacion->fecha_hora }}</p>
-                        </td>
-                        <td style="text-align: center;">
-                                <div class="principiante inline-flex"></div>
-                                <div class="intermedio inline-flex"></div>
-                                <div class="profesional inline-block"></div>             
-                                <p>{{ $publicacion->nivel }}</p> 
-                        </td>
-                        <td >{{ $publicacion->ac_apuntados }}</td>
-                        <td >{{ $publicacion->num_max_apuntados }}</td>
-                        @if ($user->publicacion_id == null && $publicacion->user_id != $user->id)
-                            <td>
-                                <form method="POST" action="{{ route('publicacion.apuntarse', ['id' => $publicacion->id]) }}">
-                                    @csrf
-                                    <button type="submit">Apuntarse</button>
-                                </form>
-                            </td>
-                        @endif
-                    </tr>
+                <tr class="border-publicaciones">
+                            <a id="verapuntados" href="{{ route('apuntados', ['id' => $publicacion->id]) }}">
+                                <td class="title-publicacion" >{{ $publicacion->deporte->nombre }}
+                                    <p class="text-publicacion"><i class="fa-solid fa-location-dot"></i> {{ $publicacion->ubicacion->calle }}</p>
+                                    <p class="text-publicacion"><i class="fa-regular fa-clock"></i> {{ $publicacion->fecha_hora }}</p>
+                                </td>
+                                <td style="text-align: center;">
+                                        <div class="principiante inline-flex"></div>
+                                        <div class="intermedio inline-flex"></div>
+                                        <div class="profesional inline-block"></div>             
+                                        <p>{{ $publicacion->nivel }}</p> 
+                                </td>
+                                <td >{{ $publicacion->ac_apuntados }}</td>
+                                <td >{{ $publicacion->num_max_apuntados }}</td>
+                                @if ($user->publicacion_id == null && $publicacion->user_id != $user->id)
+                                    <td>
+                                        <form method="POST" action="{{ route('publicacion.apuntarse', ['id' => $publicacion->id]) }}">
+                                            @csrf
+                                            <button type="submit"><i class="fa-solid fa-plus"></i></button>
+                                        </form>
+                                    </td>
+                                @endif
+                            </a>
+                        </tr>
                 @endforeach
             </tbody>
         </table>
