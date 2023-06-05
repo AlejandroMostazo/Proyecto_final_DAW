@@ -37,6 +37,11 @@
   color: #D9D9D9;
 }
 
+.border-conten {
+  border: solid 2px #F2B705;
+  min-height: 86.2vh;
+}
+
 
 
 /*
@@ -875,9 +880,11 @@ select {
 }
 .overflow-auto {
   overflow: auto;
+  max-height: 78vh;
 }
 .overflow-hidden {
   overflow: hidden;
+  
 }
 .rounded {
   border-radius: 0.25rem;
