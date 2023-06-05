@@ -3,6 +3,26 @@
     <x-slot name="header"> 
     </x-slot>
     <div>
+            
+            <div class="links filtros">
+                    <span id="activefilters">
+                        <i class="fa-solid fa-filter"></i>
+                        <span>Filtros</span>
+                    </span>
+                    
+                    @if ($user->publicacion_id != null)
+                        <a style="background-color: tomato;" class="ml-4 px-4 py-2 bg-blue-500 text-white rounded bg-blue-700" href="{{ route('publicacion.desapuntarse') }}"><i class="fa-solid fa-user-minus"></i> Desapuntarse</a>
+                    @endif
+
+                    @if ($publicaciones->where('user_id', '=', $user->id)->count() > 0)
+                            <form action="{{ route('publicacion.delete')}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button style="background-color:firebrick;" class="ml-4 px-4 py-2 bg-blue-500 text-white rounded bg-blue-700" type="submit"><i class="fa-solid fa-trash"></i> Eliminar Publicaccion</button>
+                            </form>
+                    @endif
+            </div>
+
             <!-- Filtros -->
             <form method="POST" id="formfiltro" action="{{ route('publicaciones.filtrar') }}">
             <div class="flex items-center space-x-4 mb-4">
@@ -49,16 +69,7 @@
             </div>
         </form>
 
-        @if ($user->publicacion_id != null)
-                <a style="background-color:salmon;" class="px-4 py-2" href="{{ route('publicacion.desapuntarse') }}"><i class="fa-solid fa-user-minus"></i> Desapuntarse</a>
-        @endif
-        @if ($publicaciones->where('user_id', '=', $user->id)->count() > 0)
-                <form action="{{ route('publicacion.delete')}}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button style="background-color:tomato;" class="ml-4 px-4 py-2 bg-blue-500 text-white rounded bg-blue-700" type="submit"><i class="fa-solid fa-trash"></i> Eliminar Publicaccion</button>
-                </form>
-        @endif
+        
         <table id="tablaPublicaciones" class="table-auto w-full">
             <tbody>
                 @foreach($publicaciones as $publicacion)

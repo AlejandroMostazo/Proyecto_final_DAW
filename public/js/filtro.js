@@ -3,6 +3,14 @@ var __webpack_exports__ = {};
 /*!********************************!*\
   !*** ./resources/js/filtro.js ***!
   \********************************/
+activefilters.addEventListener('click', function () {
+  var formulario = document.getElementById('formfiltro');
+  if (formulario.style.display == 'none' || formulario.style.display == '') {
+    formulario.style.display = 'inline';
+  } else {
+    formulario.style.display = 'none';
+  }
+});
 $(document).ready(function () {
   var deportes = [];
   var ubicaciones = [];

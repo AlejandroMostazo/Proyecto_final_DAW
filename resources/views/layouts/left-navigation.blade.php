@@ -9,14 +9,7 @@
             {{ __('Publicaciones') }}
         </x-nav-link>
     </div>
-
-    <div class="links">
-        <x-nav-link :href="route('auth.publicacion.create')" :active="request()->routeIs('auth.publicacion.create')">
-            <i class="fa-solid fa-filter"></i>
-            {{ __('Filtros') }}
-        </x-nav-link>
-    </div>
-
+    
     <div class="links">
         <x-nav-link :href="route('auth.publicacion.create')" :active="request()->routeIs('auth.publicacion.create')">
             <i class="fa-solid fa-users"></i>
