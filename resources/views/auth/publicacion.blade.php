@@ -17,32 +17,32 @@
                 <x-label for="nivel" :value="__('Nivel')" />
 
                 <select id="nivel" class="block mt-1 w-full" name="nivel" required autofocus>
-                    <option value="principiante" {{ old('nivel') == 'principiante' ? 'selected' : '' }}>Principiante</option>
-                    <option value="intermedio" {{ old('nivel') == 'intermedio' ? 'selected' : '' }}>Intermedio</option>
-                    <option value="profesional" {{ old('nivel') == 'profesional' ? 'selected' : '' }}>Profesional</option>
+                    <option value="principiante">Principiante</option>
+                    <option value="intermedio" >Intermedio</option>
+                    <option value="profesional" >Profesional</option>
                 </select>
             </div>
 
 
             <!-- Num_max_apuntados -->
             <div class="mt-4">
-                <x-label for="num_max_apuntados" :value="__('Número máximo de apuntados')" />
+                <x-label for="num_max_apuntados" value='Número máximo de apuntados' />
 
-                <x-input id="num_max_apuntados" class="block mt-1 w-full" type="number" name="num_max_apuntados" :value="old('num_max_apuntados')" required />
+                <x-input id="num_max_apuntados"  class="block mt-1 w-full" type="number" name="num_max_apuntados" :value="old('num_max_apuntados')" min="2" max="12" required />
             </div>
 
             <!-- Ac_apuntados -->
             <div class="mt-4">
-                <x-label for="ac_apuntados" :value="__('Número actual de apuntados')" />
+                <x-label for="ac_apuntados" value="Número actual de apuntados" />
 
-                <x-input id="ac_apuntados" class="block mt-1 w-full" type="number" name="ac_apuntados" :value="old('ac_apuntados')" required />
+                <x-input id="ac_apuntados" class="block mt-1 w-full"  type="number" name="ac_apuntados" :value="old('ac_apuntados')" min="1" max="$maxAcApuntados" required />
             </div>
 
             <!-- Fecha y hora -->
             <div class="mt-4">
                 <x-label for="fecha_hora" :value="__('Fecha y hora')" />
 
-                <x-input id="fecha_hora" class="block mt-1 w-full" type="datetime-local" name="fecha_hora" :value="old('fecha_hora')" required />
+                <x-input id="fecha_hora" class="block mt-1 w-full" type="datetime-local"  name="fecha_hora" :value="old('fecha_hora')" :min="date('Y-m-d\TH:i')" required />
             </div>
 
             <!-- Deporte -->
@@ -70,7 +70,7 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('dashboard') }}">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('publicaciones') }}">
                     {{ __('Cancelar') }}
                 </a>
 

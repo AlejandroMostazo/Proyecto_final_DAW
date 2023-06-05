@@ -58,7 +58,7 @@ class PublicacionesController extends Controller
         $publicacion->user_id = auth()->id(); 
         $publicacion->save();
 	
-        return redirect()->route('dashboard');
+        return redirect()->route('publicaciones');
     }
 
     public function allPublicaciones()

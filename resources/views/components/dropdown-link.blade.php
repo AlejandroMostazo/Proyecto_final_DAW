@@ -6,5 +6,5 @@
 @if (Auth::user()->admin)
     <a href="{{ route('ubicaciones.create') }}" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">New Ubicacion</a>
 @endif
-<a href="{{ route('auth.publicacion.create') }}" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">Crear Publicacion</a>
 <a href="{{ route('editarusuario') }}" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">Editar Cuenta</a>
+<a href="{{ route('perfil') }}" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">Perfil</a>

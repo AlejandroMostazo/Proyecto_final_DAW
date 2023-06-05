@@ -51,9 +51,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/perfil', function () {
+    return view('perfil');
+})->middleware(['auth'])->name('perfil');
 
 //ruta para ver las ubicaciones
 Route::get('/ubicaciones', [UbicacionController::class,"mostrarUbicaciones"])->middleware(['auth'])->name('ubicaciones');

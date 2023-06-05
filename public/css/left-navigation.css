@@ -1,0 +1,41 @@
+.left-nav {
+    background-color: #027353;
+    height: 79vh;
+    color: #151826;
+    text-align: center;
+    padding-top: 30px;
+    position: relative;
+}
+
+.links {
+    padding: 15px;
+}
+
+.link-active {
+    color: #D9D9D9;
+}
+
+.social-media {
+    color: #D9D9D9;
+    clear: left;
+    background-color: #151826;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 7.5vh;
+}
+
+.left-nav-common-styles {
+    font-size: xx-large;
+    width: 23vw;
+    float: left;
+    border-right: solid 2px #F2B705;
+}
+
+.back {
+    cursor: pointer;
+    position: absolute;
+    font-size: 37px;
+    top: 20px;
+    right: 17px;
+}
