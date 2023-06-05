@@ -1,7 +1,13 @@
 .border-publicaciones {
     border-top: solid 2px #F2B705;
     border-bottom: solid 2px #F2B705;
+    cursor: pointer;
 } 
+
+.border-publicaciones:hover {
+    transition: 0.3s;
+    background-color: #3f3f3f;
+}
 
 .title-publicacion {
     font-size: x-large;

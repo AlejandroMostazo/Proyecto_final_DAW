@@ -1,3 +1,13 @@
-verapuntados.addEventListener('click', function () { 
-    window.location.href = "publicacion/apuntados/' + publicacion.id + '";
-});
+var elements = document.getElementsByClassName("border-publicaciones");
+
+var myFunction = function() {
+    var link = this.querySelector('.verapuntados');
+    if (link) {
+        window.location.href = link.href;
+    }
+    console.log("click");
+};
+
+for (var i = 0; i < elements.length; i++) {
+    elements[i].addEventListener('click', myFunction);
+}

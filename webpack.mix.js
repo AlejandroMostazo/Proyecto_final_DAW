@@ -21,3 +21,5 @@ mix.js('resources/js/filtro.js', 'public/js');
 mix.js('resources/js/tags.js', 'public/js');
 
 mix.js('resources/js/newsapi.js', 'public/js');
+
+mix.js('resources/js/verApuntados.js', 'public/js');

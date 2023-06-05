@@ -62,30 +62,29 @@
         <table id="tablaPublicaciones" class="table-auto w-full">
             <tbody>
                 @foreach($publicaciones as $publicacion)
-                <tr class="border-publicaciones">
-                            <a id="verapuntados" href="{{ route('apuntados', ['id' => $publicacion->id]) }}">
-                                <td class="title-publicacion" >{{ $publicacion->deporte->nombre }}
-                                    <p class="text-publicacion"><i class="fa-solid fa-location-dot"></i> {{ $publicacion->ubicacion->calle }}</p>
-                                    <p class="text-publicacion"><i class="fa-regular fa-clock"></i> {{ $publicacion->fecha_hora }}</p>
-                                </td>
-                                <td style="text-align: center;">
-                                        <div class="principiante inline-flex"></div>
-                                        <div class="intermedio inline-flex"></div>
-                                        <div class="profesional inline-block"></div>             
-                                        <p>{{ $publicacion->nivel }}</p> 
-                                </td>
-                                <td >{{ $publicacion->ac_apuntados }}</td>
-                                <td >{{ $publicacion->num_max_apuntados }}</td>
-                                @if ($user->publicacion_id == null && $publicacion->user_id != $user->id)
-                                    <td>
-                                        <form method="POST" action="{{ route('publicacion.apuntarse', ['id' => $publicacion->id]) }}">
-                                            @csrf
-                                            <button type="submit"><i class="fa-solid fa-plus"></i></button>
-                                        </form>
-                                    </td>
-                                @endif
-                            </a>
-                        </tr>
+                    <tr class="border-publicaciones">
+                        <td class="title-publicacion" >{{ $publicacion->deporte->nombre }}
+                            <a class="verapuntados" href="{{ route('apuntados', ['id' => $publicacion->id]) }}"></a>
+                            <p class="text-publicacion"><i class="fa-solid fa-location-dot"></i> {{ $publicacion->ubicacion->calle }}</p>
+                            <p class="text-publicacion"><i class="fa-regular fa-clock"></i> {{ $publicacion->fecha_hora }}</p>
+                        </td>
+                        <td style="text-align: center;">
+                                <div class="principiante inline-flex"></div>
+                                <div class="intermedio inline-flex"></div>
+                                <div class="profesional inline-block"></div>             
+                                <p>{{ $publicacion->nivel }}</p> 
+                        </td>
+                        <td >{{ $publicacion->ac_apuntados }}</td>
+                        <td >{{ $publicacion->num_max_apuntados }}</td>
+                        @if ($user->publicacion_id == null && $publicacion->user_id != $user->id)
+                            <td>
+                                <form method="POST" action="{{ route('publicacion.apuntarse', ['id' => $publicacion->id]) }}">
+                                    @csrf
+                                    <button class="icons" type="submit"><i style="font-size: xx-large;" class="fa-solid fa-plus"></i></button>
+                                </form>
+                            </td>
+                        @endif    
+                    </tr>
                 @endforeach
             </tbody>
         </table>
@@ -93,4 +92,5 @@
 </x-app-layout>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="{{ mix('js/filtro.js') }}"></script>
+<script src="{{ mix('js/verApuntados.js') }}"></script>
 
