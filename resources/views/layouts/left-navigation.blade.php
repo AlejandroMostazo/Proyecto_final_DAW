@@ -23,13 +23,14 @@
             {{ __('Crear Equipo') }}
         </x-nav-link>
     </div>
-
-    <div class="links">
-        <x-nav-link :href="route('ubicaciones')" :active="request()->routeIs('ubicaciones')">
-            <i class="fa-solid fa-map-location-dot"></i>
-            {{ __('Ubicaciones') }}
-        </x-nav-link>
-    </div>
+    @if (Auth::user()->admin)
+        <div class="links">
+            <x-nav-link :href="route('ubicaciones')" :active="request()->routeIs('ubicaciones')">
+                <i class="fa-solid fa-map-location-dot"></i>
+                {{ __('Ubicaciones') }}
+            </x-nav-link>
+        </div>
+    @endif
 
     @if (Auth::user()->admin)
         <div class="links">

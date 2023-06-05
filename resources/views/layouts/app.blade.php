@@ -6,6 +6,8 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'SportMeetUp') }}</title>
+        <link rel="icon" type="image/svg" href="{{ asset('logo.svg') }}">
+
 
         <!-- css personales-->
         <link href="{{ asset('css/navigation.css') }}" rel="stylesheet" type="text/css" >
@@ -29,16 +31,16 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" >
         <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
     </head>
-    <body class="font-sans antialiased overflow-hidden" >
-        <div class="min-h-screen bg-gray-100 "> <!-- class="bc-sportmeetup" -->
+    <body class="overflow-hidden bc-sportmeetup" >
+        <div class="min-h-screen ">
             @include('layouts.navigation')
 
             @include('layouts.left-navigation')
             <div  class="border-conten">
                 <!-- Page Heading -->
-                <header class="bg-white shadow">
+                <header>
                    
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    <div>
                         {{ $header }}
                     </div>
                 </header>
