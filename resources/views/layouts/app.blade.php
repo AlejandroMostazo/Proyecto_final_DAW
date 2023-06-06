@@ -30,9 +30,10 @@
         <!-- Scripts -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" >
         <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+
     </head>
     <body class="overflow-hidden bc-sportmeetup" >
-        <div class="min-h-screen ">
+        <div>
             @include('layouts.navigation')
 
             @include('layouts.left-navigation')

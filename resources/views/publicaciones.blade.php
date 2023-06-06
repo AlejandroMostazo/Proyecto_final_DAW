@@ -94,11 +94,8 @@
                                 <p class="text-publicacion"><i class="fa-regular fa-clock"></i> {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $publicacion->fecha_hora)->formatLocalized('%d  %b  %Y, %H:%I') }}</p>
                             </div>
                         </td>
-                        <td style="text-align: center;" >
-                            <div class="principiante inline-flex"></div>
-                            <div class="intermedio inline-flex"></div>
-                            <div class="profesional inline-flex"></div>             
-                            <p>{{ $publicacion->nivel }}</p> 
+                        <td class="contentnivel" style="text-align: center;" >          
+                            <p class="nivel_publicacion">{{ $publicacion->nivel }}</p>
                         </td>
                         <td>
                             {{ $publicacion->ac_apuntados }}

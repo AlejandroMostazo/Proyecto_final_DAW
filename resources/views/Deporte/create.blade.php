@@ -1,9 +1,12 @@
-<x-guest-layout>
+<x-app-layout>
+    <x-slot name="header">
+        <script defer src="{{ mix('js/tags.js') }}"></script>
+    </x-slot>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
-                <x-application-logo/>
-            </a>
+                <a href="/">
+                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                </a>
         </x-slot>
 
         <!-- Validation Errors -->
@@ -44,5 +47,4 @@
         </form>
         <a class="ml-4" id="addtag">Agregar Deporte</a>
     </x-auth-card>
-</x-guest-layout>
-<script src="{{ mix('js/tags.js') }}"></script>
+</x-app-layout>

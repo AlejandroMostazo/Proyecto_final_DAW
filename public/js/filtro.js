@@ -2,6 +2,60 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./resources/js/niveles.js":
+/*!*********************************!*\
+  !*** ./resources/js/niveles.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "niveles": () => (/* binding */ niveles)
+/* harmony export */ });
+function niveles() {
+  var elementosNivel = document.getElementsByClassName('nivel_publicacion');
+  for (var i = 0; i < elementosNivel.length; i++) {
+    var elemento = elementosNivel[i];
+    var nivel = elemento.textContent;
+    console.log(nivel);
+    var divPrincipiante = document.createElement('div');
+    var divIntermedio = document.createElement('div');
+    var divProfesional = document.createElement('div');
+    switch (nivel) {
+      case 'Principiante':
+        divPrincipiante.className = 'levels inline-flex principiante';
+        divIntermedio.className = 'levels inline-flex';
+        divIntermedio.style.height = '40px';
+        divProfesional.className = 'levels inline-flex';
+        divProfesional.style.height = '60px';
+        elemento.parentNode.insertBefore(divPrincipiante, elemento);
+        elemento.parentNode.insertBefore(divIntermedio, elemento);
+        elemento.parentNode.insertBefore(divProfesional, elemento);
+        break;
+      case 'Intermedio':
+        divPrincipiante.className = 'levels inline-flex principiante';
+        divIntermedio.className = 'levels inline-flex intermedio';
+        divProfesional.className = 'levels inline-flex';
+        divProfesional.style.height = '60px';
+        elemento.parentNode.insertBefore(divPrincipiante, elemento);
+        elemento.parentNode.insertBefore(divIntermedio, elemento);
+        elemento.parentNode.insertBefore(divProfesional, elemento);
+        break;
+      case 'Profesional':
+        divPrincipiante.className = 'levels inline-flex principiante';
+        divIntermedio.className = 'levels inline-flex intermedio';
+        divProfesional.className = 'levels inline-flex profesional';
+        elemento.parentNode.insertBefore(divPrincipiante, elemento);
+        elemento.parentNode.insertBefore(divIntermedio, elemento);
+        elemento.parentNode.insertBefore(divProfesional, elemento);
+        break;
+    }
+  }
+}
+niveles();
+
+/***/ }),
+
 /***/ "./resources/js/verApuntados.js":
 /*!**************************************!*\
   !*** ./resources/js/verApuntados.js ***!
@@ -94,6 +148,8 @@ var __webpack_exports__ = {};
   \********************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _verApuntados_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./verApuntados.js */ "./resources/js/verApuntados.js");
+/* harmony import */ var _niveles_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./niveles.js */ "./resources/js/niveles.js");
+
 
 activefilters.addEventListener('click', function () {
   var formulario = document.getElementById('formfiltro');
@@ -157,9 +213,10 @@ $(document).ready(function () {
             hour: "numeric",
             minute: "numeric"
           });
-          var row = '<tr class="border-publicaciones">' + '<td class="tdpublicaciones">' + '<i class="' + publicacion.deporte.icono + ' iconosDeportes"></i>' + '<div>' + '<p class="title-publicacion">' + publicacion.deporte.nombre + '</p>' + '<a class="verapuntados" href="publicacion/apuntados' + publicacion.id + '"></a>' + '<p class="text-publicacion"><i class="fa-solid fa-location-dot"></i> ' + publicacion.ubicacion.calle + ', ' + publicacion.ubicacion.localidad + '</p>' + '<p class="text-publicacion"><i class="fa-regular fa-clock"></i> ' + fecha + '</p>' + '</div>' + '</td>' + '<td style="text-align: center;">' + '<div class="principiante inline-flex"></div>' + '<div class="intermedio inline-flex"></div>' + '<div class="profesional inline-block"></div>' + '<p>' + publicacion.nivel + '</p>' + '</td>' + '<td ">' + publicacion.ac_apuntados + '/' + publicacion.num_max_apuntados + '</td>' + apuntarse + +'</tr>';
+          var row = '<tr class="border-publicaciones">' + '<td class="tdpublicaciones">' + '<i class="' + publicacion.deporte.icono + ' iconosDeportes"></i>' + '<div>' + '<p class="title-publicacion">' + publicacion.deporte.nombre + '</p>' + '<a class="verapuntados" href="publicacion/apuntados' + publicacion.id + '"></a>' + '<p class="text-publicacion"><i class="fa-solid fa-location-dot"></i> ' + publicacion.ubicacion.calle + ', ' + publicacion.ubicacion.localidad + '</p>' + '<p class="text-publicacion"><i class="fa-regular fa-clock"></i> ' + fecha + '</p>' + '</div>' + '</td>' + '<td class="contentnivel" style="text-align: center;">' + '<p class="nivel_publicacion">' + publicacion.nivel + '</p>' + '</td>' + '<td ">' + publicacion.ac_apuntados + '/' + publicacion.num_max_apuntados + '</td>' + apuntarse + +'</tr>';
           tabla.append(row);
         });
+        (0,_niveles_js__WEBPACK_IMPORTED_MODULE_1__.niveles)();
         (0,_verApuntados_js__WEBPACK_IMPORTED_MODULE_0__.verApuntados)();
       },
       error: function error(xhr, status, _error) {

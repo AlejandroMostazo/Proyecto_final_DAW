@@ -29,26 +29,25 @@
     align-items: end;
 }
 
-.principiante {
+.levels {
     margin-left: 5px;
     width: 10px;
+    background-color: antiquewhite;
+}
+
+.principiante {
     height: 20px;
-    background-color: #027353;
+    background-color: #027353 !important;
 }
 
 .intermedio {
-    margin-left: 5px;
-    width: 10px;
     height: 40px;
-    background-color: #F2B705;
+    background-color: #F2B705  !important;
 }
 
 .profesional {
-    margin-top: 10px;
-    margin-left: 5px;
-    width: 10px;
     height: 60px;
-    background-color: #F23005;
+    background-color: #F23005 !important;
 }
 
 #filtros {

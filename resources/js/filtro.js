@@ -1,4 +1,5 @@
 import { verApuntados } from './verApuntados.js';
+import { niveles } from './niveles.js';
 
 activefilters.addEventListener('click', function () { 
     var formulario = document.getElementById('formfiltro');
@@ -87,11 +88,8 @@ $(document).ready(function () {
                                     '<p class="text-publicacion"><i class="fa-regular fa-clock"></i> ' + fecha + '</p>' +
                                 '</div>' +
                             '</td>' +
-                            '<td style="text-align: center;">' +
-                                '<div class="principiante inline-flex"></div>' +
-                                '<div class="intermedio inline-flex"></div>' +
-                                '<div class="profesional inline-block"></div>' +
-                                '<p>' + publicacion.nivel + '</p>' +
+                            '<td class="contentnivel" style="text-align: center;">' +
+                                '<p class="nivel_publicacion">' + publicacion.nivel + '</p>' +
                             '</td>' +
                             '<td ">' + 
                                 publicacion.ac_apuntados +
@@ -103,6 +101,7 @@ $(document).ready(function () {
             
                     tabla.append(row);
                 });
+                niveles();
                 verApuntados();
             },
             error: function(xhr, status, error) {
