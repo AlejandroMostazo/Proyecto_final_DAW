@@ -26,6 +26,6 @@ mix.js('resources/js/newsapi.js', 'public/js');
 
 mix.js('resources/js/verApuntados.js', 'public/js');
 
-mix.js('resources/js/drag&drop.js', 'public/js');
-
 mix.js('resources/js/pswdsecure.js', 'public/js');
+
+mix.js('resources/js/localdata.js', 'public/js');

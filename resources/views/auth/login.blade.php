@@ -12,9 +12,10 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
+        <a href="{{ route('publicaciones') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Entrar como invitado</a>
+
         <form method="POST" action="{{ route('login') }}">
             @csrf
-
             <!-- Email Address -->
             <div>
                 <x-label for="email" :value="__('Email')" />
@@ -35,7 +36,7 @@
             <!-- Remember Me -->
             <div class="block mt-4">
                 <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
+                    <input id="remember_me" id="remember" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
                     <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                 </label>
             </div>
@@ -49,6 +50,8 @@
                 
                 <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
 
+                
+
                 <x-button class="ml-3">
                     {{ __('Log in') }}
                 </x-button>
@@ -56,3 +59,4 @@
         </form>
     </x-auth-card>
 </x-guest-layout>
+<script src="{{ mix('js/localdata.js') }}"></script>

@@ -35,14 +35,14 @@ class PublicacionesController extends Controller
     {
         $request->validate([
             'nivel' => ['required', 'string'],
-            'num_max_apuntados' => ['required', 'integer'],
+            'num_max_apuntados' => ['required', 'integer', 'min:2', 'max: 12'],
             'ac_apuntados' => ['required', 'integer', 'min:1', 'max:' . ($request->input('num_max_apuntados') - 1)],
             'fecha_hora' => ['required'],
             'ubicacion_id' => ['required', 'exists:ubicaciones,id'],
             'deporte_id' => ['required', 'exists:deportes,id'],
         ]);
 	
-	$user = auth()->user();
+	    $user = auth()->user();
 		
         if(Publicacion::where('user_id', '=', $user->id)->count() > 0) {
             return redirect('publicaciones');
@@ -60,7 +60,7 @@ class PublicacionesController extends Controller
 	
         return redirect()->route('publicaciones');
     }
-
+    
     public function allPublicaciones()
     {
         $user = auth()->user();
@@ -82,8 +82,8 @@ class PublicacionesController extends Controller
     {
             $user = auth()->user();
             $publicacion = Publicacion::where('user_id', '=', $user->id);
-	    $user->publicacion_id = null;
-	    $user->update;
+	        $user->publicacion_id = null;
+	        $user->update;
             $publicacion->delete();
 
             return redirect()->route('publicaciones');
@@ -138,11 +138,10 @@ class PublicacionesController extends Controller
         // Obtener la publicación específica por ID
         $publicacion = Publicacion::find($user->publicacion_id);
 
-        // Desasociar al usuario de la publicación
+        // Quitar al usuario de la publicación
         $user->publicacion_id = null;
         $user->save();
 
-        // Decrementar el contador de apuntados de la publicación
         $publicacion->ac_apuntados -= 1;
         $publicacion->save();
 
@@ -161,7 +160,6 @@ class PublicacionesController extends Controller
             ->join('ubicaciones', 'ubicaciones.id', '=', 'publicaciones.ubicacion_id')
             ->select('publicaciones.*');
 
-        // Aplica los filtros necesarios
         $query->orWhere('deportes.nombre', 'LIKE', '%'.$request.'%');
         $query->orWhere('ubicaciones.nombre', 'LIKE', '%'.$request.'%');
         $query->orWhere('ubicaciones.calle', 'LIKE', '%'.$request.'%');

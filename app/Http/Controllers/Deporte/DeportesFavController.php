@@ -30,7 +30,7 @@ class DeportesFavController extends Controller
     {
         $user->load('deportesFav');
 
-        return view('dashboard', compact('user'));
+        return view('perfil', compact('user'));
     }
 
     public function eliminarDeporteFav(Request $request, $id)
@@ -45,7 +45,7 @@ class DeportesFavController extends Controller
             $user->deportesFav()->detach($id);
         }
 
-        return redirect()->route('dashboard');
+        return redirect()->route('perfil');
     }
 
 

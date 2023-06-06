@@ -36,13 +36,13 @@ class DeporteController extends Controller
             }
         }
 
-        return redirect()->route('dashboard');
+        return redirect()->route('deportes.mostrar');
     }
 
 
     public function mostrar()
     {
-        $deportes = Deporte::all();
+        $deportes = Deporte::paginate(12);
 
         return view('Deporte.deportes', compact('deportes'));
     }

@@ -17,6 +17,7 @@ use App\Http\Controllers\UbicacionController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 //ruta para añadir, mostrar, editar y borrar deportes como administrador
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/deportes/create', [DeporteController::class, 'create'])->name('deporte.create');
@@ -45,6 +46,8 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
 
     // Eliminar ubicaciones 
     Route::delete('/ubicaciones/{id}', [UbicacionController::class, 'delete'])->name('ubicaciones.delete');
+    // Ver ubicaciones
+    Route::get('/ubicaciones', [UbicacionController::class,"mostrarUbicaciones"])->name('ubicaciones');
 });
 
 Route::get('/', function () {
@@ -55,11 +58,12 @@ Route::get('/perfil', function () {
     return view('perfil');
 })->middleware(['auth'])->name('perfil');
 
-//ruta para ver las ubicaciones
-Route::get('/ubicaciones', [UbicacionController::class,"mostrarUbicaciones"])->middleware(['auth'])->name('ubicaciones');
+//(lo puede hacer todo el mundo)
+Route::middleware('guest')->group(function () { 
+    Route::get('/publicacion/buscar', [PublicacionesController::class, 'buscar'])->name('publicacion.buscar');
+});
 
-Route::get('/publicaciones', [PublicacionesController::class,"mostrarPublicaciones"])->middleware(['auth'])->name('publicaciones');
-Route::get('/publicacion/apuntados{id}', [PublicacionesController::class,"mostrarApuntados"])->middleware(['auth'])->name('apuntados');
+Route::get('/publicaciones', [PublicacionesController::class,"mostrarPublicaciones"])->name('publicaciones');
 
 Route::get('/noticias', function () {
     return view('noticias');

@@ -57,14 +57,15 @@ Route::middleware('auth')->group(function () {
                 ->name('logout');
 });
 
+// cosas que puede hacer en publicaciones solo alguien logeado 
 Route::middleware('auth')->group(function () {
     Route::get('/publicacion/create', [PublicacionesController::class, 'create'])->name('auth.publicacion.create');
     Route::post('/publicacion', [PublicacionesController::class, 'store'])->name('publicacion.store');
     Route::post('/publicaciones/{id}/apuntarse', [PublicacionesController::class, 'apuntarsePublicacion'])->name('publicacion.apuntarse');
     Route::get('/publicacion/desapuntarse', [PublicacionesController::class, 'desapuntarsePublicacion'])->name('publicacion.desapuntarse');
-    Route::get('/publicacion/buscar', [PublicacionesController::class, 'buscar'])->name('publicacion.buscar');
-    Route::post('/publicaciones/filtro', [PublicacionesController::class, 'publicacionesConFiltro'])->name('publicaciones.filtrar');
+    Route::get('/publicacion/apuntados{id}', [PublicacionesController::class,"mostrarApuntados"])->name('apuntados');
     Route::delete('/publicacion/delete', [PublicacionesController::class, 'deletePublicacion'])->name('publicacion.delete');
+    Route::post('/publicaciones/filtro', [PublicacionesController::class, 'publicacionesConFiltro'])->name('publicaciones.filtrar');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -72,3 +73,5 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/editarusuario/{id}', [UserController::class, 'update'])->name('actualizarusuario');
     Route::delete('/eliminarusuario/{id}', [UserController::class, 'delete'])->name('eliminarusuario');
 });
+
+

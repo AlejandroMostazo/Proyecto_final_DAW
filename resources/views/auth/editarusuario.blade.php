@@ -67,4 +67,3 @@
         </div>
     </div>
 </x-app-layout>
-<script src="{{ mix('js/drag&drop.js') }}"></script>

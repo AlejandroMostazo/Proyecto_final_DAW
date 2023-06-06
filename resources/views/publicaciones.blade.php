@@ -6,33 +6,36 @@
         <script defer src="{{ mix('js/filtro.js') }}"></script>
         <script defer src="{{ mix('js/verApuntados.js') }}"></script>
     </x-slot>
-    <div>
-            
+    <div>    
+        @if (Auth::user())
             <div id="filtros" class="links ">
                     <span id="activefilters">
                         <i class="fa-solid fa-filter"></i>
                         <span>Filtros</span>
                     </span>
+                
                     
-                    @if ($user->publicacion_id != null)
-                        <a style="background-color: tomato;" class="ml-4 px-4 py-2 bg-blue-500 text-white rounded bg-blue-700" href="{{ route('publicacion.desapuntarse') }}"><i class="fa-solid fa-user-minus"></i> Desapuntarse</a>
-                    @endif
+                @if (Auth::user() && $user->publicacion_id != null)
+                    <a style="background-color: tomato;" class="ml-4 px-4 py-2 bg-blue-500 text-white rounded bg-blue-700" href="{{ route('publicacion.desapuntarse') }}"><i class="fa-solid fa-user-minus"></i> Desapuntarse</a>
+                @endif
 
-                    @if (\App\Models\Publicacion::where('user_id', '=', $user->id)->count() > 0)
-                             @php
-                                $publicacion = \App\Models\Publicacion::where('user_id', $user->id)->first();
-                            @endphp
-                            <form action="{{ route('publicacion.delete')}}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button style="background-color:firebrick;" class="ml-4 px-4 py-2 bg-blue-500 text-white rounded bg-blue-700" type="submit"><i class="fa-solid fa-trash"></i> Eliminar Publicacción</button>
-                                <a href="{{ route('apuntados', ['id' => $publicacion->id]) }}" style="background-color:firebrick;" class="ml-4 px-4 py-2 bg-blue-500 text-white rounded bg-blue-700" type="submit"> Mi Publicación</a>
-                            </form>
-                    @endif
+                @if (Auth::user() && \App\Models\Publicacion::where('user_id', '=', $user->id)->count() > 0)
+                    @php
+                        $publicacion = \App\Models\Publicacion::where('user_id', $user->id)->first();
+                    @endphp
+                    <form action="{{ route('publicacion.delete')}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button style="background-color:firebrick;" class="ml-4 px-4 py-2 bg-blue-500 text-white rounded bg-blue-700" type="submit"><i class="fa-solid fa-trash"></i> Eliminar Publicacción</button>
+                        <a href="{{ route('apuntados', ['id' => $publicacion->id]) }}" style="background-color:firebrick;" class="ml-4 px-4 py-2 bg-blue-500 text-white rounded bg-blue-700" type="submit"> Mi Publicación</a>
+                    </form>
+                @endif
             </div>
+        @endif
 
-            <!-- Filtros -->
-            <form method="POST" id="formfiltro" action="{{ route('publicaciones.filtrar') }}">
+        <!-- Filtros -->
+            
+        <form method="POST" id="formfiltro" action="{{ route('publicaciones.filtrar') }}">
             <div style="background-color: #027353;" class="flex items-center space-x-4 mb-4 ">
                 <div>
                     <label class="text-gray-700" for="deporte">Deporte:</label>
@@ -95,7 +98,7 @@
                         </td>
                         <td >{{ $publicacion->ac_apuntados }}</td>
                         <td >{{ $publicacion->num_max_apuntados }}</td>
-                        @if ($user->publicacion_id == null && $publicacion->user_id != $user->id)
+                        @if (Auth::user() && $user->publicacion_id == null && $publicacion->user_id != $user->id)
                             <td>
                                 <form method="POST" action="{{ route('publicacion.apuntarse', ['id' => $publicacion->id]) }}">
                                     @csrf
