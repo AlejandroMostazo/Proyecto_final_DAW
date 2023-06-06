@@ -70,7 +70,7 @@ $(document).ready(function () {
                         apuntarse = '<td ">' +
                                         '<form method="POST" action="publicaciones/'+publicacion.id+'/apuntarse">' +
                                             '<input type="hidden" name="_token" value="' + csrfToken + '">' +
-                                            '<button type="submit"><i class="fa-solid fa-plus"></i></button>' +
+                                            '<button class="icons iconoapuntarse" type="submit"><i style="font-size: xx-large;" class="fa-solid fa-plus"></i></button>' +
                                         '</form>'+ 
                                     '</td>'
                     }
@@ -78,10 +78,14 @@ $(document).ready(function () {
                     var fecha = new Date(publicacion.fecha_hora).toLocaleDateString('es-ES', { day:"numeric", month:"short", year:"numeric", hour: "numeric", minute: "numeric"}) 
 
                     var row = '<tr class="border-publicaciones">' +
-                            '<td class="title-publicacion">' + publicacion.deporte.nombre +
-                                '<a class="verapuntados" href="publicacion/apuntados' + publicacion.id + '"></a>' +
-                                '<p class="text-publicacion"><i class="fa-solid fa-location-dot"></i> ' + publicacion.ubicacion.calle + ', ' + publicacion.ubicacion.localidad + '</p>' +
-                                '<p class="text-publicacion"><i class="fa-regular fa-clock"></i> ' + fecha + '</p>' +
+                            '<td class="tdpublicaciones">' + 
+                                '<i class="' + publicacion.deporte.icono + ' iconosDeportes"></i>' +
+                                '<div>' +
+                                    '<p class="title-publicacion">' + publicacion.deporte.nombre + '</p>' +
+                                    '<a class="verapuntados" href="publicacion/apuntados' + publicacion.id + '"></a>' +
+                                    '<p class="text-publicacion"><i class="fa-solid fa-location-dot"></i> ' + publicacion.ubicacion.calle + ', ' + publicacion.ubicacion.localidad + '</p>' +
+                                    '<p class="text-publicacion"><i class="fa-regular fa-clock"></i> ' + fecha + '</p>' +
+                                '</div>' +
                             '</td>' +
                             '<td style="text-align: center;">' +
                                 '<div class="principiante inline-flex"></div>' +
@@ -89,8 +93,11 @@ $(document).ready(function () {
                                 '<div class="profesional inline-block"></div>' +
                                 '<p>' + publicacion.nivel + '</p>' +
                             '</td>' +
-                            '<td ">' + publicacion.ac_apuntados + '</td>' +
-                            '<td ">' + publicacion.num_max_apuntados + '</td>' +
+                            '<td ">' + 
+                                publicacion.ac_apuntados +
+                                '/' +
+                                publicacion.num_max_apuntados + 
+                            '</td>' +
                             apuntarse +
                             +'</tr>';
             

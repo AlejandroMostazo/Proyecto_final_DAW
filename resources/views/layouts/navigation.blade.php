@@ -11,7 +11,7 @@
         <form method="GET" action="{{ route('publicacion.buscar') }}">
             <div class="relative">
                 <input class="search" type="text" id="buscador" name="buscador" placeholder="Encontrar partido ...">
-                <button class="btn-lupa icons" type="submit"><i class="bi bi-search"></i></button>
+                <button class="btn-lupa icons" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
                 
         </form>

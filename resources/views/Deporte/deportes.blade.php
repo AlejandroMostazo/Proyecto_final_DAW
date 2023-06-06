@@ -12,6 +12,8 @@
                             @foreach($deportes as $deporte)
                                 <tr>
                                     <td class="border px-4 py-2">{{ $deporte->nombre }}</td>
+                                    <td class="border px-4 py-2">{{ $deporte->icono }}</td>
+                                    <td class="border px-4 py-2">{{ $deporte->color }}</td>
                                     @if (Auth::user()->admin)
                                         <td class="border px-4 py-2">
                                             <a href="{{ route('deportes.edit', $deporte->id) }}" class="text-blue-500 hover:text-blue-700">Editar</a>

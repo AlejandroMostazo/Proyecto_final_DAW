@@ -20,10 +20,14 @@ class DeporteController extends Controller
     {
         $request->validate([
             'nombre' => ['required', 'string', 'max:255', 'unique:deportes'],
+            'icono' => ['required', 'string', 'max:255', 'unique:deportes'],
+            'color' => ['required', 'string', 'max:255'],
         ]);
 
         $deporte = new Deporte;
         $deporte->nombre = $request->input('nombre');
+        $deporte->icono = $request->input('icono');
+        $deporte->color = $request->input('color');
         $deporte->save();
 
         $tags = $request->input('tags', []);
@@ -57,10 +61,14 @@ class DeporteController extends Controller
     {
         $request->validate([
             'nombre' => ['required', 'string', 'max:255', 'unique:deportes,nombre,' . $id],
+            'icono' => ['required', 'string', 'max:255' . $id],
+            'color' => ['required', 'string', 'max:255' . $id],
         ]);
 
         $deporte = Deporte::findOrFail($id);
         $deporte->nombre = $request->input('nombre');
+        $deporte->icono = $request->input('icono');
+        $deporte->color = $request->input('color');
         $deporte->save();
 
         return redirect()->route('deportes.mostrar');

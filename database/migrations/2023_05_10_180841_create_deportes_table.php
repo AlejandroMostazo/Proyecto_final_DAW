@@ -16,6 +16,8 @@ class CreateDeportesTable extends Migration
         Schema::create('deportes', function (Blueprint $table) {
             $table->id();
             $table->string('nombre')->unique();
+            $table->string('icono')->unique();
+            $table->string('color');
             $table->timestamps();
         });
     }

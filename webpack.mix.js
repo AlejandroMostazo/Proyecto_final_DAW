@@ -29,3 +29,5 @@ mix.js('resources/js/verApuntados.js', 'public/js');
 mix.js('resources/js/pswdsecure.js', 'public/js');
 
 mix.js('resources/js/localdata.js', 'public/js');
+
+mix.js('resources/js/rememberme.js', 'public/js');

@@ -31,22 +31,23 @@
 
 .principiante {
     margin-left: 5px;
-    width: 12px;
-    height: 30px;
+    width: 10px;
+    height: 20px;
     background-color: #027353;
 }
 
 .intermedio {
     margin-left: 5px;
-    width: 12px;
-    height: 50px;
+    width: 10px;
+    height: 40px;
     background-color: #F2B705;
 }
 
 .profesional {
+    margin-top: 10px;
     margin-left: 5px;
-    width: 12px;
-    height: 70px;
+    width: 10px;
+    height: 60px;
     background-color: #F23005;
 }
 
@@ -70,5 +71,26 @@
 
 #formfiltro {
     display: none;
-    background-color: #027353;
+}
+
+.iconosDeportes {
+    font-size: 75px; 
+    float:left;
+    color: antiquewhite;
+    margin: 0 25px 0 10%;
+    -webkit-text-stroke: 3px #1f1f1f;
+
+}
+
+#tablaPublicaciones {
+    width: 100%;
+}
+
+.tdpublicaciones {
+    display: flex;
+    align-items: center;
+}
+
+.iconoapuntarse {
+    margin-right: 3.5vw;
 }

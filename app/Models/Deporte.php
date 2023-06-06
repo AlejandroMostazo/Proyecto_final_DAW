@@ -14,6 +14,8 @@ class Deporte extends Model
 
     protected $fillable = [
         'nombre',
+        'icono',
+        'color',
     ];
 
     public function deportesFav()

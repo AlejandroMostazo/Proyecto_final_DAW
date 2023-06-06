@@ -11,6 +11,6 @@
 
 <script>
     logout.addEventListener('click', function () {
-        localStorage.setItem('clave_logeado', 'false');
+        localStorage.clear();
     });
 </script>

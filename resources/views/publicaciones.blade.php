@@ -36,7 +36,7 @@
         <!-- Filtros -->
             
         <form method="POST" id="formfiltro" action="{{ route('publicaciones.filtrar') }}">
-            <div style="background-color: #027353;" class="flex items-center space-x-4 mb-4 ">
+            <div class="flex items-center space-x-4 mb-4 ">
                 <div>
                     <label class="text-gray-700" for="deporte">Deporte:</label>
                         @foreach($deportes as $deporte)
@@ -81,28 +81,35 @@
         </form>
 
         
-        <table id="tablaPublicaciones" class="table-auto w-full">
+        <table id="tablaPublicaciones">
             <tbody>
                 @foreach($publicaciones as $publicacion)
                     <tr class="border-publicaciones">
-                        <td class="title-publicacion" >{{ $publicacion->deporte->nombre }}
-                            <a class="verapuntados" href="{{ route('apuntados', ['id' => $publicacion->id]) }}"></a>
-                            <p class="text-publicacion"><i class="fa-solid fa-location-dot"></i> {{ $publicacion->ubicacion->calle }}, {{ $publicacion->ubicacion->localidad }}</p>
-                            <p class="text-publicacion"><i class="fa-regular fa-clock"></i> {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $publicacion->fecha_hora)->formatLocalized('%d  %b  %Y, %H:%I') }}</p>
+                        <td class="tdpublicaciones">
+                            <i style="color: {{ $publicacion->deporte->color }}" class="{{ $publicacion->deporte->icono }} iconosDeportes"></i>
+                            <div>
+                                <p class="title-publicacion">{{ $publicacion->deporte->nombre }}</p>
+                                <a class="verapuntados" href="{{ route('apuntados', ['id' => $publicacion->id]) }}"></a>
+                                <p class="text-publicacion"><i class="fa-solid fa-location-dot"></i> {{ $publicacion->ubicacion->calle }}, {{ $publicacion->ubicacion->localidad }}</p>
+                                <p class="text-publicacion"><i class="fa-regular fa-clock"></i> {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $publicacion->fecha_hora)->formatLocalized('%d  %b  %Y, %H:%I') }}</p>
+                            </div>
                         </td>
-                        <td style="text-align: center;">
-                                <div class="principiante inline-flex"></div>
-                                <div class="intermedio inline-flex"></div>
-                                <div class="profesional inline-block"></div>             
-                                <p>{{ $publicacion->nivel }}</p> 
+                        <td style="text-align: center;" >
+                            <div class="principiante inline-flex"></div>
+                            <div class="intermedio inline-flex"></div>
+                            <div class="profesional inline-flex"></div>             
+                            <p>{{ $publicacion->nivel }}</p> 
                         </td>
-                        <td >{{ $publicacion->ac_apuntados }}</td>
-                        <td >{{ $publicacion->num_max_apuntados }}</td>
+                        <td>
+                            {{ $publicacion->ac_apuntados }}
+                            /
+                            {{ $publicacion->num_max_apuntados }}
+                        </td>
                         @if (Auth::user() && $user->publicacion_id == null && $publicacion->user_id != $user->id)
                             <td>
                                 <form method="POST" action="{{ route('publicacion.apuntarse', ['id' => $publicacion->id]) }}">
                                     @csrf
-                                    <button class="icons" type="submit"><i style="font-size: xx-large;" class="fa-solid fa-plus"></i></button>
+                                    <button class="icons iconoapuntarse" type="submit"><i style="font-size: xx-large;" class="fa-solid fa-plus"></i></button>
                                 </form>
                             </td>
                         @endif    

@@ -148,7 +148,7 @@ $(document).ready(function () {
         publicaciones.forEach(function (publicacion) {
           var apuntarse = "";
           if (user.publicacion_id == null && publicacion.user_id != user.id) {
-            apuntarse = '<td ">' + '<form method="POST" action="publicaciones/' + publicacion.id + '/apuntarse">' + '<input type="hidden" name="_token" value="' + csrfToken + '">' + '<button type="submit"><i class="fa-solid fa-plus"></i></button>' + '</form>' + '</td>';
+            apuntarse = '<td ">' + '<form method="POST" action="publicaciones/' + publicacion.id + '/apuntarse">' + '<input type="hidden" name="_token" value="' + csrfToken + '">' + '<button class="icons iconoapuntarse" type="submit"><i style="font-size: xx-large;" class="fa-solid fa-plus"></i></button>' + '</form>' + '</td>';
           }
           var fecha = new Date(publicacion.fecha_hora).toLocaleDateString('es-ES', {
             day: "numeric",
@@ -157,7 +157,7 @@ $(document).ready(function () {
             hour: "numeric",
             minute: "numeric"
           });
-          var row = '<tr class="border-publicaciones">' + '<td class="title-publicacion">' + publicacion.deporte.nombre + '<a class="verapuntados" href="publicacion/apuntados' + publicacion.id + '"></a>' + '<p class="text-publicacion"><i class="fa-solid fa-location-dot"></i> ' + publicacion.ubicacion.calle + ', ' + publicacion.ubicacion.localidad + '</p>' + '<p class="text-publicacion"><i class="fa-regular fa-clock"></i> ' + fecha + '</p>' + '</td>' + '<td style="text-align: center;">' + '<div class="principiante inline-flex"></div>' + '<div class="intermedio inline-flex"></div>' + '<div class="profesional inline-block"></div>' + '<p>' + publicacion.nivel + '</p>' + '</td>' + '<td ">' + publicacion.ac_apuntados + '</td>' + '<td ">' + publicacion.num_max_apuntados + '</td>' + apuntarse + +'</tr>';
+          var row = '<tr class="border-publicaciones">' + '<td class="tdpublicaciones">' + '<i class="' + publicacion.deporte.icono + ' iconosDeportes"></i>' + '<div>' + '<p class="title-publicacion">' + publicacion.deporte.nombre + '</p>' + '<a class="verapuntados" href="publicacion/apuntados' + publicacion.id + '"></a>' + '<p class="text-publicacion"><i class="fa-solid fa-location-dot"></i> ' + publicacion.ubicacion.calle + ', ' + publicacion.ubicacion.localidad + '</p>' + '<p class="text-publicacion"><i class="fa-regular fa-clock"></i> ' + fecha + '</p>' + '</div>' + '</td>' + '<td style="text-align: center;">' + '<div class="principiante inline-flex"></div>' + '<div class="intermedio inline-flex"></div>' + '<div class="profesional inline-block"></div>' + '<p>' + publicacion.nivel + '</p>' + '</td>' + '<td ">' + publicacion.ac_apuntados + '/' + publicacion.num_max_apuntados + '</td>' + apuntarse + +'</tr>';
           tabla.append(row);
         });
         (0,_verApuntados_js__WEBPACK_IMPORTED_MODULE_0__.verApuntados)();
