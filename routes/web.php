@@ -48,7 +48,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/perfil', function () {

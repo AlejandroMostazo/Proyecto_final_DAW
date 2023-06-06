@@ -13,7 +13,7 @@
         <link href="{{ asset('css/navigation.css') }}" rel="stylesheet" type="text/css" >
         <link href="{{ asset('css/left-navigation.css') }}" rel="stylesheet" type="text/css" >
         <link href="{{ asset('css/logo.css') }}" rel="stylesheet" type="text/css" >
-        <link href="{{ asset('css/publicaciones.css') }}" rel="stylesheet" type="text/css" >
+        <link href="{{ asset('css/general.css') }}" rel="stylesheet" type="text/css" >
 
         <!-- Fonts -->
         <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap"> -->

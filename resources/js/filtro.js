@@ -1,9 +1,13 @@
+import { verApuntados } from './verApuntados.js';
+
 activefilters.addEventListener('click', function () { 
     var formulario = document.getElementById('formfiltro');
     if(formulario.style.display == 'none' || formulario.style.display == '' ) {
         formulario.style.display = 'inline';
+        filtros.style.background = "#3f3f3f";
     } else {
         formulario.style.display = 'none';
+        filtros.style.background = "#151826";
     }
 });
 
@@ -71,16 +75,13 @@ $(document).ready(function () {
                                     '</td>'
                     }
                     
+                    var fecha = new Date(publicacion.fecha_hora).toLocaleDateString('es-ES', { day:"numeric", month:"short", year:"numeric", hour: "numeric", minute: "numeric"}) 
+
                     var row = '<tr class="border-publicaciones">' +
-                            '<td ">' +
-                                '<a href="publicacion/apuntados/' + publicacion.id + '">VER</a>' +
-                            '</td>' +
-                            '<td class="title-publicacion">' +
-                                '<a href="{{ route(\'apuntados\', [\'id\' => ' + publicacion.id + ']) }}">'
-                                + publicacion.deporte.nombre +
-                                '</a>' +
-                                '<p class="text-publicacion">' + publicacion.ubicacion.nombre + '</p>' +
-                                '<p class="text-publicacion">' + publicacion.fecha_hora + '</p>' +
+                            '<td class="title-publicacion">' + publicacion.deporte.nombre +
+                                '<a class="verapuntados" href="publicacion/apuntados' + publicacion.id + '"></a>' +
+                                '<p class="text-publicacion"><i class="fa-solid fa-location-dot"></i> ' + publicacion.ubicacion.calle + ', ' + publicacion.ubicacion.localidad + '</p>' +
+                                '<p class="text-publicacion"><i class="fa-regular fa-clock"></i> ' + fecha + '</p>' +
                             '</td>' +
                             '<td style="text-align: center;">' +
                                 '<div class="principiante inline-flex"></div>' +
@@ -95,6 +96,7 @@ $(document).ready(function () {
             
                     tabla.append(row);
                 });
+                verApuntados();
             },
             error: function(xhr, status, error) {
                 console.log(error);

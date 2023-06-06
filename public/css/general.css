@@ -1,0 +1,29 @@
+html {
+    font-family: 'Montserrat Alternates', sans-serif !important;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .icons:hover {
+    transition: 0.3s;
+    color: #616161;
+  }
+  
+  .bc-sportmeetup {
+    background-color: #151826;
+    color: #D9D9D9;
+  }
+  
+  .border-conten {
+    border: solid 2px #F2B705;
+    min-height: 86.2vh;
+  }
+
+  .overflow-auto {
+    overflow: auto;
+    max-height: 85.7vh !important;
+  }

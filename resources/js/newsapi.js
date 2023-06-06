@@ -14,6 +14,7 @@ async function fetchData() {
       const response = await fetch(url, options);
       const data = await response.json();
       const noticia = data.value;
+      cargando.style.display = 'block';
   
       const container = document.getElementById('contenedorNoticias');
   
@@ -26,32 +27,44 @@ async function fetchData() {
   
 
         if (imagen) {
+            const card = document.createElement('div');
+            card.className = "card";
+
             const nuevaImagen = document.createElement('img');
+            nuevaImagen.className = "imgnew";
             nuevaImagen.src = imagen;
             nuevaImagen.alt = title; 
-            container.appendChild(nuevaImagen);
+            
   
-            const titulo = document.createElement('h2');
-            titulo.textContent = title;
+            const titulo = document.createElement('p');
+            titulo.className = "titles";
+            titulo.textContent =  title;
     
             const descripcion = document.createElement('p');
             descripcion.textContent = description;
     
             const leermas = document.createElement('a');
             leermas.href = urlnoticia;
-            leermas.textContent = 'Leer más';
+            leermas.className = "leermas";
+            leermas.textContent = '+ Info';
             leermas.target = '_blank';
 
             const date = document.createElement('p');
-            date.textContent = 'Fecha de publicación: ' + fecha;
+            date.textContent = "Publicado: " + fecha;
     
-            // Agrega los elementos al contenedor en tu página
-            container.appendChild(date);
-            container.appendChild(titulo);
-            container.appendChild(descripcion);
-            container.appendChild(leermas);
+            const contentimg = document.createElement('div');
+            contentimg.className = "contentimg";
+            contentimg.appendChild(nuevaImagen);
+            contentimg.appendChild(date);
+
+            card.appendChild(contentimg);
+            card.appendChild(titulo);
+            card.appendChild(descripcion);
+            card.appendChild(leermas);
+            container.appendChild(card);
         }
       });
+      cargando.style.display = 'none';
     } catch (error) {
       console.error(error);
     }

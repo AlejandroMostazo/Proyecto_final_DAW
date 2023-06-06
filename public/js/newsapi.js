@@ -36,6 +36,7 @@ function _fetchData() {
         case 8:
           data = _context.sent;
           noticia = data.value;
+          cargando.style.display = 'block';
           container = document.getElementById('contenedorNoticias');
           noticia.forEach(function (article) {
             var _article$image, _article$image$thumbn;
@@ -45,39 +46,47 @@ function _fetchData() {
             var imagen = (_article$image = article.image) === null || _article$image === void 0 ? void 0 : (_article$image$thumbn = _article$image.thumbnail) === null || _article$image$thumbn === void 0 ? void 0 : _article$image$thumbn.contentUrl;
             var urlnoticia = article.url;
             if (imagen) {
+              var card = document.createElement('div');
+              card.className = "card";
               var nuevaImagen = document.createElement('img');
+              nuevaImagen.className = "imgnew";
               nuevaImagen.src = imagen;
               nuevaImagen.alt = title;
-              container.appendChild(nuevaImagen);
-              var titulo = document.createElement('h2');
+              var titulo = document.createElement('p');
+              titulo.className = "titles";
               titulo.textContent = title;
               var descripcion = document.createElement('p');
               descripcion.textContent = description;
               var leermas = document.createElement('a');
               leermas.href = urlnoticia;
-              leermas.textContent = 'Leer más';
+              leermas.className = "leermas";
+              leermas.textContent = '+ Info';
               leermas.target = '_blank';
               var date = document.createElement('p');
-              date.textContent = 'Fecha de publicación: ' + fecha;
-
-              // Agrega los elementos al contenedor en tu página
-              container.appendChild(date);
-              container.appendChild(titulo);
-              container.appendChild(descripcion);
-              container.appendChild(leermas);
+              date.textContent = "Publicado: " + fecha;
+              var contentimg = document.createElement('div');
+              contentimg.className = "contentimg";
+              contentimg.appendChild(nuevaImagen);
+              contentimg.appendChild(date);
+              card.appendChild(contentimg);
+              card.appendChild(titulo);
+              card.appendChild(descripcion);
+              card.appendChild(leermas);
+              container.appendChild(card);
             }
           });
-          _context.next = 17;
+          cargando.style.display = 'none';
+          _context.next = 19;
           break;
-        case 14:
-          _context.prev = 14;
+        case 16:
+          _context.prev = 16;
           _context.t0 = _context["catch"](2);
           console.error(_context.t0);
-        case 17:
+        case 19:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[2, 14]]);
+    }, _callee, null, [[2, 16]]);
   }));
   return _fetchData.apply(this, arguments);
 }

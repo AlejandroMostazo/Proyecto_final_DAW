@@ -1,10 +1,14 @@
 
 <x-app-layout>
     <x-slot name="header"> 
+        <link href="{{ asset('css/publicaciones.css') }}" rel="stylesheet" type="text/css" >
+        <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script defer src="{{ mix('js/filtro.js') }}"></script>
+        <script defer src="{{ mix('js/verApuntados.js') }}"></script>
     </x-slot>
     <div>
             
-            <div class="links filtros">
+            <div id="filtros" class="links ">
                     <span id="activefilters">
                         <i class="fa-solid fa-filter"></i>
                         <span>Filtros</span>
@@ -14,18 +18,22 @@
                         <a style="background-color: tomato;" class="ml-4 px-4 py-2 bg-blue-500 text-white rounded bg-blue-700" href="{{ route('publicacion.desapuntarse') }}"><i class="fa-solid fa-user-minus"></i> Desapuntarse</a>
                     @endif
 
-                    @if ($publicaciones->where('user_id', '=', $user->id)->count() > 0)
+                    @if (\App\Models\Publicacion::where('user_id', '=', $user->id)->count() > 0)
+                             @php
+                                $publicacion = \App\Models\Publicacion::where('user_id', $user->id)->first();
+                            @endphp
                             <form action="{{ route('publicacion.delete')}}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button style="background-color:firebrick;" class="ml-4 px-4 py-2 bg-blue-500 text-white rounded bg-blue-700" type="submit"><i class="fa-solid fa-trash"></i> Eliminar Publicaccion</button>
+                                <button style="background-color:firebrick;" class="ml-4 px-4 py-2 bg-blue-500 text-white rounded bg-blue-700" type="submit"><i class="fa-solid fa-trash"></i> Eliminar Publicacción</button>
+                                <a href="{{ route('apuntados', ['id' => $publicacion->id]) }}" style="background-color:firebrick;" class="ml-4 px-4 py-2 bg-blue-500 text-white rounded bg-blue-700" type="submit"> Mi Publicación</a>
                             </form>
                     @endif
             </div>
 
             <!-- Filtros -->
             <form method="POST" id="formfiltro" action="{{ route('publicaciones.filtrar') }}">
-            <div class="flex items-center space-x-4 mb-4">
+            <div style="background-color: #027353;" class="flex items-center space-x-4 mb-4 ">
                 <div>
                     <label class="text-gray-700" for="deporte">Deporte:</label>
                         @foreach($deportes as $deporte)
@@ -76,8 +84,8 @@
                     <tr class="border-publicaciones">
                         <td class="title-publicacion" >{{ $publicacion->deporte->nombre }}
                             <a class="verapuntados" href="{{ route('apuntados', ['id' => $publicacion->id]) }}"></a>
-                            <p class="text-publicacion"><i class="fa-solid fa-location-dot"></i> {{ $publicacion->ubicacion->calle }}</p>
-                            <p class="text-publicacion"><i class="fa-regular fa-clock"></i> {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $publicacion->fecha_hora)->format('d/m/Y H:i') }}</p>
+                            <p class="text-publicacion"><i class="fa-solid fa-location-dot"></i> {{ $publicacion->ubicacion->calle }}, {{ $publicacion->ubicacion->localidad }}</p>
+                            <p class="text-publicacion"><i class="fa-regular fa-clock"></i> {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $publicacion->fecha_hora)->formatLocalized('%d  %b  %Y, %H:%I') }}</p>
                         </td>
                         <td style="text-align: center;">
                                 <div class="principiante inline-flex"></div>
@@ -101,7 +109,5 @@
         </table>
     </div>
 </x-app-layout>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="{{ mix('js/filtro.js') }}"></script>
-<script src="{{ mix('js/verApuntados.js') }}"></script>
+
 
