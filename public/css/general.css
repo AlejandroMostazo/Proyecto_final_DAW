@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500&display=swap');
+
 html {
     font-family: 'Montserrat Alternates', sans-serif !important;
 }
@@ -10,7 +12,9 @@ html {
   
   .icons:hover {
     transition: 0.3s;
+    cursor: pointer;
     color: #616161;
+    
   }
   
   .bc-sportmeetup {
@@ -19,11 +23,59 @@ html {
   }
   
   .border-conten {
-    border: solid 2px #F2B705;
+    border-top: solid 2px #F2B705;
     min-height: 86.2vh;
+  }
+
+  .inputText {
+    border-radius: 10px !important;
+    border: solid 2px #027353 !important;
+    color: #151826;
+    background-color: #D9D9D9 !important;
+  }
+
+  label {
+    color: #151826 !important;
+  }
+
+  .update {
+    padding: 20px;
   }
 
   .overflow-auto {
     overflow: auto;
     max-height: 85.7vh !important;
   }
+
+  .btn, .btnf {
+    transition: 0.3s;
+    padding: 10px;
+    padding-right: 20px;
+    border-radius: 30px;
+    font-style: italic;
+    color: #024040;
+    font-size: x-large;
+    font-weight: 900;
+    background-color: #F2B705 !important;
+    float: right;
+    margin: 10px 10px 5px 0px;
+}
+
+.btn:hover, .btnf:hover {
+    scale: 1.1;
+    background-color: #024040 !important;
+    color: #F2B705;
+    box-shadow: 3px 3px 10px black;
+}
+
+.btnf {
+  color: #F2B705;
+  font-size: large;
+  border: solid 3px #F2B705;
+  background-color: #151826 !important;
+}
+
+.btnf:hover {
+  background-color: #F2B705 !important;
+  color: #151826;
+} 

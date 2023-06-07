@@ -1,6 +1,6 @@
-<nav class="left-nav left-nav-common-styles ">
+<nav id="leftnav" class="left-nav left-nav-common-styles ">
+    <i id="btnleftnav" class="fa-solid fa-circle-chevron-left back icons"></i>
 
-    <i class="fa-solid fa-circle-chevron-left back icons"></i>
 
     <!-- Navigation Links -->
     <div class="links">
@@ -42,10 +42,12 @@
     </div>
 
 </nav>
-<footer class="social-media left-nav-common-styles">
+<footer id="footer" class="social-media left-nav-common-styles">
     <a class="icons" target="_blank" href="https://github.com/AlejandroMostazo?tab=repositories"><i class="bi bi-github"></i></a>
-    <a class="icons" target="_blank" href="mailto:alejandromostazo39@gmail.com?Subject=Contacto%20por%20web%20SportMeetUp"><i class="bi bi-envelope-fill"></i></a>
+    <a class="icons" target="_blank" href="mailto:alejandromostazo39@gmail.com?Subject=Contacto%20por%20web%20SportMeetUp"><i class="fa-solid fa-envelope"></i></a>
     <a class="icons" target="_blank" href="https://www.linkedin.com/in/alejandro-mostazo-94a1a2184/"><i class="bi bi-linkedin"></i></a>
     <a class="icons" target="_blank" href="https://www.youtube.com/@Sr.monsty/videos"><i class="bi bi-youtube"></i></a>
     
 </footer>
+
+<script defer src="{{ mix('js/leftnav.js') }}"></script>

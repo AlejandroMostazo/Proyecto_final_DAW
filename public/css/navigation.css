@@ -1,8 +1,16 @@
+#burger {
+    font-size: 60px;
+    position: absolute;
+    right: 94vw;
+    transform: scale(1, 0.001);
+}
+
 .nav-pading-contents {
     padding-right: 10%;
 }
 
 .nav-pading {
+    position: relative;
     padding-bottom: 2px;
 }  
 

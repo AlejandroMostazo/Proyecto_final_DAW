@@ -59,7 +59,7 @@ function _fetchData() {
               descripcion.textContent = description;
               var leermas = document.createElement('a');
               leermas.href = urlnoticia;
-              leermas.className = "leermas";
+              leermas.className = "btn";
               leermas.textContent = '+ Info';
               leermas.target = '_blank';
               var date = document.createElement('p');

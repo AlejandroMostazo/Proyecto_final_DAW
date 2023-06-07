@@ -1,28 +1,34 @@
 <x-app-layout>
     <x-slot name="header">
+        <link href="{{ asset('css/perfil.css') }}" rel="stylesheet" type="text/css" >
     </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in!
-                    <p>{{ Auth::user()->nacimiento }}</p>
-                    <p>{{ Auth::user()->genero }}</p>
-                    <div>
-                        <h2 class="text-lg font-medium text-gray-900">Deportes favoritos:</h2>
-                        <ul class="mt-2 text-gray-600">
-                            @forelse (Auth::user()->deportesFav as $deporte)
-                                <li>{{ $deporte->nombre }}</li>
-                            @empty
-                                <li>No se han añadido deportes favoritos</li>
-                            @endforelse
-                        </ul>
-                    </div>
-                </div>
+    <div class="flex-center" style="flex-direction:column">
+        <div style="position:relative" >
+            <i class="fa-solid fa-user iconouser"></i>
+            <a href="{{ route('editarusuario') }}" id="iconoedit"><i class="fa-solid fa-pen"></i></a>
+        </div>
+        <p style="font-weight: bold; font-size:xx-large">{{ Auth::user()->name }}</p>
+        <div id="tablaUsuario">
+            <div class="datosuser space-around">
+                <span>Genero</span>
+                <span>{{ Auth::user()->genero }}</span>
             </div>
+            <div class="datosuser space-around">
+                <span>Edad</span>
+                <span>{{ Auth::user()->nacimiento }}</span>
+            </div>
+            <div class="titulo-fav space-around">
+                <span>Deportes favoritos</span>
+            </div>
+            @forelse (Auth::user()->deportesFav as $deporte)
+                <div class="deporte-fav">
+                    <span>{{ $deporte->nombre }}</span>
+                    <i style="color:{{ $deporte->color }};" class="{{ $deporte->icono }}"></i>
+                </div>
+                @empty
+                    <span>No se han añadido deportes favoritos</span>
+                </div>
+            @endforelse
         </div>
     </div>
-    
-
 </x-app-layout>

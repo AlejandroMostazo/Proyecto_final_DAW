@@ -80,7 +80,7 @@ $(document).ready(function () {
 
                     var row = '<tr class="border-publicaciones">' +
                             '<td class="tdpublicaciones">' + 
-                                '<i class="' + publicacion.deporte.icono + ' iconosDeportes"></i>' +
+                                '<i style="color:' +  publicacion.deporte.color + '" class="' + publicacion.deporte.icono + ' iconosDeportes"></i>' +
                                 '<div>' +
                                     '<p class="title-publicacion">' + publicacion.deporte.nombre + '</p>' +
                                     '<a class="verapuntados" href="publicacion/apuntados' + publicacion.id + '"></a>' +

@@ -50,6 +50,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/ubicaciones', [UbicacionController::class,"mostrarUbicaciones"])->name('ubicaciones');
 });
 
+
 Route::get('/', function () {
     return view('auth.login');
 });

@@ -70,8 +70,8 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/editarusuario', [UserController::class, 'edit'])->name('editarusuario');
-    Route::put('/editarusuario/{id}', [UserController::class, 'update'])->name('actualizarusuario');
     Route::delete('/eliminarusuario/{id}', [UserController::class, 'delete'])->name('eliminarusuario');
+    Route::put('/editarusuario/{id}', [UserController::class, 'update'])->name('actualizarusuario');
 });
 
 

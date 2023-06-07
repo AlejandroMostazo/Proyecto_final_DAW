@@ -2,7 +2,6 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
             </a>
         </x-slot>
 
@@ -34,7 +33,7 @@
                 <select id="genero" class="block mt-1 w-full" name="genero" :value="old('genero')" >
                                     <option selected></option>
                                     <option>Male</option>
-                                    <option>Fmale</option>
+                                    <option>Female</option>
                 </select>
             </div>
 

@@ -5,14 +5,17 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
+use App\Models\Deporte;
 use App\Models\User;
+
 
 class UserController extends Controller
 {
     public function edit()
     {
         $user = auth()->user();
-        return view('auth.editarusuario', compact('user'));
+        $deportes  = Deporte::all();
+        return view('auth.editarusuario', compact('user', 'deportes'));
     }
 
     public function update(Request $request, $id)
@@ -21,23 +24,27 @@ class UserController extends Controller
         
         $user->name = $request->input('name');
         $user->email = $request->input('email');
+        $user->genero = $request->input('genero');
+        $user->nacimiento = $request->input('nacimiento');
         
-        if (request()->filled('new_password') || request()->filled('password_confirmation')) {
-            $validatedData = $request->validate([
-                'new_password' => ['required', 'string', 'min:8', 'confirmed'],
-                'password_confirmation' => ['required', 'string', 'min:8', 'confirmed'],
+        
+        
+        if (request()->filled('password') || request()->filled('password_confirmation')) {
+            $request->validate([
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'password_confirmation' => ['required', 'string', 'min:8'],
             ]);
 
-            if ($validatedData['new_password'] !== $validatedData['password_confirmation']) {
-                return redirect()->back()->withErrors(['password' => 'Las contraseñas no coinciden.'])->withInput();
+            if ($request->input('password') !== $request->input('password_confirmation')) {
+                return redirect()->back()->withErrors(['password' => 'Las contraseñas no coinciden.']);
             }
 
-            $user->password = Hash::make($validatedData['new_password']);
+            $user->password = Hash::make($request->input('password'));
         }
 
         $user->save();
 
-        return redirect()->route('dashboard');
+        return redirect()->route('perfil');
     }
 
 
@@ -47,7 +54,7 @@ class UserController extends Controller
         
         $user->delete();
 
-        return redirect()->route('/');
+        return redirect()->route('/login');
     }
 
 }

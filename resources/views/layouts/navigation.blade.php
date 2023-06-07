@@ -1,4 +1,5 @@
 <nav class="flex-center nav-pading nav-color">
+    <i id="burger" class="fa-solid fa-bars icons"></i>
     <!-- Logo -->
     <div class="nav-pading-contents">
         <a href="{{ route('publicaciones') }}">
@@ -49,3 +50,5 @@
     </div>
 
 </nav>
+
+<script defer src="{{ mix('js/leftnav.js') }}"></script>

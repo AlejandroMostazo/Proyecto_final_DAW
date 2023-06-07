@@ -45,7 +45,7 @@ class DeportesFavController extends Controller
             $user->deportesFav()->detach($id);
         }
 
-        return redirect()->route('perfil');
+        return redirect()->route('editarusuario');
     }
 
 

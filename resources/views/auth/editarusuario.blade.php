@@ -1,69 +1,112 @@
 <x-app-layout>
-    <x-slot name="header">  
+    <x-slot name="header">
+        <link href="{{ asset('css/perfil.css') }}" rel="stylesheet" type="text/css" >
     </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <h2 class="text-lg font-medium text-gray-900">Actualizar información:</h2>
-                    <form method="POST" action="{{ route('actualizarusuario',  ['id' => $user->id]) }}">
-                        @csrf
-                        @method('PUT')
-                        <div class="mb-4">
-                            <input type="hidden" name="id" value="{{ $user->id }}">
-                            <label for="name" class="block text-gray-700 font-bold mb-2">Nombre de usuario:</label>
-                            <input type="text" name="name" id="name" value="{{ old('name') ?? auth()->user()->name }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                            @error('name')
-                                <span class="text-red-500 text-xs">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="mb-4">
-                            <label for="email" class="block text-gray-700 font-bold mb-2">Correo electrónico:</label>
-                            <input type="email" name="email" id="email" value="{{ old('email') ?? auth()->user()->email }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                            @error('email')
-                                <span class="text-red-500 text-xs">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="mb-4">
-                            <label for="new_password" class="block text-gray-700 font-bold mb-2">Contraseña:</label>
-                            <input type="password" name="new_password" id="new_password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                            @error('password')
-                                <span class="text-red-500 text-xs">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="mb-4">
-                            <label for="password_confirmation" class="block text-gray-700 font-bold mb-2">Confirmar contraseña:</label>
-                            <input type="password" name="password_confirmation" id="password_confirmation" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                            @error('password_confirmation')
-                                <span class="text-red-500 text-xs">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <ul id="deportes-favoritos">
-                            @forelse (Auth::user()->deportesFav as $deporte)
-                                <li  draggable="true" data-id="{{ $deporte->id }}">{{ $deporte->nombre }}</li>
-                                <form action="{{ route('deportes-fav.delete', $deporte->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit">Delete {{ $deporte->nombre }}</button>
-                                </form>
-                            @empty
-                                <a href="{{ route('deportes.fav') }}">Añadir Deporte Favorito</a>
-                            @endforelse
-                        </ul>
-                    <button type="submit" style="background-color: orange;" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                            Actualizar información
-                        </button>
-                    </form>
-                    <form method="POST" action="{{ route('eliminarusuario', ['id' => $user->id]) }}" class="mb-4">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" style="background-color: red;" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                            Eliminar cuenta
-                        </button>
-                    </form>
+    <div class="flex-center" style="flex-direction:column">
+        <div style="position:relative" >
+            <form method="POST" action="{{ route('eliminarusuario', ['id' => $user->id]) }}" class="mb-4">
+                @csrf
+                @method('DELETE')
+                <button type="submit" id="iconodelete">
+                    <i class="fa-solid fa-trash-can"></i>
+                </button>
+            </form>
+            <i class="fa-solid fa-user iconouser"></i>
+        </div>
+        <form method="POST" action="{{ route('actualizarusuario',  ['id' => $user->id]) }}">
+            @csrf
+            @method('PUT')
+            <div style="margin-top: 20px;" class="space-around">
+                <input type="hidden" name="id" value="{{ $user->id }}">
+                <input class="inputText" type="text" name="name" id="name" value="{{ auth()->user()->name }}">
+                @error('name')
+                    <span class="text-red-500 text-xs">{{ $message }}</span>
+                @enderror
+            </div>
+            <div id="tablaUsuario">
+                <div class="datosuser space-around">
+                    <span>Genero</span>
+                    <select id="genero" class="inputText" name="genero">
+                        <option></option>
+                        <option value="Male" {{ auth()->user()->genero == 'Male' ? 'selected' : '' }}>Male</option>
+                        <option value="Female" {{ auth()->user()->genero == 'Female' ? 'selected' : '' }}>Female</option>
+                    </select>
+                </div>
+                <div class="datosuser space-around">
+                    <span>Edad</span>
+                    <input class="inputText" type="date" name="nacimiento" id="nacimiento" max="{{ \Carbon\Carbon::now()->subYears(3)->format('Y-m-d') }}" value="{{ auth()->user()->nacimiento }}">
+                </div>
+                <div class="titulo-fav space-around">
+                    <span>Deportes favoritos</span>
+                </div>
+                @forelse (Auth::user()->deportesFav as $deporte)
+                    <div class="deporte-fav">
+                        <span>{{ $deporte->nombre }}</span>
+                        <i style="color:{{ $deporte->color }};" class="{{ $deporte->icono }}"></i>
+                    </div>
+                    @empty
+                        <span>No se han añadido deportes favoritos</span>
+                    </div>
+                @endforelse
+            </div>
+            <div id="otroscampos">
+                <div class="update">
+                    <label for="email">Correo electrónico:</label>
+                    <input class="inputText" type="email" name="email" id="email" value="{{ auth()->user()->email }}">
+                    @error('email')
+                        <span class="text-red-500 text-xs">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="update">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" name="password" id="password" class="inputText" value="{{ old('password') }}">
+                    @error('password')
+                        <span class="text-red-500 text-xs">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="update">
+                    <label for="password_confirmation">Confirmar contraseña:</label>
+                    <input type="password" name="password_confirmation" id="password_confirmation" class="inputText" value="{{ old('password') }}">
+                    @error('password_confirmation')
+                         <span class="text-red-500 text-xs">{{ $message }}</span>
+                    @enderror
                 </div>
             </div>
+            <div id="divbtnactualizar">
+                <button type="submit" class="btnf"> Guardar</button>
+            </div>
+        </form>
+        <ul id="deportes-favoritos">
+            <p style="margin-bottom: 15px; font-weight: bold">Eliminar deportes favoritos</p>
+            @forelse (Auth::user()->deportesFav as $deporte)
+            <form action="{{ route('deportes-fav.delete', $deporte->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <li>
+                    {{ $deporte->nombre }}
+                    <button class="icons" type="submit"><i class="fa-solid fa-circle-xmark"></i></button>
+                </li>
+            </form>
+            @empty
+            <a>Añade Deportes a Favoritos</a>
+            @endforelse
+        </ul>
+        <form method="POST" action="{{ route('deportes.fav.store') }}">
+        @csrf
+        
+        <div id="deportes-favoritos">         
+        <p style="margin-bottom: 15px; font-weight: bold">Añadir a deportes favoritos</p>
+            @foreach ($deportes as $deporte)
+                @if(!Auth::user()->deportesFav->contains('id', $deporte->id))
+                    <label for="deporte_{{ $deporte->id }}">
+                        <input type="checkbox" id="deporte_{{ $deporte->id }}" name="deportes[]" value="{{ $deporte->id }}">
+                        {{ $deporte->nombre }}
+                    </label>
+                @endif
+            @endforeach
+            <button style="float: none;" class="btn">Añadir</button>
         </div>
+    </form>
+
     </div>
 </x-app-layout>

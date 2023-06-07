@@ -45,7 +45,7 @@ async function fetchData() {
     
             const leermas = document.createElement('a');
             leermas.href = urlnoticia;
-            leermas.className = "leermas";
+            leermas.className = "btn";
             leermas.textContent = '+ Info';
             leermas.target = '_blank';
 
