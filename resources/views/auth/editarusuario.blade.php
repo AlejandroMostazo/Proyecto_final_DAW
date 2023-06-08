@@ -2,7 +2,8 @@
     <x-slot name="header">
         <link href="{{ asset('css/perfil.css') }}" rel="stylesheet" type="text/css" >
     </x-slot>
-    <div class="flex-center" style="flex-direction:column">
+    <div class="flex-center" style="flex-direction:column; position:relative">
+        <a href="{{ route('perfil') }}" id="iconovolver"><i class="fa-solid fa-xmark"></i></a>
         <div style="position:relative" >
             <form method="POST" action="{{ route('eliminarusuario', ['id' => $user->id]) }}" class="mb-4">
                 @csrf
@@ -39,32 +40,31 @@
                 <div class="titulo-fav space-around">
                     <span>Deportes favoritos</span>
                 </div>
-                @forelse (Auth::user()->deportesFav as $deporte)
-                    <div class="deporte-fav">
+                <div class="deporte-fav">
+                    @forelse (Auth::user()->deportesFav as $deporte)
                         <span>{{ $deporte->nombre }}</span>
                         <i style="color:{{ $deporte->color }};" class="{{ $deporte->icono }}"></i>
-                    </div>
                     @empty
-                        <span>No se han añadido deportes favoritos</span>
-                    </div>
-                @endforelse
+                        <span class="no-grid">No se han añadido deportes favoritos</span>
+                    @endforelse
+                </div>
             </div>
             <div id="otroscampos">
-                <div class="update">
+                <div class="divinput">
                     <label for="email">Correo electrónico:</label>
                     <input class="inputText" type="email" name="email" id="email" value="{{ auth()->user()->email }}">
                     @error('email')
                         <span class="text-red-500 text-xs">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="update">
+                <div class="divinput">
                     <label for="password">Contraseña:</label>
                     <input type="password" name="password" id="password" class="inputText" value="{{ old('password') }}">
                     @error('password')
                         <span class="text-red-500 text-xs">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="update">
+                <div class="divinput">
                     <label for="password_confirmation">Confirmar contraseña:</label>
                     <input type="password" name="password_confirmation" id="password_confirmation" class="inputText" value="{{ old('password') }}">
                     @error('password_confirmation')

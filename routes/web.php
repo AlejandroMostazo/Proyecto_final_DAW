@@ -60,9 +60,7 @@ Route::get('/perfil', function () {
 })->middleware(['auth'])->name('perfil');
 
 //(lo puede hacer todo el mundo)
-Route::middleware('guest')->group(function () { 
-    Route::get('/publicacion/buscar', [PublicacionesController::class, 'buscar'])->name('publicacion.buscar');
-});
+Route::get('/publicacion/buscar', [PublicacionesController::class, 'buscar'])->name('publicacion.buscar');
 
 Route::get('/publicaciones', [PublicacionesController::class,"mostrarPublicaciones"])->name('publicaciones');
 

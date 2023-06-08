@@ -167,7 +167,7 @@ class PublicacionesController extends Controller
 
         $publicaciones = $query->get();
         $deportes = Deporte::all();
-        $ubicaciones = Ubicacion::all();
+        $ubicaciones = Ubicacion::all(); 
         $user = auth()->user();
 
         return view('publicaciones', compact('publicaciones', 'deportes', 'ubicaciones', 'user'));

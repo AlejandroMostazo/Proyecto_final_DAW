@@ -11,7 +11,7 @@ export function niveles() {
         var divPrincipiante = document.createElement('div');
         var divIntermedio = document.createElement('div');
         var divProfesional = document.createElement('div');
-    
+
         switch (nivel) {
             case 'Principiante':
                 divPrincipiante.className = 'levels inline-flex principiante';

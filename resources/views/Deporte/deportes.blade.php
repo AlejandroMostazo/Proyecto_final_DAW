@@ -7,6 +7,9 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h2 class="text-lg font-medium text-gray-900">Deportes:</h2>
+                    @if (Auth::user()->admin)
+                        <a href="{{ route('deporte.create') }}" class="btnf">New Deporte</a>
+                    @endif
                     <table class="table-auto w-full">
                         <tbody>
                             @foreach($deportes as $deporte)

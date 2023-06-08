@@ -102,7 +102,7 @@
                             /
                             {{ $publicacion->num_max_apuntados }}
                         </td>
-                        @if (Auth::user() && $user->publicacion_id == null && $publicacion->user_id != $user->id)
+                        @if (Auth::user() && $user->publicacion_id == null && $publicacion->user_id != $user->id && $publicacion->ac_apuntados < $publicacion->num_max_apuntados)
                             <td>
                                 <form method="POST" action="{{ route('publicacion.apuntarse', ['id' => $publicacion->id]) }}">
                                     @csrf

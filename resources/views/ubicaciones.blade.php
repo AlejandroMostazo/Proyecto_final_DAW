@@ -8,6 +8,9 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h2 class="text-lg font-medium text-gray-900">Ubicaciones:</h2>
+                    @if (Auth::user()->admin)
+                        <a href="{{ route('ubicaciones.create') }}" class="btn">New Ubicacion</a>
+                    @endif
                     <table class="table-auto w-full">
                         <thead>
                             <tr>

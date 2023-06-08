@@ -67,7 +67,7 @@ $(document).ready(function () {
 
                     var apuntarse = "";
 
-                    if(user.publicacion_id == null && publicacion.user_id != user.id) {
+                    if(user.publicacion_id == null && publicacion.user_id != user.id && publicacion.ac_apuntados < publicacion.num_max_apuntados) {
                         apuntarse = '<td ">' +
                                         '<form method="POST" action="publicaciones/'+publicacion.id+'/apuntarse">' +
                                             '<input type="hidden" name="_token" value="' + csrfToken + '">' +

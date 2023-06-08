@@ -1,4 +1,4 @@
-.iconouser, #iconoedit, #iconodelete {
+.iconouser, #iconoedit, #iconodelete, #iconovolver {
     text-align: center;
     padding: 30px;
     width: 210px;
@@ -10,7 +10,7 @@
     margin-top: 50px;
 }
 
-#iconoedit, #iconodelete {
+#iconoedit, #iconodelete, #iconovolver {
     transition: 0.5s;
     padding: 7px;
     width: 70px;
@@ -21,8 +21,18 @@
     cursor: pointer;
 }
 
+#iconovolver {
+    top: 0%;
+    left: 80%;
+}
 
-#iconoedit:hover, #iconodelete:hover {
+/* #iconodelete {
+    top: 57%;
+    left: 67%;
+} */
+
+
+#iconoedit:hover, #iconodelete:hover, #iconovolver:hover {
     background-color: #999999;
     color: #151826;
 }
@@ -34,13 +44,6 @@
     flex-wrap: wrap;
     justify-content: center;
     background-color: #D9D9D9;
-}
-
-.space-around {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
 }
 
 .datosuser {
@@ -70,6 +73,10 @@
     text-align: center;
     grid-gap: 1em;
     align-items: center;
+}
+
+.deporte-fav:has(.no-grid) {
+    grid-template-columns: 1fr;
 }
 
 #otroscampos, #otroscampos > div {

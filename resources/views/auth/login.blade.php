@@ -1,4 +1,4 @@
-<script src="{{ mix('js/localdata.js') }}"></script>
+<script defer src="{{ mix('js/localdata.js') }}"></script>
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
@@ -60,4 +60,3 @@
         </form>
     </x-auth-card>
 </x-guest-layout>
-<script src="{{ mix('js/rememberme.js') }}"></script>

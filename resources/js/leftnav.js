@@ -1,4 +1,7 @@
+
+
 btnleftnav.addEventListener('click', function () {
+    localStorage.setItem('navhidden', 'true');
     leftnav.style.animation = 'ocultarnav 1s ease';
     footer.style.animation = 'ocultarnav 1s ease';
     burger.style.visibility = '1';
@@ -13,6 +16,7 @@ btnleftnav.addEventListener('click', function () {
   });
 
 burger.addEventListener('click', function () {
+    localStorage.setItem('navhidden', 'false');
     burger.style.visibility = '1';
     burger.style.transform = 'scale(1, 0.001)';
     burger.style.transition = 'transform 0.5s';
@@ -27,4 +31,13 @@ burger.addEventListener('click', function () {
   });
 });
 
+if (localStorage.getItem('navhidden') === 'true') {
+  burger.style.transform = 'scale(1, 1)';
+  leftnav.style.width = '0vw';
+  footer.style.width = '0vw'; 
+} else {
+  burger.style.visibility = '0';
+  leftnav.style.width = '23vw';
+  footer.style.width = '23vw';
+}
   

@@ -3,9 +3,18 @@ var __webpack_exports__ = {};
 /*!***********************************!*\
   !*** ./resources/js/localdata.js ***!
   \***********************************/
-var valorRecuperado = localStorage.getItem('clave_logeado');
-if (valorRecuperado === 'true') {
+if (localStorage.getItem('clave_logeado') === 'true') {
   window.location.href = '/publicaciones';
 }
+recuerdame.addEventListener('change', function () {
+  if (localStorage.getItem('clave_logeado') === 'false') {
+    localStorage.setItem('clave_logeado', 'true');
+  } else {
+    localStorage.setItem('clave_logeado', 'false');
+  }
+});
+entrarComoInvitado.addEventListener('click', function () {
+  localStorage.clear();
+});
 /******/ })()
 ;

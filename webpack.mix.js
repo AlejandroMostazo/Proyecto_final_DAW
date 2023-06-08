@@ -30,8 +30,8 @@ mix.js('resources/js/pswdsecure.js', 'public/js');
 
 mix.js('resources/js/localdata.js', 'public/js');
 
-mix.js('resources/js/rememberme.js', 'public/js');
-
 mix.js('resources/js/niveles.js', 'public/js');
 
 mix.js('resources/js/leftnav.js', 'public/js');
+
+mix.js('resources/js/crearPublicacion.js', 'public/js');
