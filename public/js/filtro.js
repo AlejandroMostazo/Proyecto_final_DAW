@@ -161,6 +161,44 @@ activefilters.addEventListener('click', function () {
     filtros.style.background = "#151826";
   }
 });
+document.addEventListener('click', function (event) {
+  var formularioUbicaciones = document.getElementById('contentUbicaciones');
+  var formularioDeportes = document.getElementById('contentDeportes');
+  var formularioDestrezas = document.getElementById('contentDestrezas');
+  if (formularioUbicaciones.style.transform == 'scaleY(1)' && !formularioUbicaciones.contains(event.target) && !selctUbicaciones.contains(event.target)) {
+    formularioUbicaciones.style.transform = 'scaleY(0)';
+  }
+  if (!formularioDeportes.contains(event.target) && formularioDeportes.style.transform == 'scaleY(1)' && !selctDeportes.contains(event.target)) {
+    formularioDeportes.style.transform = 'scaleY(0)';
+  }
+  if (!formularioDestrezas.contains(event.target) && formularioDestrezas.style.transform == 'scaleY(1)' && !selctDestreza.contains(event.target)) {
+    formularioDestrezas.style.transform = 'scaleY(0)';
+  }
+});
+selctUbicaciones.addEventListener('click', function () {
+  var formulario = document.getElementById('contentUbicaciones');
+  if (formulario.style.transform == 'scaleY(0)' || formulario.style.transform == '') {
+    formulario.style.transform = 'scaleY(1)';
+  } else {
+    formulario.style.transform = 'scaleY(0)';
+  }
+});
+selctDeportes.addEventListener('click', function () {
+  var formulario = document.getElementById('contentDeportes');
+  if (formulario.style.transform == 'scaleY(0)' || formulario.style.transform == '') {
+    formulario.style.transform = 'scaleY(1)';
+  } else {
+    formulario.style.transform = 'scaleY(0)';
+  }
+});
+selctDestreza.addEventListener('click', function () {
+  var formulario = document.getElementById('contentDestrezas');
+  if (formulario.style.transform == 'scaleY(0)' || formulario.style.transform == '') {
+    formulario.style.transform = 'scaleY(1)';
+  } else {
+    formulario.style.transform = 'scaleY(0)';
+  }
+});
 $(document).ready(function () {
   var deportes = [];
   var ubicaciones = [];
@@ -172,6 +210,13 @@ $(document).ready(function () {
     ubicaciones = [];
     nivel = [];
     fecha = $('#fecha').val();
+    var isChecked = $(this).is(':checked');
+    var label = $('label[for="' + $(this).attr('id') + '"]');
+    if (isChecked) {
+      label.addClass('active');
+    } else {
+      label.removeClass('active');
+    }
     $('input[name="deportes[]"]:checked').each(function () {
       deportes.push($(this).val());
     });
@@ -182,6 +227,14 @@ $(document).ready(function () {
       nivel.push($(this).val());
     });
     filtrar(deportes, ubicaciones, nivel);
+  });
+  $('button').on('click', function () {
+    var checkboxes = $('input[type="checkbox"]');
+    checkboxes.each(function () {
+      if ($(this).is(':checked')) {
+        $(this).trigger('click');
+      }
+    });
   });
   function filtrar(deportes, ubicaciones, nivel) {
     var csrfToken = $('meta[name="csrf-token"]').attr('content');

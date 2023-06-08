@@ -53,7 +53,7 @@
                             </div>
                             <div>
                                 <div style="font-weight: 900;" class="space-around">
-                                    <label>Participando</label>
+                                    <label >Participando</label>
                                     <label>Total</label>
                                 </div>
                                 <input id="ac_apuntados" class="players"  type="number" name="ac_apuntados" value="1" min="1" required>

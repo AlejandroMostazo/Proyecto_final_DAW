@@ -80,13 +80,14 @@
 }
 
 #otroscampos, #otroscampos > div {
-    background-color:#D9D9D9;
+    background-color:#024040;
+    border-radius: 0 0 20px 20px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     width: 55vw;
-    padding-left: 17%;
-    padding-right: 17%;
+    padding-left: 14%;
+    padding-right: 14%;
     align-items: center;
 }
 

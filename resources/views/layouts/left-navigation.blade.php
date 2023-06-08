@@ -1,45 +1,35 @@
 <nav id="leftnav" class="left-nav left-nav-common-styles ">
-    <i id="btnleftnav" class="fa-solid fa-circle-chevron-left back icons"></i>
+    <i id="btnleftnav" class="fa-solid fa-circle-left back"></i>
 
 
     <!-- Navigation Links -->
-    <div class="links">
-        <x-nav-link :href="route('publicaciones')" :active="request()->routeIs('publicaciones')">
-            <i class="fa-solid fa-map-pin"></i>
-            {{ __('Publicaciones') }}
-        </x-nav-link>
-    </div>
+    <x-nav-link :href="route('publicaciones')" :active="request()->routeIs('publicaciones')">
+        <i class="fa-solid fa-map-pin"></i>
+        {{ __('Publicaciones') }}
+    </x-nav-link>
     
-    <div class="links">
-        <x-nav-link :href="route('auth.publicacion.create')" :active="request()->routeIs('auth.publicacion.create')">
-            <i class="fa-solid fa-users"></i>
-            {{ __('Crear Equipo') }}
-        </x-nav-link>
-    </div>
+    <x-nav-link :href="route('auth.publicacion.create')" :active="request()->routeIs('auth.publicacion.create')">
+        <i class="fa-solid fa-users"></i>
+        {{ __('Crear Equipo') }}
+    </x-nav-link>
     @if (Auth::user() && Auth::user()->admin)
-        <div class="links">
-            <x-nav-link :href="route('ubicaciones')" :active="request()->routeIs('ubicaciones')">
-                <i class="fa-solid fa-map-location-dot"></i>
-                {{ __('Ubicaciones') }}
-            </x-nav-link>
-        </div>
+        <x-nav-link :href="route('ubicaciones')" :active="request()->routeIs('ubicaciones')">
+            <i class="fa-solid fa-map-location-dot"></i>
+            {{ __('Ubicaciones') }}
+        </x-nav-link>
     @endif
 
     @if (Auth::user() && Auth::user()->admin)
-        <div class="links">
-            <x-nav-link :href="route('deportes.mostrar')" :active="request()->routeIs('deportes.mostrar')">
-               <span><i class="fa-solid fa-volleyball"></i></span> 
-                {{ __('Deportes') }}
-            </x-nav-link>
-        </div>
+        <x-nav-link :href="route('deportes.mostrar')" :active="request()->routeIs('deportes.mostrar')">
+            <span><i class="fa-solid fa-volleyball"></i></span> 
+            {{ __('Deportes') }}
+        </x-nav-link>
     @endif
 
-    <div class="links">
-        <x-nav-link :href="route('noticias')" :active="request()->routeIs('noticias')">
-       <i class="fa-solid fa-newspaper"></i>
-            {{ __('Noticias') }}
-        </x-nav-link>
-    </div>
+    <x-nav-link :href="route('noticias')" :active="request()->routeIs('noticias')">
+    <i class="fa-solid fa-newspaper"></i>
+        {{ __('Noticias') }}
+    </x-nav-link>
 
 </nav>
 <footer id="footer" class="social-media left-nav-common-styles">

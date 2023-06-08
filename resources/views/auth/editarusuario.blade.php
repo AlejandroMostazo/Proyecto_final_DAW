@@ -59,14 +59,14 @@
                 </div>
                 <div class="divinput">
                     <label for="password">Contraseña:</label>
-                    <input type="password" name="password" id="password" class="inputText" value="{{ old('password') }}">
+                    <input type="password" name="password" id="password" placeholder="Nuena Contraseña" class="inputText" value="{{ old('password') }}">
                     @error('password')
                         <span class="text-red-500 text-xs">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="divinput">
                     <label for="password_confirmation">Confirmar contraseña:</label>
-                    <input type="password" name="password_confirmation" id="password_confirmation" class="inputText" value="{{ old('password') }}">
+                    <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirmar Contraseña" class="inputText" value="{{ old('password') }}">
                     @error('password_confirmation')
                          <span class="text-red-500 text-xs">{{ $message }}</span>
                     @enderror
@@ -98,10 +98,10 @@
         <p style="margin-bottom: 15px; font-weight: bold">Añadir a deportes favoritos</p>
             @foreach ($deportes as $deporte)
                 @if(!Auth::user()->deportesFav->contains('id', $deporte->id))
-                    <label for="deporte_{{ $deporte->id }}">
+                    <span for="deporte_{{ $deporte->id }}">
                         <input type="checkbox" id="deporte_{{ $deporte->id }}" name="deportes[]" value="{{ $deporte->id }}">
                         {{ $deporte->nombre }}
-                    </label>
+                    </span>
                 @endif
             @endforeach
             <button style="float: none;" class="btn">Añadir</button>

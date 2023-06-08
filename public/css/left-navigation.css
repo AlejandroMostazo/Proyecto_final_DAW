@@ -27,11 +27,22 @@
 .links {
     padding: 15px;
     font-weight: 600; 
+    display: block;
+    margin: 7px 0;
+}
+
+.links:hover {
+    background-color: #02404080;
 }
 
 .link-active {
     color: #D9D9D9;
 }
+
+.div-active {
+    background-color: #02404080;
+}
+
 
 .social-media {
     color: #D9D9D9;
@@ -51,9 +62,17 @@
 }
 
 .back {
+    transition: 0.3s;
     cursor: pointer;
     position: absolute;
     font-size: 37px;
     top: 13px;
     right: 17px;
+    border-radius: 50%;
+}
+
+.back:hover {
+    color: #D9D9D9;
+    scale: 1.1;
+    box-shadow: 0px 0px 10px black;
 }
