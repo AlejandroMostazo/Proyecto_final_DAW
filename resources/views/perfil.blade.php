@@ -20,14 +20,16 @@
             <div class="titulo-fav space-around">
                 <span>Deportes favoritos</span>
             </div>
-            <div class="deporte-fav">
                 @forelse (Auth::user()->deportesFav as $deporte)
-                    <span>{{ $deporte->nombre }}</span>
-                    <i style="color:{{ $deporte->color }};" class="{{ $deporte->icono }}"></i>
+                    <div class="deporte-fav">
+                        <span>{{ $deporte->nombre }}</span>
+                        <i style="color:{{ $deporte->color }};" class="{{ $deporte->icono }}"></i>
+                    </div>
                 @empty
-                    <span class="no-grid">No se han añadido deportes favoritos</span>
+                    <div class="deporte-fav">
+                        <span class="no-grid">No se han añadido deportes favoritos</span>
+                    </div>
                 @endforelse
-            </div>
         </div>
     </div>
 </x-app-layout>

@@ -70,7 +70,13 @@
   
    .imgubicacion {
       border-radius: 30px;
-      box-sizing: border-box;
+      object-fit: cover;
       max-width: 15vw;
       max-height: 15vw;
+   }
+
+   .cardusuarios {
+      font-size: 20px;
+      font-weight: 700;
+      padding: 7px 0;
    }

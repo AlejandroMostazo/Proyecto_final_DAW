@@ -7,7 +7,7 @@
         @foreach($ubicaciones as $ubicacion)
             <div class="card">
                 <img class="imgubicacion" src="{{ asset('storage/' . $ubicacion->foto) }}" alt="Foto de ubicación">
-
+                
                 <p class="titles">{{ $ubicacion->nombre }}</p>
                 <p><span class="bi bi-geo-alt-fill"></span> {{ $ubicacion->calle }}</p>
                 <p>{{ $ubicacion->localidad }}</p>
@@ -20,9 +20,9 @@
                             <button class="btn" style="font-size: 20px;" type="submit"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
                         </form>
                     </div>
-                    @else 
-                        <a href="{{ $ubicacion->url }}" class="btn" target="_blank">+ Info</a>
-                    @endif
+                @else 
+                    <a href="{{ $ubicacion->url }}" class="btn" target="_blank">+ Info</a>
+                @endif
             </div>
         @endforeach
         @if (Auth::user()->admin)

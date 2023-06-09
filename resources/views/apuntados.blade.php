@@ -1,33 +1,38 @@
 <x-app-layout>
     <x-slot name="header">
+        <link href="{{ asset('css/cards.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('css/publicaciones.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('css/perfil.css') }}" rel="stylesheet" type="text/css">
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <h2 class="text-lg font-medium text-gray-900">Apuntados:</h2>
-
-                    <table class="table-auto w-full">
-                        <thead>
-                            <tr>
-                                <th class="px-4 py-2">Nombre</th>
-                                <th class="px-4 py-2">Edad</th>
-                                <th class="px-4 py-2">Genero</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($users as $user)
-                                <tr>
-                                    <td class="border px-4 py-2">{{ $user->name }}</td>
-                                    <td class="border px-4 py-2">{{ $user->nacimiento }}</td>
-                                    <td class="border px-4 py-2">{{ $user->genero }}</td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+    <div id="contenedorCards" class="flex-center">
+        @foreach($users as $user)
+            <div class="card ">
+                <div class="flex-center cardusuarios" style="flex-direction:column">
+                    <img class="imgubicacion" src="{{ asset('storage/public/images/ubicaciones/r7c7RS8ZkDuOtkJtvhTgJkmvBWVJJ6LDwPgnatdY.jpg') }}" alt="Foto de ubicación">
+                    <p class="title-publicacion" style="font-weight: bold; font-size:xx-large">{{ $user->name }}</p>
+                    <div class="cardusuarios space-around">
+                        <span>Genero</span>
+                        <span>{{ $user->genero }}</span>
+                    </div>
+                    <div class="space-around cardusuarios">
+                        <span>Edad</span>
+                        <span>{{ \Carbon\Carbon::parse($user->nacimiento)->age }}</span>
+                    </div>
+                    <div>
+                        <span class="flex-center">Favoritos:</span>
+                        @forelse ($user->deportesFav as $deporte)
+                            <div class="deporte-fav space-around">
+                                <span>{{ $deporte->nombre }}</span>
+                                <i style="color:{{ $deporte->color }};" class="{{ $deporte->icono }}"></i>
+                            </div>
+                        @empty
+                                <sp an class="no-grid">Sin deporte Favorito</sp>
+                            </div>
+                        @endforelse
+                    </div>
                 </div>
             </div>
-        </div>
+        @endforeach
     </div>
 </x-app-layout>
