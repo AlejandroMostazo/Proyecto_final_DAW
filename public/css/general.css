@@ -40,6 +40,12 @@ html {
     min-height: 86.2vh;
   } 
 
+  #color {
+    width: 228px;
+    height: 44px;
+    padding: 5px;
+  }
+
   .inputText {
     border-radius: 10px !important;
     border: solid 2px #027353 !important;
@@ -61,8 +67,11 @@ html {
   input:focus, select:focus {
     border: none !important;
     box-shadow: none !important;
+    background-color: #ffffff !important;
     box-shadow: 0px 0px 0px 2px #F2B705 !important;
+    cursor: auto;
   }
+
 
   input:checked {
     background-color: #027353 !important;
@@ -120,4 +129,15 @@ html {
   background-color: #F2B705 !important;
   color: #151826;
 } 
+
+.new {
+  margin-left: 20px;
+  padding: 10px 15px !important;
+}
+
+.cardmain {
+  padding: 50px;
+  background-color: #027353 !important;
+  border-radius: 30px;
+}
 

@@ -62,7 +62,6 @@ class DeporteController extends Controller
         $request->validate([
             'nombre' => ['required', 'string', 'max:255', 'unique:deportes,nombre,' . $id],
             'icono' => ['required', 'string', 'max:255' . $id],
-            'color' => ['required', 'string', 'max:255' . $id],
         ]);
 
         $deporte = Deporte::findOrFail($id);

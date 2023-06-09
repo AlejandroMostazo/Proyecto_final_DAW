@@ -42,7 +42,7 @@
                 <div>
                     <input class="selectFiltro" type="date" name="fecha" id="fecha" min="{{ date('Y-m-d') }}">
                 </div>
-                <div>
+                <div class="flex-center">
                     <div id="selctDeportes" class="selectFiltro" >
                         <option >Deportes </option>
                         <i class="fa-solid fa-angle-down"></i>
@@ -56,7 +56,7 @@
                         @endforeach
                     </div>
                 </div>
-                <div>
+                <div class="flex-center" >
                     <div id="selctUbicaciones" class="selectFiltro" >
                         <option >Ubicaciones </option>
                         <i class="fa-solid fa-angle-down"></i>
@@ -70,7 +70,7 @@
                         @endforeach
                     </div>
                 </div>
-                <div>
+                <div class="flex-center">
                     <div id="selctDestreza" class="selectFiltro" >
                         <option>Destreza </option>
                         <i class="fa-solid fa-angle-down"></i>

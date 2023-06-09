@@ -9,5 +9,6 @@
     "/js/niveles.js": "/js/niveles.js",
     "/js/leftnav.js": "/js/leftnav.js",
     "/js/crearPublicacion.js": "/js/crearPublicacion.js",
+    "/js/dragAndDrop.js": "/js/dragAndDrop.js",
     "/css/app.css": "/css/app.css"
 }

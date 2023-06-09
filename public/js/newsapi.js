@@ -37,7 +37,7 @@ function _fetchData() {
           data = _context.sent;
           noticia = data.value;
           cargando.style.display = 'block';
-          container = document.getElementById('contenedorNoticias');
+          container = document.getElementById('contenedorCards');
           noticia.forEach(function (article) {
             var _article$image, _article$image$thumbn;
             var title = article.name;

@@ -12,19 +12,16 @@
         <i class="fa-solid fa-users"></i>
         {{ __('Crear Equipo') }}
     </x-nav-link>
-    @if (Auth::user() && Auth::user()->admin)
-        <x-nav-link :href="route('ubicaciones')" :active="request()->routeIs('ubicaciones')">
-            <i class="fa-solid fa-map-location-dot"></i>
-            {{ __('Ubicaciones') }}
-        </x-nav-link>
-    @endif
 
-    @if (Auth::user() && Auth::user()->admin)
-        <x-nav-link :href="route('deportes.mostrar')" :active="request()->routeIs('deportes.mostrar')">
-            <span><i class="fa-solid fa-volleyball"></i></span> 
-            {{ __('Deportes') }}
-        </x-nav-link>
-    @endif
+    <x-nav-link :href="route('ubicaciones')" :active="request()->routeIs('ubicaciones')">
+        <i class="fa-solid fa-map-location-dot"></i>
+        {{ __('Ubicaciones') }}
+    </x-nav-link>
+
+    <x-nav-link :href="route('deportes.mostrar')" :active="request()->routeIs('deportes.mostrar')">
+        <span><i class="fa-solid fa-volleyball"></i></span> 
+        {{ __('Deportes') }}
+    </x-nav-link>
 
     <x-nav-link :href="route('noticias')" :active="request()->routeIs('noticias')">
     <i class="fa-solid fa-newspaper"></i>

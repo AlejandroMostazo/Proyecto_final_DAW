@@ -51,6 +51,8 @@
     height: 110px;
   }
 
+
+
   .levels {
     border: solid 1px black;
   }
@@ -61,6 +63,10 @@
     border: solid 2px #F2B705 ;
     background-color: #151826 ;
     text-align: center;
+  }
+
+  .select:focus {
+    background-color: #151826 !important;
   }
 
   .players {

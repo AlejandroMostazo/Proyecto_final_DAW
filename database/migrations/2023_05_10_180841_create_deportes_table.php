@@ -17,7 +17,7 @@ class CreateDeportesTable extends Migration
             $table->id();
             $table->string('nombre')->unique();
             $table->string('icono')->unique();
-            $table->string('color');
+            $table->char('color', 7);
             $table->timestamps();
         });
     }

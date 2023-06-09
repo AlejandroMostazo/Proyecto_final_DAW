@@ -2,49 +2,25 @@
     <x-slot name="header">
         <script defer src="{{ mix('js/tags.js') }}"></script>
     </x-slot>
-    <x-auth-card>
-        <x-slot name="logo">
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
-        </x-slot>
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-        <form method="POST" action="{{ route('deportes.store') }}">
-            @csrf
-            <div id="contenedor-tags"></div>
-            <!-- Nombre -->
-            <div>
-                <x-label for="nombre" :value="__('Nombre')" />
-                
-                <x-input id="nombre" class="block mt-1 w-full" type="text" name="nombre" :value="old('nombre')" autofocus />
-            </div>     
-            <div>
-                <x-label for="icono" :value="__('icono')" />
-                
-                <x-input id="icono" class="block mt-1 w-full" type="text" name="icono" :value="old('icono')" autofocus />
-            </div>
-            
-            <div>
-                <x-label for="color" :value="__('color')" />
-                
-                <x-input id="color" class="block mt-1 w-full" type="color" name="color" :value="old('color')" autofocus />
-            </div> 
-
-            <div class="flex items-center justify-end mt-4">
-
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('deportes.mostrar') }}">
-                    {{ __('Cancel') }}
-                </a>
-
-                
-                <x-button class="ml-4">
-                    {{ __('Agregar Deporte') }}
-                </x-button>
-            </div>
-        </form>
-        <a class="ml-4" id="addtag">Agregar Deporte</a>
-    </x-auth-card>
+    <div class="flex-center" style="margin: 80px;">
+        <div class="cardmain flex-center">
+            <form method="POST" class="flex-center" style="flex-direction: column;" action="{{ route('deportes.store') }}">
+                @csrf
+                <div style="padding: 10px;">
+                    <label for="nombre" class="block" >Nombre:</label>
+                    <input type="text" name="nombre" id="nombre" class="inputText" required placeholder="Nombre*">
+                </div>
+                <div style="padding: 10px;">
+                    <label for="icono" class="block">Icono:</label>
+                    <input type="text" name="icono" class="inputText" required placeholder="Calse FW o B*">
+                </div>
+                <div style="padding: 10px;">
+                    <label for="color" class="block">Color:</label>
+                    <input type="color" name="color" id="color" class="inputText">
+                </div>
+                <button type="submit" style="float: none;" class="btnf">Crear</button>
+            </form>
+        </div>
+    </div>
 </x-app-layout>

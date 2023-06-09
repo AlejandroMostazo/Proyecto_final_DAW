@@ -1,46 +1,32 @@
 
 <x-app-layout>
     <x-slot name="header">
+      <link href="{{ asset('css/cards.css') }}" rel="stylesheet" type="text/css" >
     </x-slot>
+    <div id="contenedorCards" class="flex-center">
+        @foreach($ubicaciones as $ubicacion)
+            <div class="card">
+                <img class="imgubicacion" src="{{ asset('storage/' . $ubicacion->foto) }}" alt="Foto de ubicación">
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <h2 class="text-lg font-medium text-gray-900">Ubicaciones:</h2>
-                    @if (Auth::user()->admin)
-                        <a href="{{ route('ubicaciones.create') }}" class="btn">New Ubicacion</a>
+                <p class="titles">{{ $ubicacion->nombre }}</p>
+                <p><span class="bi bi-geo-alt-fill"></span> {{ $ubicacion->calle }}</p>
+                <p>{{ $ubicacion->localidad }}</p>
+                @if (Auth::user()->admin)
+                    <div class="space-around">
+                        <a href="{{ route('ubicaciones.edit', $ubicacion->id) }}" class="btn" style="font-size: 20px;" ><i class="fa-solid fa-pen"></i> Editar</a>
+                        <form action="{{ route('ubicaciones.delete', $ubicacion->id) }}" method="POST" class="inline-block">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn" style="font-size: 20px;" type="submit"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
+                        </form>
+                    </div>
+                    @else 
+                        <a href="{{ $ubicacion->url }}" class="btn" target="_blank">+ Info</a>
                     @endif
-                    <table class="table-auto w-full">
-                        <thead>
-                            <tr>
-                                <th class="px-4 py-2">Nombre</th>
-                                <th class="px-4 py-2">Calle</th>
-                                <th class="px-4 py-2">Localidad</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($ubicaciones as $ubicacion)
-                                <tr>
-                                    <td class="border px-4 py-2">{{ $ubicacion->nombre }}</td>
-                                    <td class="border px-4 py-2">{{ $ubicacion->calle }}</td>
-                                    <td class="border px-4 py-2">{{ $ubicacion->localidad }}</td>
-                                    @if (Auth::user()->admin)
-                                        <td class="border px-4 py-2">
-                                            <a href="{{ route('ubicaciones.edit', $ubicacion->id) }}" class="text-blue-500 hover:text-blue-700">Editar</a>
-                                            <form action="{{ route('ubicaciones.delete', $ubicacion->id) }}" method="POST" class="inline-block">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" style="background-color: red;" class="bg-red hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Eliminar</button>
-                                            </form>
-                                        </td>
-                                    @endif
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
             </div>
-        </div>
+        @endforeach
+        @if (Auth::user()->admin)
+        <a href="{{ route('ubicaciones.create') }}" class="btn new"><i class="fa-solid fa-circle-plus"></i></a>
+        @endif
     </div>
 </x-app-layout>

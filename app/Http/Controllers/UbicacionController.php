@@ -19,6 +19,10 @@ class UbicacionController extends Controller
         $ubicacion->nombre = $request->input('nombre');
         $ubicacion->calle = $request->input('calle');
         $ubicacion->localidad = $request->input('localidad');
+        $ubicacion->url = $request->input('url');
+        $archivo = $request->file('foto');
+        $rutaArchivo = $archivo->store('public/images/ubicaciones', 'public');
+        $ubicacion->foto = $rutaArchivo;
         $ubicacion->save();
 
         return redirect()->route('ubicaciones');
@@ -42,6 +46,10 @@ class UbicacionController extends Controller
         $ubicacion->nombre = $request->input('nombre');
         $ubicacion->calle = $request->input('calle');
         $ubicacion->localidad = $request->input('localidad');
+        $ubicacion->url = $request->input('url');
+        $archivo = $request->file('foto');
+        $rutaArchivo = $archivo->store('public/images/ubicaciones', 'public');
+        $ubicacion->foto = $rutaArchivo;
         $ubicacion->save();
 
         return redirect()->route('ubicaciones');

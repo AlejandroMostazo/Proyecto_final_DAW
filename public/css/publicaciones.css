@@ -125,10 +125,11 @@
 }
       
 #contentUbicaciones, #contentDeportes, #contentDestrezas {
+    z-index: 2;
     position:absolute; 
     background-color: grey;
     border-radius: 10px;
-    margin-top: 7px;
+    top: 330px;
     transform: scaleY(0);
     transform-origin: center top;
     transition: transform 0.3s ease;

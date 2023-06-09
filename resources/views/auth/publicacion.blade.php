@@ -53,8 +53,8 @@
                             </div>
                             <div>
                                 <div style="font-weight: 900;" class="space-around">
-                                    <label >Participando</label>
-                                    <label>Total</label>
+                                    <label style=" color:#151826 !important" >Participando</label>
+                                    <label style=" color:#151826 !important">Total</label>
                                 </div>
                                 <input id="ac_apuntados" class="players"  type="number" name="ac_apuntados" value="1" min="1" required>
                                 <span style="color: #027353; font-weight: 900;">/</span>

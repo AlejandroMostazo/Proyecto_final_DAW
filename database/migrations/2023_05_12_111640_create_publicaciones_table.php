@@ -15,7 +15,7 @@ class CreatePublicacionesTable extends Migration
     {
         Schema::create('publicaciones', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->unique();
             $table->unsignedBigInteger('ubicacion_id');
             $table->unsignedBigInteger('deporte_id');
             $table->string('nivel');

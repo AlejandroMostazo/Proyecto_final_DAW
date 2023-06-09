@@ -15,7 +15,7 @@
             </div>
             <div class="datosuser space-around">
                 <span>Edad</span>
-                <span>{{ Auth::user()->nacimiento }}</span>
+                <span>{{ \Carbon\Carbon::parse(Auth::user()->nacimiento)->age }}</span>
             </div>
             <div class="titulo-fav space-around">
                 <span>Deportes favoritos</span>

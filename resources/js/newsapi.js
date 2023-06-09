@@ -16,7 +16,7 @@ async function fetchData() {
       const noticia = data.value;
       cargando.style.display = 'block';
   
-      const container = document.getElementById('contenedorNoticias');
+      const container = document.getElementById('contenedorCards');
   
       noticia.forEach(article => {
         const title = article.name;
