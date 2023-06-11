@@ -20,7 +20,7 @@
 
     <!-- Icon user and dropdown -->
     <div style="text-align: center;">
-        <x-dropdown >
+        <x-dropdown>
             <x-slot name="trigger">
                 <button class="icon-user">
                     <i style="font-size:xxx-large;" class="bi bi-person-fill icons"></i>

@@ -46,9 +46,9 @@ class DeporteController extends Controller
 
     public function mostrar()
     {
-        $deportes = Deporte::paginate(12);
+        $deportes = Deporte::paginate(6);
 
-        return view('Deporte.deportes', compact('deportes'));
+        return view('Deporte.mostrar', compact('deportes'));
     }
 
     public function edit($id)

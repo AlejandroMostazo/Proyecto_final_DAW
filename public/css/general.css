@@ -186,3 +186,33 @@ span, p, label {
    #dropZone {
     cursor: pointer;
    }
+
+
+#paginacion {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 70px;
+}
+
+
+#paginacion > nav > div:nth-child(2n) > div:nth-child(2n) > span > span > span  {
+  background-color: #024040;
+  color: #F2B705;
+  border: 1px solid #616161  !important;
+}
+
+#paginacion > nav > div:nth-child(2n) > div:nth-child(2n) > span > a  {
+  background-color: #027353;
+  color: #F2B705;
+  border: 1px solid #616161 !important;
+}
+
+#paginacion > nav > div:nth-child(2n) > div:nth-child(2n) > span > a:hover {
+  background-color: #F2B705;
+  color: #027353;
+}
+
+ #paginacion > nav > div:nth-child(2n) > div > p  {
+  display: none !important;
+}

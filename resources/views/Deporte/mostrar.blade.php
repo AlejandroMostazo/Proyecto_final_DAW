@@ -26,6 +26,12 @@
             <a href="{{ route('deporte.create') }}" class="btn new"><i class="fa-solid fa-circle-plus"></i></a>
         @endif
     </div>
+    @if($deportes->hasPages())
+        <div id="paginacion">
+            {{ $deportes->links() }}
+        </div>
+    @endif
+
 
    <!--  <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

@@ -28,7 +28,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('perfil');
+        return redirect()->route('auth.perfil');
     }
 
     public function update(Request $request, $id)

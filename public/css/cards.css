@@ -10,8 +10,8 @@
 
 .card {
     padding: 15px;
-    max-width: 20vw;
-    min-width: 15vw;
+    max-width: 370px;
+    min-width: 310px;
     margin: 30px;
     border-radius: 25px;
     background-color: #027353;
@@ -56,10 +56,10 @@
    .imgubicacion {
       border-radius: 30px;
       object-fit: cover;
-      max-width: 255px;
-      max-height: 183px;
-      min-width: 255px;
-      min-height: 183px;
+      max-width: 280px;
+      max-height: 203px;
+      min-width: 280px;
+      min-height: 203px;
    }
 
    .imgperfil {

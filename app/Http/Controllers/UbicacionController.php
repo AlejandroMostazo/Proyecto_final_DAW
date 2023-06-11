@@ -31,7 +31,7 @@ class UbicacionController extends Controller
     public function mostrarUbicaciones()
     {
         $ubicaciones = Ubicacion::all();
-        return view('ubicaciones', ['ubicaciones' => $ubicaciones]);
+        return view('ubicaciones.mostrar', ['ubicaciones' => $ubicaciones]);
     }
 
     public function edit($id)
@@ -48,8 +48,10 @@ class UbicacionController extends Controller
         $ubicacion->localidad = $request->input('localidad');
         $ubicacion->url = $request->input('url');
         $archivo = $request->file('foto');
-        $rutaArchivo = $archivo->store('public/images/ubicaciones', 'public');
-        $ubicacion->foto = $rutaArchivo;
+        if($request->hasFile('foto')) {
+            $rutaArchivo = $archivo->store('public/images/ubicaciones', 'public');
+            $ubicacion->foto = $rutaArchivo;
+        }
         $ubicacion->save();
 
         return redirect()->route('ubicaciones');

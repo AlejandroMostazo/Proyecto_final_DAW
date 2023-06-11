@@ -51,7 +51,7 @@ Route::get('/', function () {
 });
 
 Route::get('/perfil', function () {
-    return view('perfil');
+    return view('auth.perfil');
 })->middleware(['auth'])->name('perfil');
 
 //(lo puede hacer todo el mundo)
