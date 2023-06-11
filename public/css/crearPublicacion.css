@@ -62,7 +62,8 @@
     border-radius: 30px ;
     border: solid 2px #F2B705 ;
     background-color: #151826 ;
-    text-align: center;
+    text-align: center; 
+    width: 160px;
   }
 
   .select:focus {

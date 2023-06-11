@@ -22,7 +22,7 @@ class PublicacionesController extends Controller
     {
         $deportes = Deporte::all();
         $ubicaciones = Ubicacion::all();
-        return view('auth.publicacion',  compact('deportes', 'ubicaciones'));
+        return view('auth.publicacion-create',  compact('deportes', 'ubicaciones'));
     }
 
     /**
@@ -60,6 +60,46 @@ class PublicacionesController extends Controller
 	
         return redirect()->route('publicaciones');
     }
+
+
+    public function edit($id)
+    {
+        $publicacion = Publicacion::findOrFail($id);
+        $deportes = Deporte::all();
+        $ubicaciones = Ubicacion::all();
+
+        return view('auth.mi-publicacion', compact('publicacion', 'deportes', 'ubicaciones'));
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nivel' => ['required', 'string'],
+            'num_max_apuntados' => ['required', 'integer', 'min:2', 'max:12'],
+            'ac_apuntados' => ['required', 'integer', 'min:1', 'max:' . ($request->input('num_max_apuntados') - 1)],
+            'fecha_hora' => ['required'],
+            'ubicacion_id' => ['required', 'exists:ubicaciones,id'],
+            'deporte_id' => ['required', 'exists:deportes,id'],
+        ]);
+
+        $publicacion = Publicacion::findOrFail($id);
+
+        if ($publicacion->user_id !== auth()->id()) {
+            return redirect()->route('publicaciones');
+        }
+
+        $publicacion->nivel = $request->nivel;
+        $publicacion->num_max_apuntados = $request->num_max_apuntados;
+        $publicacion->ac_apuntados = $request->ac_apuntados;
+        $publicacion->fecha_hora = $request->fecha_hora;
+        $publicacion->ubicacion_id = $request->ubicacion_id;
+        $publicacion->deporte_id = $request->deporte_id;
+        $publicacion->save();
+
+        return redirect()->route('publicaciones');
+    }
+
     
     public function allPublicaciones()
     {

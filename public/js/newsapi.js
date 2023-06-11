@@ -36,6 +36,7 @@ function _fetchData() {
         case 8:
           data = _context.sent;
           noticia = data.value;
+          console.log(noticia);
           cargando.style.display = 'block';
           container = document.getElementById('contenedorCards');
           noticia.forEach(function (article) {
@@ -52,10 +53,12 @@ function _fetchData() {
               nuevaImagen.className = "imgnew";
               nuevaImagen.src = imagen;
               nuevaImagen.alt = title;
-              var titulo = document.createElement('p');
+              var titulo = document.createElement('h1');
               titulo.className = "titles";
+              titulo.style.marginTop = '10px';
               titulo.textContent = title;
               var descripcion = document.createElement('p');
+              descripcion.style.marginTop = '15px';
               descripcion.textContent = description;
               var leermas = document.createElement('a');
               leermas.href = urlnoticia;
@@ -65,7 +68,7 @@ function _fetchData() {
               var date = document.createElement('p');
               date.textContent = "Publicado: " + fecha;
               var contentimg = document.createElement('div');
-              contentimg.className = "contentimg";
+              contentimg.className = "contentimg flex-center";
               contentimg.appendChild(nuevaImagen);
               contentimg.appendChild(date);
               card.appendChild(contentimg);
@@ -76,17 +79,17 @@ function _fetchData() {
             }
           });
           cargando.style.display = 'none';
-          _context.next = 19;
+          _context.next = 20;
           break;
-        case 16:
-          _context.prev = 16;
+        case 17:
+          _context.prev = 17;
           _context.t0 = _context["catch"](2);
           console.error(_context.t0);
-        case 19:
+        case 20:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[2, 16]]);
+    }, _callee, null, [[2, 17]]);
   }));
   return _fetchData.apply(this, arguments);
 }

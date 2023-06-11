@@ -9,7 +9,7 @@ nivel.addEventListener('change', function () {
         case '1':
             tres.removeAttribute('selected');
             dos.removeAttribute('selected');
-            uno.setAttribute("selected", "");
+            uno.setAttribute("selected");
             parrafo[0].innerHTML = "Principiante";
 
             var levels = document.getElementsByClassName('levels');

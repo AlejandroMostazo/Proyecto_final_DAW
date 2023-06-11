@@ -14,6 +14,7 @@ async function fetchData() {
       const response = await fetch(url, options);
       const data = await response.json();
       const noticia = data.value;
+      console.log(noticia);
       cargando.style.display = 'block';
   
       const container = document.getElementById('contenedorCards');
@@ -36,11 +37,13 @@ async function fetchData() {
             nuevaImagen.alt = title; 
             
   
-            const titulo = document.createElement('p');
+            const titulo = document.createElement('h1');
             titulo.className = "titles";
+            titulo.style.marginTop = '10px';
             titulo.textContent =  title;
     
             const descripcion = document.createElement('p');
+            descripcion.style.marginTop = '15px';
             descripcion.textContent = description;
     
             const leermas = document.createElement('a');
@@ -53,7 +56,7 @@ async function fetchData() {
             date.textContent = "Publicado: " + fecha;
     
             const contentimg = document.createElement('div');
-            contentimg.className = "contentimg";
+            contentimg.className = "contentimg flex-center";
             contentimg.appendChild(nuevaImagen);
             contentimg.appendChild(date);
 

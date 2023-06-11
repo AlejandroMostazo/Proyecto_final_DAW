@@ -108,8 +108,7 @@
 }
 
 .labelcheck {
-    padding: 3px 20px !important;
-    margin: 5px !important;
+    padding: 0 20px !important;
     cursor: pointer;
     border-radius: 5px;
 }

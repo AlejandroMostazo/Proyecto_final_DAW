@@ -66,6 +66,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/publicacion/apuntados{id}', [PublicacionesController::class,"mostrarApuntados"])->name('apuntados');
     Route::delete('/publicacion/delete', [PublicacionesController::class, 'deletePublicacion'])->name('publicacion.delete');
     Route::post('/publicaciones/filtro', [PublicacionesController::class, 'publicacionesConFiltro'])->name('publicaciones.filtrar');
+    Route::get('/publicaciones/{id}/edit', [PublicacionesController::class, 'edit'])->name('publicacion.edit');
+    Route::put('/publicaciones/{id}', [PublicacionesController::class, 'update'])->name('publicacion.update');
 });
 
 Route::middleware(['auth'])->group(function () {

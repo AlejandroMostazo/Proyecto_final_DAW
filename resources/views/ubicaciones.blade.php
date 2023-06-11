@@ -8,7 +8,7 @@
             <div class="card">
                 <img class="imgubicacion" src="{{ asset('storage/' . $ubicacion->foto) }}" alt="Foto de ubicación">
                 
-                <p class="titles">{{ $ubicacion->nombre }}</p>
+                <h1 class="titles">{{ $ubicacion->nombre }}</h1>
                 <p><span class="bi bi-geo-alt-fill"></span> {{ $ubicacion->calle }}</p>
                 <p>{{ $ubicacion->localidad }}</p>
                 @if (Auth::user()->admin)

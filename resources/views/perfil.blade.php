@@ -11,7 +11,7 @@
             @endif
             <a href="{{ route('editarusuario') }}" id="iconoedit"><i class="fa-solid fa-pen"></i></a>
         </div>
-        <p style="font-weight: bold; font-size:xx-large">{{ Auth::user()->name }}</p>
+        <h1 style="font-weight: bold; font-size:xx-large">{{ Auth::user()->name }}</h1>
         <div id="tablaUsuario">
             <div class="datosuser space-around">
                 <span>Genero</span>

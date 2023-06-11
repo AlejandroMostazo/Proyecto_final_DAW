@@ -10,7 +10,7 @@
             <div class="card ">
                 <div class="flex-center cardusuarios" style="flex-direction:column">
                     <img class="imgperfil" src="{{ asset('storage/' . $user->foto) }}" alt="Foto de ubicación">
-                    <p class="title-publicacion" style="font-weight: bold; font-size:xx-large">{{ $user->name }}</p>
+                    <h1 class="title-publicacion" style="font-weight: bold; font-size:xx-large">{{ $user->name }}</h1>
                     <div class="cardusuarios space-around">
                         <span>Genero</span>
                         <span>{{ $user->genero }}</span>
@@ -28,7 +28,7 @@
                             </div>
                         @empty
                             <div class="deporte-fav">
-                                <sp an class="no-grid">Sin deporte Favoritos</sp>
+                                <span an class="no-grid">Sin deporte Favoritos</span>
                             </div>
                         @endforelse
                     </div>

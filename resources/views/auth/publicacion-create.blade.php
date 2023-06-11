@@ -41,7 +41,7 @@
                             <option id="tres" value="Profesional">Profesional</option>
                         </select>
                         <div id="contentlevels" style="text-align: center;" >          
-                            <p style="font-weight: 900;" class="nivel_publicacion">Principiante</p>
+                            <p class="nivel_publicacion">Principiante</p>
                         </div>
                     </div>                   
             
@@ -49,7 +49,7 @@
                         <div id="contentplayers" class="space-around">
                             <div style="text-align:center">
                                 <i style="font-size:xxx-large;" class="bi bi-person-fill"></i>
-                                <p style="font-weight: 900; font-size:20px; margin-top: -20px">Jugadores</p>
+                                <h1 style="font-weight: 900; font-size:20px; margin-top: -20px">Jugadores</h1>
                             </div>
                             <div>
                                 <div style="font-weight: 900;" class="space-around">
@@ -67,7 +67,7 @@
                         <input id="fecha_hora" class="inputText" type="datetime-local"  name="fecha_hora" value="old('fecha_hora')" min="{{ date('Y-m-d\TH:i') }}" required >
                     </div>
                     <div class="divinput">
-                        <button style="float: none; margin-left: 17px;" class="btnf">Crear publicación</button>
+                        <button style="float: none; margin-left: 17px;" class="btnf"><i class="fa-solid fa-circle-plus"></i> Crear publicación</button>
                     </div>
                 </form>
             </div>    

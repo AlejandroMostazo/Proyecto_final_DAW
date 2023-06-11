@@ -28,5 +28,11 @@ dropZone.addEventListener('drop', function (e) {
 dropZone.addEventListener('click', function () {
   fotoInput.click();
 });
+fotoInput.addEventListener('change', function () {
+  dropZone.classList.add('drop');
+  if (fotoPerfil) {
+    fotoPerfil.submit();
+  }
+});
 /******/ })()
 ;

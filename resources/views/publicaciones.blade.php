@@ -18,17 +18,8 @@
                     @if (Auth::user() && $user->publicacion_id != null)
                     <a  class="btn btnspublicacion" href="{{ route('publicacion.desapuntarse') }}"><i class="fa-solid fa-user-minus"></i> Desapuntarse</a>
                     @endif
-                    
                     @if (Auth::user() && \App\Models\Publicacion::where('user_id', '=', $user->id)->count() > 0)
-                        @php
-                            $publicacion = \App\Models\Publicacion::where('user_id', $user->id)->first();
-                        @endphp
-                        <a href="{{ route('apuntados', ['id' => $publicacion->id]) }}" class="btn btnspublicacion" type="submit"><i class="bi bi-tag-fill"></i> Mi Publicación</a>
-                        <form action="{{ route('publicacion.delete')}}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btnspublicacion" type="submit"><i class="bi bi-trash3-fill"></i> Eliminar Publicacción</button>
-                        </form>
+                        <a href="{{ route('publicacion.edit', ['id' => \App\Models\Publicacion::where('user_id', $user->id)->first()]) }}" class="btn btnspublicacion" type="submit"><i class="bi bi-tag-fill"></i> Mi Publicación</a>
                     @endif
                 </div>
             </div>
@@ -109,7 +100,7 @@
                             </div>
                         </td>
                         <td class="contentnivel" style="text-align: center;" >          
-                            <p class="nivel_publicacion">{{ $publicacion->nivel }}</p>
+                            <p style="font-weight: normal;" class="nivel_publicacion">{{ $publicacion->nivel }}</p>
                         </td>
                         <td>
                             {{ $publicacion->ac_apuntados }}
