@@ -9,7 +9,7 @@
         @foreach($users as $user)
             <div class="card ">
                 <div class="flex-center cardusuarios" style="flex-direction:column">
-                    <img class="imgubicacion" src="{{ asset('storage/public/images/ubicaciones/r7c7RS8ZkDuOtkJtvhTgJkmvBWVJJ6LDwPgnatdY.jpg') }}" alt="Foto de ubicación">
+                    <img class="imgperfil" src="{{ asset('storage/' . $user->foto) }}" alt="Foto de ubicación">
                     <p class="title-publicacion" style="font-weight: bold; font-size:xx-large">{{ $user->name }}</p>
                     <div class="cardusuarios space-around">
                         <span>Genero</span>
@@ -27,7 +27,8 @@
                                 <i style="color:{{ $deporte->color }};" class="{{ $deporte->icono }}"></i>
                             </div>
                         @empty
-                                <sp an class="no-grid">Sin deporte Favorito</sp>
+                            <div class="deporte-fav">
+                                <sp an class="no-grid">Sin deporte Favoritos</sp>
                             </div>
                         @endforelse
                     </div>

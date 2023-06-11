@@ -10,6 +10,15 @@
     margin-top: 50px;
 }
 
+.iconouser {
+    object-fit: cover;
+    max-width: 210px;
+    min-width: 210px;
+    max-height: 210px;
+    min-height: 210px;
+}
+
+
 #iconoedit, #iconodelete, #iconovolver {
     transition: 0.5s;
     padding: 7px;

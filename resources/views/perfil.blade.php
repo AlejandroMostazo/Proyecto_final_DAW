@@ -4,7 +4,11 @@
     </x-slot>
     <div class="flex-center" style="flex-direction:column">
         <div style="position:relative" >
-            <i class="fa-solid fa-user iconouser"></i>
+            @if( Auth::user()->foto )
+                <img class="iconouser" src="{{ asset('storage/' . Auth::user()->foto) }}" alt="Foto de ubicación">
+            @else
+                <i class="fa-solid fa-user iconouser"></i>
+            @endif
             <a href="{{ route('editarusuario') }}" id="iconoedit"><i class="fa-solid fa-pen"></i></a>
         </div>
         <p style="font-weight: bold; font-size:xx-large">{{ Auth::user()->name }}</p>

@@ -1,7 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <link href="{{ asset('css/cards.css') }}" rel="stylesheet" type="text/css" >
-        <script defer src="{{ mix('js/dragAndDrop.js') }}"></script>
+       <script defer src="{{ mix('js/dragAndDrop.js') }}"></script>
     </x-slot>
     <div class="flex-center" style="margin: 80px;">
         <div class="cardmain flex-center">
@@ -25,8 +24,8 @@
                 </div>
                 <div style="padding: 10px;">
                     <label for="foto" class="block">Imágen:</label>
-                    <div id="dropZone" class="drop-zone"><i class="fa-solid fa-image"></i></div>
-                    <input type="file" id="fotoInput" name="foto" style="display: none;">
+                    <div id="dropZone" class="drop-zone"><i class="fa-solid fa-file-image" style="font-size: xx-large;"></i></div>
+                    <input type="file" id="fotoInput" name="foto" style="display: none;" require>
                 </div>
                 <button type="submit" style="float: none;" class="btnf">Crear</button>
             </form>

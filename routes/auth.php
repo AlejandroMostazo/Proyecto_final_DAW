@@ -69,6 +69,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
+    Route::put('/editarfoto/{id}', [UserController::class, 'nuevaFoto'])->name('subirFoto');
     Route::get('/editarusuario', [UserController::class, 'edit'])->name('editarusuario');
     Route::delete('/eliminarusuario/{id}', [UserController::class, 'delete'])->name('eliminarusuario');
     Route::put('/editarusuario/{id}', [UserController::class, 'update'])->name('actualizarusuario');

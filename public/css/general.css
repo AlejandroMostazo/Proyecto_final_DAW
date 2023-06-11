@@ -139,5 +139,23 @@ html {
   padding: 50px;
   background-color: #027353 !important;
   border-radius: 30px;
+  box-shadow: 11px 10px 7px 4px black;
 }
 
+  .drop-zone {
+    border: #024040 5px dashed;
+    padding: 20px;
+    width: 238px;
+    text-align: center;
+  }
+  
+  .dragover {
+    background-color: #027353 !important;
+  }
+   .drop {
+    background-color: #616161;
+   }
+  
+   #dropZone {
+    cursor: pointer;
+   }

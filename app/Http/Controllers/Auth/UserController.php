@@ -18,6 +18,19 @@ class UserController extends Controller
         return view('auth.editarusuario', compact('user', 'deportes'));
     }
 
+    public function nuevaFoto(Request $request, $id) {
+
+        $user = User::findOrFail($id);
+        
+        $archivo = $request->file('foto');
+        $rutaArchivo = $archivo->store('public/images/usuarios', 'public');
+        $user->foto = $rutaArchivo;
+
+        $user->save();
+
+        return redirect()->route('perfil');
+    }
+
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);

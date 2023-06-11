@@ -1,18 +1,26 @@
 <x-app-layout>
     <x-slot name="header">
         <link href="{{ asset('css/perfil.css') }}" rel="stylesheet" type="text/css" >
+        <script defer src="{{ mix('js/dragAndDrop.js') }}"></script>
     </x-slot>
     <div class="flex-center" style="flex-direction:column; position:relative">
         <a href="{{ route('perfil') }}" id="iconovolver"><i class="fa-solid fa-xmark"></i></a>
         <div style="position:relative" >
-            <form method="POST" action="{{ route('eliminarusuario', ['id' => $user->id]) }}" class="mb-4">
+            <form method="POST" action="{{ route('eliminarusuario', ['id' => $user->id]) }}">
                 @csrf
                 @method('DELETE')
                 <button type="submit" id="iconodelete">
                     <i class="fa-solid fa-trash-can"></i>
                 </button>
             </form>
-            <i class="fa-solid fa-user iconouser"></i>
+            <form id="fotoPerfil" action="{{ route('subirFoto',  ['id' => $user->id]) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <div style="padding: 10px;">
+                    <i id="dropZone" class="fa-solid fa-user iconouser drop-zone"></i>
+                    <input type="file" id="fotoInput" name="foto" style="display: none;">
+                </div>
+            </form>
         </div>
         <form method="POST" action="{{ route('actualizarusuario',  ['id' => $user->id]) }}">
             @csrf

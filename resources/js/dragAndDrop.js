@@ -1,4 +1,3 @@
-document.addEventListener('DOMContentLoaded', function() {
     var dropZone = document.getElementById('dropZone');
     var fotoInput = document.getElementById('fotoInput');
     
@@ -20,6 +19,12 @@ document.addEventListener('DOMContentLoaded', function() {
         if (files.length > 0) {
             fotoInput.files = files;
             dropZone.classList.add('drop');
+            if(fotoPerfil) {
+                fotoPerfil.submit();
+            }
         }
     });
-});
+
+    dropZone.addEventListener('click', function () { 
+        fotoInput.click();
+    });

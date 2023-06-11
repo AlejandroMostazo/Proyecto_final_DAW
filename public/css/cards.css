@@ -54,26 +54,24 @@
     font-size: xxx-large;
   }
   
-  .drop-zone {
-    border: 2px dashed #ccc;
-    padding: 20px;
-    width: 238px;
-    text-align: center;
-  }
-  
-  .dragover {
-    background-color: #f7f7f7;
-  }
-   .drop {
-    background-color: #616161;
-   }
-  
    .imgubicacion {
       border-radius: 30px;
       object-fit: cover;
-      max-width: 15vw;
-      max-height: 15vw;
+      max-width: 255px;
+      max-height: 183px;
+      min-width: 255px;
+      min-height: 183px;
    }
+
+   .imgperfil {
+    border-radius: 30px;
+    object-fit: cover;
+    max-width: 201px;
+    max-height: 201px;
+    min-height: 201px;
+    min-width: 201px;
+ }
+
 
    .cardusuarios {
       font-size: 20px;

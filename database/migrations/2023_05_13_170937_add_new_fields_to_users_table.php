@@ -14,9 +14,10 @@ class AddNewFieldsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->date('nacimiento')->nullable();
+            $table->date('nacimiento');
             $table->string('genero')->nullable();
             $table->boolean('admin')->default(false);
+            $table->string('foto')->nullable();
             $table->unsignedBigInteger('publicacion_id')->nullable();
 
             $table->foreign('publicacion_id')->references('id')->on('publicaciones')->onDelete('set null');
@@ -33,6 +34,7 @@ class AddNewFieldsToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('nacimiento');
             $table->dropColumn('genero');
+            $table->dropColumn('foto');
         });
     }
 }

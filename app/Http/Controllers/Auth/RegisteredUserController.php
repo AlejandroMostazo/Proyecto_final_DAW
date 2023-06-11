@@ -37,8 +37,9 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'nacimiento' => ['nullable', 'date'], // campo opcional
-            'genero' => ['nullable', 'string'], // campo opcional
+            'nacimiento' => ['nullable', 'date'], 
+            'genero' => ['nullable', 'string'], 
+            'foto' => ['nullable', 'file'], 
         ]);
 
         $user = User::create([
@@ -49,6 +50,13 @@ class RegisteredUserController extends Controller
             'genero' => $request->genero,
         ]);
 
+        if ($request->hasFile('foto')) {
+            $archivo = $request->file('foto');
+            $rutaArchivo = $archivo->store('public/images/usuarios', 'public');
+            $user->foto = $rutaArchivo;
+            $user->save();
+        }
+        
         event(new Registered($user));
 
         Auth::login($user);
