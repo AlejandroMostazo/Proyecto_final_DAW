@@ -29,7 +29,8 @@ reunir nuevas personas para jugar juntos.
   * [Figma](https://www.figma.com/file/dGRJeVoflwP4UJdbVSi5re/Proyecto-TM1?t=0vOpSHlQzwZyoJ01-0)
 
 ### Esquema Entidad Relación
-    * ![Uploading fichero38950.jpg…]()
+    * ![fichero38950](https://github.com/AlejandroMostazo/Proyecto_final_DAW/assets/91953147/1ffadba9-6829-49ab-a7db-999baef98b6b)
+
 
 ### Revisión (checkpoint)
  - Realizado hasta ahora:
