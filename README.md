@@ -28,6 +28,9 @@ reunir nuevas personas para jugar juntos.
 ### Mockup
   * [Figma](https://www.figma.com/file/dGRJeVoflwP4UJdbVSi5re/Proyecto-TM1?t=0vOpSHlQzwZyoJ01-0)
 
+### Esquema Entidad Relación
+    * ![Uploading fichero38950.jpg…]()
+
 ### Revisión (checkpoint)
  - Realizado hasta ahora:
 
