@@ -10,5 +10,6 @@
     "/js/leftnav.js": "/js/leftnav.js",
     "/js/crearPublicacion.js": "/js/crearPublicacion.js",
     "/js/dragAndDrop.js": "/js/dragAndDrop.js",
+    "/js/canvas.js": "/js/canvas.js",
     "/css/app.css": "/css/app.css"
 }

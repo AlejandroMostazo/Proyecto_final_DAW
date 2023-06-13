@@ -9,7 +9,11 @@
         @foreach($users as $user)
             <div class="card ">
                 <div class="flex-center cardusuarios" style="flex-direction:column">
-                    <img class="imgperfil" src="{{ asset('storage/' . $user->foto) }}" alt="Foto de ubicación">
+                    @if($user->foto)
+                        <img class="imgperfil" src="{{ asset('storage/' . $user->foto) }}" alt="Foto de usuario">
+                    @else
+                        <i class="fa-solid fa-user iconouser" style="margin: auto;"></i>
+                    @endif
                     <h1 class="title-publicacion" style="font-weight: bold; font-size:xx-large">{{ $user->name }}</h1>
                     <div class="cardusuarios space-around">
                         <span>Genero</span>
@@ -36,4 +40,9 @@
             </div>
         @endforeach
     </div>
+    @if($users->hasPages())
+        <div id="paginacion">
+            {{ $users->links() }}
+        </div>
+    @endif
 </x-app-layout>

@@ -25,6 +25,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/deportes/edit/{id}', [DeporteController::class, 'edit'])->name('deportes.edit');
     Route::put('/deportes/update/{id}', [DeporteController::class, 'update'])->name('deportes.update');
     Route::delete('/deportes/delete/{id}', [DeporteController::class, 'delete'])->name('deportes.delete');
+    Route::get('/deportes/mostrar', [DeporteController::class, 'mostrar'])->name('deportes.mostrar');
 });
 
 //ruta para añadir los deportes que mas te gustan
@@ -57,8 +58,6 @@ Route::get('/perfil', function () {
 //(lo puede hacer todo el mundo)
 Route::get('/publicacion/buscar', [PublicacionesController::class, 'buscar'])->name('publicacion.buscar');
 Route::get('/publicaciones', [PublicacionesController::class,"mostrarPublicaciones"])->name('publicaciones');
-Route::get('/deportes/mostrar', [DeporteController::class, 'mostrar'])->name('deportes.mostrar');
-Route::get('/ubicaciones', [UbicacionController::class,"mostrarUbicaciones"])->name('ubicaciones');
 
 
 Route::get('/noticias', function () {

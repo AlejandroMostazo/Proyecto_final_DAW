@@ -44,7 +44,7 @@ class PublicacionesController extends Controller
 	
 	    $user = auth()->user();
 		
-        if(Publicacion::where('user_id', '=', $user->id)->count() > 0) {
+        if(Publicacion::where('user_id', '=', $user->id)->count() > 0 || $user->publicacion_id) {
             return redirect('publicaciones');
         }
 
@@ -57,6 +57,8 @@ class PublicacionesController extends Controller
         $publicacion->deporte_id = $request->deporte_id;
         $publicacion->user_id = auth()->id(); 
         $publicacion->save();
+
+        $this->apuntarsePublicacion($publicacion->id);
 	
         return redirect()->route('publicaciones');
     }
@@ -104,7 +106,7 @@ class PublicacionesController extends Controller
     public function allPublicaciones()
     {
         $user = auth()->user();
-        $publicaciones = Publicacion::orderBy('created_at', 'desc')->get();
+        $publicaciones = Publicacion::orderBy('created_at', 'desc')->paginate(12);
         $deportes = Deporte::all();
         $ubicaciones = Ubicacion::all();
         
@@ -113,7 +115,7 @@ class PublicacionesController extends Controller
 
     public function mostrarApuntados($id)
     {
-        $users = User::where('publicacion_id', '=', $id)->get();
+        $users = User::where('publicacion_id', '=', $id)->paginate(6);
         
         return view('apuntados', compact('users'));
     }
@@ -156,16 +158,14 @@ class PublicacionesController extends Controller
         $publicacion = Publicacion::find($id);
 
         // Verificar que no es el creador 
-        if ($publicacion->user_id == $user->id) {
-            return redirect()->back();
+        if ($publicacion->user_id != $user->id) {
+            $publicacion->ac_apuntados += 1;
+            $publicacion->save();
         }
     
         // Unir al usuario a la publicación
         $publicacion->usuariosApuntados()->save($user);
     
-        // Incrementar el contador de apuntados de la publicación
-        $publicacion->ac_apuntados += 1;
-        $publicacion->save();
     
         return redirect()->route('publicaciones');
     }
@@ -205,7 +205,7 @@ class PublicacionesController extends Controller
         $query->orWhere('ubicaciones.calle', 'LIKE', '%'.$request.'%');
         $query->orWhere('ubicaciones.localidad', 'LIKE', '%'.$request.'%');
 
-        $publicaciones = $query->get();
+        $publicaciones = $query->paginate(12);
         $deportes = Deporte::all();
         $ubicaciones = Ubicacion::all(); 
         $user = auth()->user();

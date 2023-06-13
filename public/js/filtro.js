@@ -151,6 +151,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _niveles_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./niveles.js */ "./resources/js/niveles.js");
 
 
+
+//recortar nombres de ubicaciones
+var labels = document.getElementsByClassName('labelcheck');
+Array.from(labels).forEach(function (label) {
+  var maxLength = 12;
+  var text = label.textContent;
+  if (text.length > maxLength) {
+    var truncatedText = text.substring(0, maxLength) + '...';
+    label.textContent = truncatedText;
+    label.setAttribute('title', text);
+  }
+});
+
+// hacer que se despliegue el filtro 
 activefilters.addEventListener('click', function () {
   var formulario = document.getElementById('formfiltro');
   if (formulario.style.display == 'none' || formulario.style.display == '') {
@@ -161,6 +175,8 @@ activefilters.addEventListener('click', function () {
     filtros.style.background = "#151826";
   }
 });
+
+// hacer que se vuelva a plegar un select que ya esta desplegado pulsando cualquier lugar
 document.addEventListener('click', function (event) {
   var formularioUbicaciones = document.getElementById('contentUbicaciones');
   var formularioDeportes = document.getElementById('contentDeportes');
@@ -175,6 +191,8 @@ document.addEventListener('click', function (event) {
     formularioDestrezas.style.transform = 'scaleY(0)';
   }
 });
+
+//desplegar los selects
 selctUbicaciones.addEventListener('click', function () {
   var formulario = document.getElementById('contentUbicaciones');
   if (formulario.style.transform == 'scaleY(0)' || formulario.style.transform == '') {
@@ -199,6 +217,8 @@ selctDestreza.addEventListener('click', function () {
     formulario.style.transform = 'scaleY(0)';
   }
 });
+
+// filtro con ajax
 $(document).ready(function () {
   var deportes = [];
   var ubicaciones = [];
@@ -236,6 +256,8 @@ $(document).ready(function () {
       }
     });
   });
+
+  // hacer la consulta ajax y poner los registros como corresponden
   function filtrar(deportes, ubicaciones, nivel) {
     var csrfToken = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
@@ -257,7 +279,7 @@ $(document).ready(function () {
         publicaciones.forEach(function (publicacion) {
           var apuntarse = "";
           if (user.publicacion_id == null && publicacion.user_id != user.id && publicacion.ac_apuntados < publicacion.num_max_apuntados) {
-            apuntarse = '<td ">' + '<form method="POST" action="publicaciones/' + publicacion.id + '/apuntarse">' + '<input type="hidden" name="_token" value="' + csrfToken + '">' + '<button class="icons iconoapuntarse" type="submit"><i style="font-size: xx-large;" class="fa-solid fa-plus"></i></button>' + '</form>' + '</td>';
+            apuntarse = '<td ">' + '<form method="POST" action="publicaciones/' + publicacion.id + '/apuntarse">' + '<input type="hidden" name="_token" value="' + csrfToken + '">' + '<button class="icons iconoapuntarse" type="submit"><i style="font-size: xxx-large;" class="fa-solid fa-plus"></i></button>' + '</form>' + '</td>';
           }
           var fecha = new Date(publicacion.fecha_hora).toLocaleDateString('es-ES', {
             day: "numeric",
@@ -266,7 +288,7 @@ $(document).ready(function () {
             hour: "numeric",
             minute: "numeric"
           });
-          var row = '<tr class="border-publicaciones">' + '<td class="tdpublicaciones">' + '<i style="color:' + publicacion.deporte.color + '" class="' + publicacion.deporte.icono + ' iconosDeportes"></i>' + '<div>' + '<p class="title-publicacion">' + publicacion.deporte.nombre + '</p>' + '<a class="verapuntados" href="publicacion/apuntados' + publicacion.id + '"></a>' + '<p class="text-publicacion"><i class="fa-solid fa-location-dot"></i> ' + publicacion.ubicacion.calle + ', ' + publicacion.ubicacion.localidad + '</p>' + '<p class="text-publicacion"><i class="fa-regular fa-clock"></i> ' + fecha + '</p>' + '</div>' + '</td>' + '<td class="contentnivel" style="text-align: center;">' + '<p class="nivel_publicacion">' + publicacion.nivel + '</p>' + '</td>' + '<td ">' + publicacion.ac_apuntados + '/' + publicacion.num_max_apuntados + '</td>' + apuntarse + +'</tr>';
+          var row = '<tr class="border-publicaciones">' + '<td class="tdpublicaciones">' + '<i style="color:' + publicacion.deporte.color + '" class="' + publicacion.deporte.icono + ' iconosDeportes"></i>' + '<div>' + '<p class="title-publicacion">' + publicacion.deporte.nombre + '</p>' + '<a class="verapuntados" href="publicacion/apuntados' + publicacion.id + '"></a>' + '<p class="text-publicacion"><i class="fa-solid fa-location-dot"></i> ' + publicacion.ubicacion.calle + ', ' + publicacion.ubicacion.localidad + '</p>' + '<p class="text-publicacion"><i class="fa-regular fa-clock"></i> ' + fecha + '</p>' + '</div>' + '</td>' + '<td class="contentnivel" style="text-align: center;">' + '<p class="nivel_publicacion">' + publicacion.nivel + '</p>' + '</td>' + '<td style="font-size: large; font-weight: 500;">' + publicacion.ac_apuntados + " " + '/' + " " + publicacion.num_max_apuntados + '</td>' + apuntarse + +'</tr>';
           tabla.append(row);
         });
         (0,_niveles_js__WEBPACK_IMPORTED_MODULE_1__.niveles)();

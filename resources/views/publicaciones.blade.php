@@ -6,7 +6,8 @@
         <script defer src="{{ mix('js/filtro.js') }}"></script>
         <script defer src="{{ mix('js/verApuntados.js') }}"></script>
     </x-slot>
-    <div>    
+
+    <div style="height: 100vh;">    
         @if (Auth::user()) 
             <div id="filtros" class="space-between">
                 <span id="activefilters" class="btnf">
@@ -15,7 +16,7 @@
                 </span>
                 
                 <div class="flex-center">
-                    @if (Auth::user() && $user->publicacion_id != null)
+                    @if (Auth::user() && $user->publicacion_id != null && \App\Models\Publicacion::where('user_id', Auth::user()->id)->count() == 0)
                     <a  class="btn btnspublicacion" href="{{ route('publicacion.desapuntarse') }}"><i class="fa-solid fa-user-minus"></i> Desapuntarse</a>
                     @endif
                     @if (Auth::user() && \App\Models\Publicacion::where('user_id', '=', $user->id)->count() > 0)
@@ -29,7 +30,7 @@
             
         <form method="POST" id="formfiltro" action="{{ route('publicaciones.filtrar') }}">
 
-            <div class="space-around" style="text-align: center; padding: 20px 0">
+            <div class="space-around" id="contentFiltros" style="text-align: center; padding: 20px 0">
                 <div>
                     <input class="selectFiltro" type="date" name="fecha" id="fecha" min="{{ date('Y-m-d') }}">
                 </div>
@@ -37,48 +38,50 @@
                     <div id="selctDeportes" class="selectFiltro" >
                         <option >Deportes </option>
                         <i class="fa-solid fa-angle-down"></i>
-                    </div>
-                    <div id="contentDeportes">
-                        @foreach($deportes as $deporte)
-                            <input class="hidden" type="checkbox" name="deportes[]" value="{{ $deporte->id }}" id="{{ $deporte->nombre }}">
-                            <div>
-                                <label class="labelcheck"  for="{{ $deporte->nombre }}" >{{ $deporte->nombre }}</label>
-                            </div>
-                        @endforeach
+                        <div id="contentDeportes">
+                            @foreach($deportes as $deporte)
+                                <input class="hidden" type="checkbox" name="deportes[]" value="{{ $deporte->id }}" id="{{ $deporte->nombre }}">
+                                <div>
+                                    <label class="labelcheck"  for="{{ $deporte->nombre }}" >{{ $deporte->nombre }}</label>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
                 <div class="flex-center" >
                     <div id="selctUbicaciones" class="selectFiltro" >
                         <option >Ubicaciones </option>
                         <i class="fa-solid fa-angle-down"></i>
-                    </div>
-                    <div id="contentUbicaciones">
-                        @foreach($ubicaciones as $ubicacion)
-                        <input class="hidden" type="checkbox" name="ubicaciones[]" value="{{ $ubicacion->id }}" id="{{ $ubicacion->nombre }}">
-                            <div>
-                                <label class="labelcheck"  for="{{ $ubicacion->nombre }}">{{ $ubicacion->nombre }}</label>
-                            </div>
-                        @endforeach
+                        <div id="contentUbicaciones">
+                            @foreach($ubicaciones as $ubicacion)
+                            <input class="hidden" type="checkbox" name="ubicaciones[]" value="{{ $ubicacion->id }}" id="{{ $ubicacion->nombre }}">
+                                <div>
+                                    <label class="labelcheck"  for="{{ $ubicacion->nombre }}">{{ $ubicacion->nombre }}</label>
+                                    
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
+                
                 <div class="flex-center">
                     <div id="selctDestreza" class="selectFiltro" >
                         <option>Destreza </option>
                         <i class="fa-solid fa-angle-down"></i>
-                    </div>
-                    <div id="contentDestrezas">
-                        <div>
-                            <input class="hidden" type="checkbox" name="nivel[]" value="Principiante" id="Principiante">
-                            <label class="labelcheck" for="Principiante">Principiante</label>
+                        <div id="contentDestrezas">
+                            <div>
+                                <input class="hidden" type="checkbox" name="nivel[]" value="Principiante" id="Principiante">
+                                <label class="labelcheck" for="Principiante">Principiante</label>
+                            </div>
+                            <div>
+                                <input class="hidden" type="checkbox" name="nivel[]" value="Intermedio" id="Intermedio">
+                                <label class="labelcheck" for="Intermedio">Intermedio</label>
+                            </div>
+                            <div>
+                                <input class="hidden" type="checkbox" name="nivel[]" value="Profesional" id="Profesional">
+                                <label class="labelcheck" for="Profesional">Profesional</label>
+                            </div>      
                         </div>
-                        <div>
-                            <input class="hidden" type="checkbox" name="nivel[]" value="Intermedio" id="Intermedio">
-                            <label class="labelcheck" for="Intermedio">Intermedio</label>
-                        </div>
-                        <div>
-                            <input class="hidden" type="checkbox" name="nivel[]" value="Profesional" id="Profesional">
-                            <label class="labelcheck" for="Profesional">Profesional</label>
-                        </div>      
                     </div>
                 </div>
                 <button class="btn" style="transform: scale(0.8);" type="reset"><i class="fa-solid fa-broom"></i> Limpiar</button>
@@ -102,7 +105,7 @@
                         <td class="contentnivel" style="text-align: center;" >          
                             <p style="font-weight: normal;" class="nivel_publicacion">{{ $publicacion->nivel }}</p>
                         </td>
-                        <td>
+                        <td style="font-size: large; font-weight: 500;">
                             {{ $publicacion->ac_apuntados }}
                             /
                             {{ $publicacion->num_max_apuntados }}
@@ -111,7 +114,7 @@
                             <td>
                                 <form method="POST" action="{{ route('publicacion.apuntarse', ['id' => $publicacion->id]) }}">
                                     @csrf
-                                    <button class="icons iconoapuntarse" type="submit"><i style="font-size: xx-large;" class="fa-solid fa-plus"></i></button>
+                                    <button class="icons iconoapuntarse" type="submit"><i style="font-size: xxx-large;" class="fa-solid fa-plus"></i></button>
                                 </form>
                             </td>
                         @endif    
@@ -120,6 +123,11 @@
             </tbody>
         </table>
     </div>
+    @if($publicaciones->hasPages())
+        <div id="paginacion">
+            {{ $publicaciones->links() }}
+        </div>
+    @endif
 </x-app-layout>
 
 

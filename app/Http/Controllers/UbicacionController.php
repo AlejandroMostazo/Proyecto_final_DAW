@@ -30,7 +30,7 @@ class UbicacionController extends Controller
 
     public function mostrarUbicaciones()
     {
-        $ubicaciones = Ubicacion::all();
+        $ubicaciones = Ubicacion::paginate(6);
         return view('ubicaciones.mostrar', ['ubicaciones' => $ubicaciones]);
     }
 

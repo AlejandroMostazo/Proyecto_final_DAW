@@ -37,7 +37,7 @@
 
 .link-active {
     color: #D9D9D9;
-}
+} 
 
 .div-active {
     background-color: #02404080;
@@ -75,4 +75,40 @@
     color: #D9D9D9;
     scale: 1.1;
     box-shadow: 0px 0px 10px black;
+}
+
+h1 {
+    display:inline;
+}
+
+@media (max-width: 1238px) { 
+    .links {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 1120px) {
+    .links {
+        font-size: 1.5rem;
+    }
+    h1 {
+        display: block;
+    }
+}
+
+@media (max-width: 850px) {
+    .links {
+        font-size: 2rem;
+    }
+    h1 {
+        display: none;
+    }
+    .left-nav {
+        height: 66vh; 
+        width: 50px;
+    }
+    footer {
+        flex-direction: column;
+        height: 23vh !important;
+    }
 }

@@ -1,88 +1,97 @@
+
+<script defer src="{{ mix('js/dragAndDrop.js') }}"></script>
+<script defer src="{{ mix('js/canvas.js') }}"></script>
+<script defer src="{{ mix('js/pswdsecure.js') }}"></script>
 <x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-            </a>
-        </x-slot>
-        <link href="{{ asset('css/general.css') }}" rel="stylesheet" type="text/css" >
-        <script defer src="{{ mix('js/dragAndDrop.js') }}"></script>
+    <div style="color: #fff;" id="contenedor-login">
+        
+        <canvas id="canvas" style="float: left;"></canvas>
+        
+        <x-application-logo></x-application-logo>
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+        <div id="content-form" class="flex-center" style="flex-direction:column;">
 
-        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
-            @csrf
+            
+            <video loop muted autoplay>
+                <source src="{{ asset('videos/login.mp4') }}" type="video/mp4" />
+            </video>
+            
+            
+            <!-- Validation Errors -->
+            <x-auth-validation-errors  :errors="$errors" />
+            <x-auth-session-status  :status="session('status')" />
+            
+            <div id="change" style="margin: 30px 0px;">
+                <a href="{{ route('login') }}">Iniciar Sesión</a>
+                <span>Regristrarse</span>
+            </div>    
+            <form method="POST" action="{{ route('register') }}"  enctype="multipart/form-data">
+                @csrf
 
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
+                <!-- Name -->
+                <div>
+                    <x-label class="margin-auto" class="margin-auto" for="name" :value="__('Name *')" />
+                    <div class="flex-center">
+                        <x-input id="name" type="text" placeholder="user-name *" name="name" :value="old('name')" required autofocus />
+                    </div>
+                </div>
 
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            </div>
+                
+                <!-- Email Address -->
+                <div class="content-input">
+                    <x-label class="margin-auto" for="email" :value="__('Email *')" />
+                    <div class="flex-center">
+                        <x-input id="email" placeholder="user-email@email.com *"  type="email" name="email" :value="old('email')" required autofocus />
+                    </div>
+                </div>
+                
+                <!-- Password -->
+                <div class="content-input">
+                    <div style="color: #F23005" id="divpwd"></div>
+                    <x-label class="margin-auto" for="password" :value="__('Password *')" />
+                    <a href="#generarpwd" id="generarpwd"><i class="fa-solid fa-key"></i>Generar</a>
+                    <div class="flex-center">
+                        <x-input id="password" placeholder="password*" type="password" name="password" required />
+                    </div>
+                </div>
 
-             <!-- Fecha de nacimiento -->
-            <div class="mt-4">
-                <x-label for="nacimiento" :value="__('Fecha de Nacimiento')" />
+                <!-- Confirm Password -->
+                <div class="content-input">
+                    <x-label class="margin-auto" for="password_confirmation" :value="__('Confirm Password *')" />
+                    <div class="flex-center">
+                        <x-input id="password_confirmation" placeholder="confirm password*" type="password" name="password_confirmation" required />
+                    </div>
+                </div>
+                
+                <!-- Fecha de nacimiento -->
+                <div class="content-input">
+                    <x-label class="margin-auto" for="nacimiento" :value="__('Fecha de Nacimiento *')" />
+                    <div class="flex-center">
+                        <x-input id="nacimiento" type="date" max="{{ \Carbon\Carbon::now()->subYears(3)->format('Y-m-d') }}" required name="nacimiento" :value="old('nacimiento')" />
+                    </div>
+                </div>
 
-                <x-input id="nacimiento" class="block mt-1 w-full" type="date" name="nacimiento" :value="old('nacimiento')" />
-            </div>
+                <!-- Genero -->
+                <div class="content-input">
+                    <x-label class="margin-auto" for="genero" :value="__('Genero')" />
+                    <div class="flex-center">
+                        <x-select id="genero" name="genero" :value="old('genero')" />
+                    </div>
+                </div>
+                
+                <div class="content-input" style="padding: 10px;">
+                    <x-label class="margin-auto" for="foto">Foto de perfil:</x-label>
+                    <div id="dropZone" class="drop-zone"><i class="fa-solid fa-image"></i></div>
+                    <input type="file" id="fotoInput" name="foto" style="display: none;">
+                </div>
 
-            <!-- Genero -->
-            <div class="mt-4">
-                <x-label for="genero" :value="__('Genero')" />
-
-                <!-- <x-input id="genero" class="block mt-1 w-full" type="text" name="genero" :value="old('genero')" /> -->
-                <select id="genero" class="block mt-1 w-full" name="genero" :value="old('genero')" >
-                                    <option selected></option>
-                                    <option>Male</option>
-                                    <option>Female</option>
-                </select>
-            </div>
-
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-                <div style="font-weight: bold; font-size: large; color:crimson;" id="divpwd"></div>
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-                <span id="generarpwd" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">Auto Generar</span>
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-            </div>
-
-            <div style="padding: 10px;">
-                <label for="foto" class="block">Imágen:</label>
-                <div id="dropZone" class="drop-zone"><i class="fa-solid fa-image"></i></div>
-                <input type="file" id="fotoInput" name="foto" style="display: none;">
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-button class="ml-4">
-                    {{ __('Register') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
+                <div style="width: 100%; text-align:center">
+                    <x-button >
+                        {{ __('Registrarse') }}
+                    </x-button>
+                </div>
+            </form>
+        </div>
+    </div>
 </x-guest-layout>
 <script src="{{ mix('js/pswdsecure.js') }}"></script>

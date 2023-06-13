@@ -1,4 +1,18 @@
+function mediaQuery(x) {
+  if (x.matches) { // If media query matches
+    btnleftnav.click();
+  } else {
+    burger.click();
+  }
+}
 
+var x = window.matchMedia("(max-width: 610px)")
+function handleResize() {
+  mediaQuery(x);
+}
+
+// Agrega el evento de redimensionamiento para llamar a handleResize solo cuando se redimensiona la ventana
+window.addEventListener('resize', handleResize);
 
 btnleftnav.addEventListener('click', function () {
     localStorage.setItem('navhidden', 'true');
@@ -40,4 +54,5 @@ if (localStorage.getItem('navhidden') === 'true') {
   leftnav.style.width = '23vw';
   footer.style.width = '23vw';
 }
-  
+
+

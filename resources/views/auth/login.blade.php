@@ -1,40 +1,17 @@
 <script defer src="{{ mix('js/localdata.js') }}"></script>
+<script defer src="{{ mix('js/canvas.js') }}"></script>
 <x-guest-layout>
+
+    <script>
+        var iflogeado = {{ Auth::check() ? 'true' : 'false' }};
+    </script>
+
     <div style="color: #fff;" id="contenedor-login">
 
-        <a id="entrarComoInvitado" href="{{ route('publicaciones') }}" >Entrar como invitado</a>
+        <a id="entrarComoInvitado" class="efecto" href="{{ route('publicaciones') }}" >Entrar como invitado</a>
         
         <canvas id="canvas" style="float: left;"></canvas>
-        <script>
-        var canvas = document.getElementById('canvas');
-        var ctx = canvas.getContext('2d');
-
-        function drawShapes() {
-            canvas.height = window.innerHeight;
-
-            ctx.fillStyle = '#151826';
-            ctx.beginPath();
-            ctx.moveTo(0, canvas.height);
-            ctx.lineTo(canvas.width, canvas.height);
-            ctx.lineTo(canvas.width, 0);
-            ctx.closePath();
-            ctx.fill();
-            
-            // Agregar borde a la línea izquierda
-            ctx.lineWidth = 4;
-            ctx.strokeStyle = '#F2B705';
-            ctx.beginPath();
-            ctx.moveTo(0, canvas.height);
-            ctx.lineTo(canvas.width, 0);
-            ctx.closePath();
-            ctx.stroke();
-        }
-
-        // Dibujar los elementos al cargar la página y al redimensionar la ventana
-        window.addEventListener('load', drawShapes);
-        window.addEventListener('resize', drawShapes);
-
-        </script>
+        
 
         <x-application-logo></x-application-logo>
 
@@ -85,7 +62,7 @@
                 <div class="flex-center">
                     <i id="iconrecuerda" class="fa-regular fa-bookmark"></i> 
                     <span style="position: relative;">
-                        <x-label id="label-remember" for="recuerdame" :value="__('Mantener sesión iniciada')"/>
+                        <x-label id="label-remember" class="efecto" for="recuerdame" :value="__('Mantener sesión iniciada')"/>
                     </span>
                     <input id="recuerdame" type="checkbox" class="hidden" name="remember">
                 </div>

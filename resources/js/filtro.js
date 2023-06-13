@@ -1,9 +1,19 @@
 import { verApuntados } from './verApuntados.js';
 import { niveles } from './niveles.js';
 
-
+//recortar nombres de ubicaciones
+var labels = document.getElementsByClassName('labelcheck');
+    Array.from(labels).forEach(function(label) {
+        var maxLength = 12;
+        var text = label.textContent;
+        if (text.length > maxLength) {
+            var truncatedText = text.substring(0, maxLength) + '...';
+            label.textContent = truncatedText;
+            label.setAttribute('title', text);
+        }
+});
   
-
+// hacer que se despliegue el filtro 
 activefilters.addEventListener('click', function () { 
     var formulario = document.getElementById('formfiltro');
     if(formulario.style.display == 'none' || formulario.style.display == '' ) {
@@ -15,7 +25,7 @@ activefilters.addEventListener('click', function () {
     }
 });
 
-
+// hacer que se vuelva a plegar un select que ya esta desplegado pulsando cualquier lugar
 document.addEventListener('click', function(event) {
     var formularioUbicaciones = document.getElementById('contentUbicaciones');
     var formularioDeportes = document.getElementById('contentDeportes');
@@ -35,6 +45,7 @@ document.addEventListener('click', function(event) {
     }
   });
 
+  //desplegar los selects
 selctUbicaciones.addEventListener('click', function () { 
     var formulario = document.getElementById('contentUbicaciones');
     if(formulario.style.transform == 'scaleY(0)' || formulario.style.transform == '' ) {
@@ -62,16 +73,12 @@ selctDestreza.addEventListener('click', function () {
     }
 });
 
+// filtro con ajax
 $(document).ready(function () {
     var deportes = [];
     var ubicaciones = [];
     var nivel = [];
     var fecha;
-
-    
-    
-    
-    
 
     $('input[type="checkbox"], input[type="date"]').on('change', function (e) {
         e.preventDefault();
@@ -101,11 +108,7 @@ $(document).ready(function () {
             nivel.push($(this).val());
         });
 
-        
-       
-
-        filtrar(deportes, ubicaciones, nivel);      
-        
+        filtrar(deportes, ubicaciones, nivel);        
         
         
     });
@@ -119,7 +122,7 @@ $(document).ready(function () {
         });
     });
     
-
+// hacer la consulta ajax y poner los registros como corresponden
     function filtrar(deportes, ubicaciones, nivel) {
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
     
@@ -150,7 +153,7 @@ $(document).ready(function () {
                         apuntarse = '<td ">' +
                                         '<form method="POST" action="publicaciones/'+publicacion.id+'/apuntarse">' +
                                             '<input type="hidden" name="_token" value="' + csrfToken + '">' +
-                                            '<button class="icons iconoapuntarse" type="submit"><i style="font-size: xx-large;" class="fa-solid fa-plus"></i></button>' +
+                                            '<button class="icons iconoapuntarse" type="submit"><i style="font-size: xxx-large;" class="fa-solid fa-plus"></i></button>' +
                                         '</form>'+ 
                                     '</td>'
                     }
@@ -170,10 +173,10 @@ $(document).ready(function () {
                             '<td class="contentnivel" style="text-align: center;">' +
                                 '<p class="nivel_publicacion">' + publicacion.nivel + '</p>' +
                             '</td>' +
-                            '<td ">' + 
-                                publicacion.ac_apuntados +
+                            '<td style="font-size: large; font-weight: 500;">' + 
+                                publicacion.ac_apuntados + " " +
                                 '/' +
-                                publicacion.num_max_apuntados + 
+                               " " + publicacion.num_max_apuntados + 
                             '</td>' +
                             apuntarse +
                             +'</tr>';

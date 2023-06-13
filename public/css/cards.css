@@ -8,7 +8,7 @@
     margin-top: 100px;
 }
 
-.card {
+.card, .cardsmall {
     padding: 15px;
     max-width: 370px;
     min-width: 310px;
@@ -16,6 +16,10 @@
     border-radius: 25px;
     background-color: #027353;
     box-shadow: 11px 10px 7px 4px black;
+}
+
+.cardsmall {
+  max-width: 310px;
 }
 
 .contenticon {
@@ -32,6 +36,7 @@
 .titles {
     font-size: x-large;
     font-weight: 900;
+    word-wrap: break-word;
 }
 
 

@@ -37,3 +37,5 @@ mix.js('resources/js/leftnav.js', 'public/js');
 mix.js('resources/js/crearPublicacion.js', 'public/js');
 
 mix.js('resources/js/dragAndDrop.js', 'public/js');
+
+mix.js('resources/js/canvas.js', 'public/js');

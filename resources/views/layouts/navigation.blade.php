@@ -1,4 +1,4 @@
-<nav class="flex-center nav-pading nav-color">
+<nav class="space-around nav-pading nav-color">
     <i id="burger" class="fa-solid fa-bars icons"></i>
     <!-- Logo -->
     <div class="nav-pading-contents">
@@ -8,7 +8,7 @@
     </div>
 
     <!-- Buscador -->
-    <div  class="nav-pading-contents">
+    <div>
         <form method="GET" action="{{ route('publicacion.buscar') }}">
             <div class="relative">
                 <input class="search" type="text" id="buscador" name="buscador" placeholder="Encontrar partido ...">
