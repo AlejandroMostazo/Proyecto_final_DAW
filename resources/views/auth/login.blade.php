@@ -1,62 +1,95 @@
 <script defer src="{{ mix('js/localdata.js') }}"></script>
 <x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo />
-            </a>
-        </x-slot>
+    <div style="color: #fff;" id="contenedor-login">
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+        <a id="entrarComoInvitado" href="{{ route('publicaciones') }}" >Entrar como invitado</a>
+        
+        <canvas id="canvas" style="float: left;"></canvas>
+        <script>
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+        function drawShapes() {
+            canvas.height = window.innerHeight;
 
-        <a id="entrarComoInvitado" href="{{ route('publicaciones') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Entrar como invitado</a>
+            ctx.fillStyle = '#151826';
+            ctx.beginPath();
+            ctx.moveTo(0, canvas.height);
+            ctx.lineTo(canvas.width, canvas.height);
+            ctx.lineTo(canvas.width, 0);
+            ctx.closePath();
+            ctx.fill();
+            
+            // Agregar borde a la línea izquierda
+            ctx.lineWidth = 4;
+            ctx.strokeStyle = '#F2B705';
+            ctx.beginPath();
+            ctx.moveTo(0, canvas.height);
+            ctx.lineTo(canvas.width, 0);
+            ctx.closePath();
+            ctx.stroke();
+        }
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
+        // Dibujar los elementos al cargar la página y al redimensionar la ventana
+        window.addEventListener('load', drawShapes);
+        window.addEventListener('resize', drawShapes);
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            </div>
+        </script>
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+        <x-application-logo></x-application-logo>
 
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
-            </div>
+        <div id="content-form" class="flex-center" style="flex-direction:column;">
 
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="recuerdame" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
+            
+            <video loop muted autoplay>
+                <source src="{{ asset('videos/login.mp4') }}" type="video/mp4" />
+            </video>
+            
+            
+            <!-- Validation Errors -->
+            <x-auth-validation-errors  :errors="$errors" />
+            <x-auth-session-status  :status="session('status')" />
+            
+            <div id="change">
+                <span>Iniciar Sesión</span>
+                <a href="{{ route('register') }}" >Regristrarse</a>
+            </div>    
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
 
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-                
-                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
 
-                
+                <!-- Email Address -->
+                <div class="content-input">
+                    <x-label for="email" :value="__('Email')" />
+                    <div class="flex-center">
+                        <i class="fa-solid fa-user"></i>
+                        <x-input id="email" placeholder="user-email@email.com"  type="email" name="email" :value="old('email')" required autofocus />
+                    </div>
+                </div>
 
-                <x-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
+                <!-- Password -->
+                <div class="content-input">
+                    <x-label for="password" :value="__('Password')" />
+                    <div class="flex-center">
+                        <i class="fa-solid fa-lock"></i>
+                        <x-input id="password" placeholder="password" type="password" name="password" required autocomplete="current-password" />
+                    </div>
+                </div>
+
+                <!-- Remember Me -->
+                <div style="width: 100%; text-align:center">
+                    <x-button >
+                        {{ __('Iniciar Sesión') }}
+                    </x-button>
+                </div>
+                <div class="flex-center">
+                    <i id="iconrecuerda" class="fa-regular fa-bookmark"></i> 
+                    <span style="position: relative;">
+                        <x-label id="label-remember" for="recuerdame" :value="__('Mantener sesión iniciada')"/>
+                    </span>
+                    <input id="recuerdame" type="checkbox" class="hidden" name="remember">
+                </div>
+            </form>
+        </div>
+    </div>
 </x-guest-layout>

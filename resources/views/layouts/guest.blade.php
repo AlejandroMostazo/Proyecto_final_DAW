@@ -10,13 +10,14 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
+        <script src="https://kit.fontawesome.com/6df54b1a99.js" crossorigin="anonymous"></script>
+
         <!-- Scripts -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" >
+        <link href="{{ asset('css/login.css') }}" rel="stylesheet" type="text/css" >
         <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
     </head>
-    <body>
-        <div>
+    <body style="overflow: hidden;">
             {{ $slot }}
-        </div>
     </body>
 </html>
