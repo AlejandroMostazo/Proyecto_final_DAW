@@ -16,7 +16,6 @@
 #content-form {
     height: 100vh; 
     width:35vw;
-    min-width: 480px;
     background-color: #151826; 
 }
 
@@ -198,6 +197,9 @@ i {
    }
 
  @media (max-width: 820px) {
+    .input {
+        width: 270px;
+    }
     #primerLogo {
         z-index: -2;
         visibility: hidden;
@@ -206,13 +208,10 @@ i {
         position: absolute;
         display: block;
         top: -270px;
-        left: -50px;
+        left: -90px;
         transform: scale(1.4);
     }
     #canvas {
-        display: none;
-    }
-    video {
         display: none;
     }
     .text-logo {
@@ -229,6 +228,9 @@ i {
         background-color:#151826 !important; 
         color: #D9D9D9 !important; 
         mix-blend-mode: normal !important;
+    }
+    .btn {
+        margin: 20px 0;
     }
     video {
         left: auto; 
