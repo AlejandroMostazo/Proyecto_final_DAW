@@ -212,6 +212,9 @@ i {
     #canvas {
         display: none;
     }
+    video {
+        display: none;
+    }
     .text-logo {
         color: #D9D9D9;
     }
