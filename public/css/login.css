@@ -198,6 +198,11 @@ i {
     display: none;
    }
 
+   .register {
+        overflow: scroll;
+        flex-direction:column;
+   }
+
  @media (max-width: 820px) {
     .input {
         width: 270px;

@@ -3,7 +3,7 @@
 <script defer src="{{ mix('js/canvas.js') }}"></script>
 <script defer src="{{ mix('js/pswdsecure.js') }}"></script>
 <x-guest-layout>
-    <div style="color: #fff; padding-bottom: 50px" id="contenedor-login">
+    <div style="color: #fff; padding-bottom: 50px;" id="contenedor-login">
         
         <canvas id="canvas" style="float: left;"></canvas>
         
@@ -11,7 +11,7 @@
             <x-application-logo></x-application-logo>
         </div>
 
-        <div id="content-form" class="flex-center register" style="flex-direction:column;">
+        <div id="content-form" class="flex-center register" >
 
             
             <video loop muted autoplay>
@@ -87,7 +87,7 @@
                     <input type="file" id="fotoInput" name="foto" style="display: none;">
                 </div>
 
-                <div style="width: 100%; text-align:center; transform:translate(-12px)">
+                <div style="width: 100%; text-align:center; transform:translate(5px)">
                     <x-button >
                         {{ __('Registrarse') }}
                     </x-button>
