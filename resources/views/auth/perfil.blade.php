@@ -2,7 +2,7 @@
     <x-slot name="header">
         <link href="{{ asset('css/perfil.css') }}" rel="stylesheet" type="text/css" >
     </x-slot>
-    <div class="flex-center" style="flex-direction:column">
+    <div class="flex-center" style="flex-direction:column; padding-bottom: 50px">
         <div style="position:relative" >
             @if( Auth::user()->foto )
                 <img class="iconouser" src="{{ asset('storage/' . Auth::user()->foto) }}" alt="Foto de ubicación">

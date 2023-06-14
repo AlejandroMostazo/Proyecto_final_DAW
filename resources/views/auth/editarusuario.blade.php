@@ -3,7 +3,7 @@
         <link href="{{ asset('css/perfil.css') }}" rel="stylesheet" type="text/css" >
         <script defer src="{{ mix('js/dragAndDrop.js') }}"></script>
     </x-slot>
-    <div class="flex-center" style="flex-direction:column; position:relative">
+    <div class="flex-center" style="flex-direction:column; position:relative; padding-bottom: 50px">
         <a href="{{ route('perfil') }}" id="iconovolver"><i class="fa-solid fa-xmark"></i></a>
         <div style="position:relative" >
             <form method="POST" action="{{ route('eliminarusuario', ['id' => $user->id]) }}">

@@ -5,7 +5,7 @@
         <link href="{{ asset('css/perfil.css') }}" rel="stylesheet" type="text/css">
     </x-slot>
 
-    <div id="contenedorCards" class="flex-center">
+    <div id="contenedorCards" class="flex-center" style="padding-bottom: 50px;">
         @foreach($users as $user)
             <div class="card ">
                 <div class="flex-center cardusuarios" style="flex-direction:column">

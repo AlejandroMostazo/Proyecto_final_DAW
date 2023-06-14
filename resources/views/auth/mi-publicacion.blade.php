@@ -6,7 +6,7 @@
     </x-slot> 
 
     <div class="flex-center">
-        <div id="cardPublicacion">
+        <div id="cardPublicacion" style="padding-bottom: 50px">
             <form method="POST" action="{{ route('publicacion.update', $publicacion->id) }}">
                 @csrf
                 @method('PUT')

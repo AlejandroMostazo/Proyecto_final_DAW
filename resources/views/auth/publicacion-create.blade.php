@@ -6,7 +6,7 @@
 
     </x-slot> 
         <div class="flex-center">
-            <div id="cardPublicacion">
+            <div id="cardPublicacion" style="padding-bottom: 50px;">
                 <form method="POST" action="{{ route('publicacion.store') }}">
                     @csrf
                     <input type="hidden" name="user_id" value="{{ auth()->id() }}">
