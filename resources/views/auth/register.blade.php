@@ -3,7 +3,7 @@
 <script defer src="{{ mix('js/canvas.js') }}"></script>
 <script defer src="{{ mix('js/pswdsecure.js') }}"></script>
 <x-guest-layout>
-    <div style="color: #fff;" id="contenedor-login">
+    <div style="color: #fff; padding-bottom: 50px" id="contenedor-login">
         
         <canvas id="canvas" style="float: left;"></canvas>
         

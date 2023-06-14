@@ -17,7 +17,6 @@
         </div>
 
         <div id="content-form" class="flex-center" style="flex-direction:column;">
-
             
             <video loop muted autoplay>
                 <source src="{{ asset('videos/login.mp4') }}" type="video/mp4" />

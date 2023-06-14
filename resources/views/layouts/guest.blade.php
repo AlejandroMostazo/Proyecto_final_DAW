@@ -20,6 +20,8 @@
         <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
     </head>
     <body style="overflow: hidden;">
+        <div style="height: 100vh;">
             {{ $slot }}
+        </div>
     </body>
 </html>
