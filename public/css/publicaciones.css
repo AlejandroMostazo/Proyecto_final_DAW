@@ -61,6 +61,14 @@
     display: none;
 }
 
+#fecha {
+    width: 180px;
+}
+
+#fecha::placeholder {
+    content: 'hola';
+}
+
 #contentFiltros {
     flex-wrap: wrap;
 }
@@ -192,7 +200,7 @@
     .jugadores {
         padding-right: 10px !important;
         font-size: 13px;
-        text
+        width: 50px;
     }
     .btnspublicacion, #activefilters {
         text-align: center;

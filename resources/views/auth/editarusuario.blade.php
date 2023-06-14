@@ -106,7 +106,7 @@
         <p style="margin-bottom: 15px; font-weight: bold">Añadir a deportes favoritos</p>
             @foreach ($deportes as $deporte)
                 @if(!Auth::user()->deportesFav->contains('id', $deporte->id))
-                    <span for="deporte_{{ $deporte->id }}">
+                    <span style="margin: 5px;" for="deporte_{{ $deporte->id }}">
                         <input type="checkbox" id="deporte_{{ $deporte->id }}" name="deportes[]" value="{{ $deporte->id }}">
                         {{ $deporte->nombre }}
                     </span>

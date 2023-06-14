@@ -14,7 +14,7 @@
                 <i class="fa-solid fa-users"></i>
                 <h1>{{ __('Crear Equipo') }}</h1>
                 
-            </x-nav-link>
+            </x-nav-link> 
         @endif
     @else
         <x-nav-link :href="route('auth.publicacion.create')" :active="request()->routeIs('auth.publicacion.create')">

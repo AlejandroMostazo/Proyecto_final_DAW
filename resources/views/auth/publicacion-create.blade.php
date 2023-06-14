@@ -64,7 +64,7 @@
                     </div>
             
                     <div style="margin-top: 35px;" class="divinput">
-                        <input id="fecha_hora" class="inputText" type="datetime-local"  name="fecha_hora" value="old('fecha_hora')" min="{{ date('Y-m-d\TH:i') }}" required >
+                        <input id="fecha_hora" class="inputText" type="datetime-local" name="fecha_hora" value="old('fecha_hora')" min="{{ date('Y-m-d\TH:i') }}" required >
                     </div>
                     <div class="divinput">
                         <button style="float: none; margin-left: 17px;" class="btnf"><i class="fa-solid fa-circle-plus"></i> Crear publicación</button>

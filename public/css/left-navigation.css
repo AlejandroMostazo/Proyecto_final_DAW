@@ -107,8 +107,12 @@ h1 {
         height: 66vh; 
         width: 50px;
     }
-    footer {
+    #footer {
         flex-direction: column;
         height: 23vh !important;
+    }
+    .btnspublicacion {
+        margin-right: 0 !important;
+
     }
 }
