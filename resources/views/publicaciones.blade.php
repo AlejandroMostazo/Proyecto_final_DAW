@@ -7,7 +7,7 @@
         <script defer src="{{ mix('js/verApuntados.js') }}"></script>
     </x-slot>
 
-    <div style="height: 100vh;">    
+    <div style="height: 80vh;">    
         @if (Auth::user()) 
             <div id="filtros" class="space-between">
                 <span id="activefilters" class="btnf">
@@ -95,7 +95,7 @@
                     <tr class="border-publicaciones">
                         <td class="tdpublicaciones">
                             <i style="color: {{ $publicacion->deporte->color }}" class="{{ $publicacion->deporte->icono }} iconosDeportes"></i>
-                            <div>
+                            <div class="content-text-publicacion">
                                 <p class="title-publicacion">{{ $publicacion->deporte->nombre }}</p>
                                 <a class="verapuntados" href="{{ route('apuntados', ['id' => $publicacion->id]) }}"></a>
                                 <p class="text-publicacion"><i class="fa-solid fa-location-dot"></i> {{ $publicacion->ubicacion->calle }}, {{ $publicacion->ubicacion->localidad }}</p>
@@ -105,7 +105,7 @@
                         <td class="contentnivel" style="text-align: center;" >          
                             <p style="font-weight: normal;" class="nivel_publicacion">{{ $publicacion->nivel }}</p>
                         </td>
-                        <td style="font-size: large; font-weight: 500;">
+                        <td class="jugadores">
                             {{ $publicacion->ac_apuntados }}
                             /
                             {{ $publicacion->num_max_apuntados }}

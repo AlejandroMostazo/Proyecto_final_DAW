@@ -10,7 +10,7 @@
                 <form method="POST" action="{{ route('publicacion.store') }}">
                     @csrf
                     <input type="hidden" name="user_id" value="{{ auth()->id() }}">
-                    <div class="space-around">
+                    <div id="content-selects" class="space-around">
                         <div style="margin-top: 35px;" class="divinput">
                             <label class="labelPublicacion"><i class="fa-solid fa-volleyball"></i> Deporte</label>
                             <select id="deporte_id" class="select" name="deporte_id" :value="old('deporte_id')" required>
@@ -31,7 +31,7 @@
                     </div>
             
             
-                    <div style="margin-bottom: 35px;" class="divinput space-around">
+                    <div id="content-niveles" class="divinput space-around">
                         <label class="labelPublicacion" for="nivel">Destreza</label>
                         <input id="nivel" type="range"  min="1" max="3" value="1" >
 

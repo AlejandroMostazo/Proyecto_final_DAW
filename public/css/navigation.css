@@ -43,6 +43,11 @@
     margin: -15px;
 }
 
+#contenedor-desplegable {
+    width: 100px !important; 
+    transform: translate(45px, 10px);
+}
+
 /* Media queries */
 @media (max-width: 1130px) {
     #burger {
@@ -94,5 +99,8 @@
     }
     .icon-user > p {
         display: none !important;
+    }
+    #contenedor-desplegable {
+        width: 87px !important; 
     }
 }

@@ -3,21 +3,6 @@ var __webpack_exports__ = {};
 /*!*********************************!*\
   !*** ./resources/js/leftnav.js ***!
   \*********************************/
-function mediaQuery(x) {
-  if (x.matches) {
-    // If media query matches
-    btnleftnav.click();
-  } else {
-    burger.click();
-  }
-}
-var x = window.matchMedia("(max-width: 610px)");
-function handleResize() {
-  mediaQuery(x);
-}
-
-// Agrega el evento de redimensionamiento para llamar a handleResize solo cuando se redimensiona la ventana
-window.addEventListener('resize', handleResize);
 btnleftnav.addEventListener('click', function () {
   localStorage.setItem('navhidden', 'true');
   leftnav.style.animation = 'ocultarnav 1s ease';
@@ -52,6 +37,23 @@ if (localStorage.getItem('navhidden') === 'true') {
   burger.style.visibility = '0';
   leftnav.style.width = '23vw';
   footer.style.width = '23vw';
+}
+if (!localStorage.getItem('navhidden')) {
+  var mediaQuery = function mediaQuery(x) {
+    if (x.matches) {
+      btnleftnav.click();
+    } else {
+      burger.click();
+    }
+  };
+  var handleResize = function handleResize() {
+    mediaQuery(x);
+  };
+  var x = window.matchMedia("(max-width: 610px)");
+  if (window.innerWidth < 610) {
+    handleResize();
+  }
+  window.addEventListener('resize', handleResize);
 }
 /******/ })()
 ;

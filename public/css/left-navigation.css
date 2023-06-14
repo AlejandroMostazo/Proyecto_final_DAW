@@ -100,7 +100,7 @@ h1 {
     .links {
         font-size: 2rem;
     }
-    h1 {
+    .links > h1 {
         display: none;
     }
     .left-nav {

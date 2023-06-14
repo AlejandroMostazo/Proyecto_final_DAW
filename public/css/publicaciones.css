@@ -72,7 +72,6 @@
 .iconosDeportes {
     font-size: 75px; 
     float:left;
-    color: antiquewhite;
     margin: 0 25px 0 10%;
     -webkit-text-stroke: 3px #1f1f1f;
 
@@ -90,7 +89,6 @@
 
 .iconoapuntarse {
     margin-right: 3.5vw;
-    
 }
 
 .selectFiltro {
@@ -147,4 +145,56 @@
     transform-origin: center top;
     transition: transform 0.3s ease;
     white-space: nowrap;
+}
+
+.jugadores {
+    font-size: large;
+    font-weight: 500;
+}
+
+@media (max-width: 750px) {
+    .fa-plus {
+        font-size: 40px !important;
+    }
+    .iconoapuntarse {
+        margin-right: auto;
+        margin-left: 10px;
+    }
+}
+
+@media (max-width: 720px) { 
+    .title-publicacion {
+        font-size: 20px;
+    }
+    .fa-plus {
+        font-size: 30px !important;
+        margin-right: 2vw;
+    }
+    .iconosDeportes { 
+        margin: 0 15px 0 5%;
+    }
+    .contentnivel {
+        transform: scale(0.8);
+    }
+    .text-publicacion {
+        font-size: 14px;
+        text-indent: 0;
+    }
+}
+
+@media (max-width: 560px) {
+    .contentnivel {
+        transform: scale(0.7);
+    }
+    .fa-plus {
+        font-size: 27px !important;
+    }
+    .jugadores {
+        padding-right: 10px !important;
+        font-size: 13px;
+        text
+    }
+    .btnspublicacion, #activefilters {
+        text-align: center;
+    }
 }

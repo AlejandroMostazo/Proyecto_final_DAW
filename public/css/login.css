@@ -16,6 +16,7 @@
 #content-form {
     height: 100vh; 
     width:35vw;
+    min-width: 480px;
     background-color: #151826; 
 }
 
@@ -54,6 +55,7 @@ video {
     font-family: 'Martel Sans', sans-serif;
     transition: all 0.3s ease;
     position: absolute;
+    z-index: 3;
 }
 
 .efecto::after {
@@ -142,7 +144,7 @@ i {
   box-shadow: 3px 3px 3px black;
 }
 
-#change {
+.change {
     font-family: 'Martel Sans', sans-serif;
     border-radius: 3px;
     border: solid 2px #D9D9D9;
@@ -151,20 +153,19 @@ i {
     width: fit-content;
     margin:  0 0 40px 0px;
     font-weight: 600;
-
 }
 
-#change > span, #change > a{
+.change > span, .change > a{
     padding: 10px;
     margin: 0;
 }
 
-#change > a {
+.change > a {
     background-color: #F2B705;
     color: #024040;
 }
 
-#change > a:hover {
+.change > a:hover {
     background-color: #024040;
     color: #F2B705;
 }
@@ -191,4 +192,43 @@ i {
     background-color: #151826;
     color: #D9D9D9;
    }
+   
+   #segundoLogo {
+    display: none;
+   }
+
+ @media (max-width: 820px) {
+    #primerLogo {
+        z-index: -2;
+        visibility: hidden;
+    }
+    #segundoLogo {
+        position: absolute;
+        display: block;
+        top: -270px;
+        left: -50px;
+        transform: scale(1.4);
+    }
+    #canvas {
+        display: none;
+    }
+    .text-logo {
+        color: #D9D9D9;
+    }
+    #content-form {
+        width: 100vw;
+        background-color:#fff; 
+        color: #F2B705; 
+        mix-blend-mode: screen;
+        font-weight: 600;
+    }
+    .register {
+        background-color:#151826 !important; 
+        color: #D9D9D9 !important; 
+        mix-blend-mode: normal !important;
+    }
+    video {
+        left: auto; 
+    }
+ }
 

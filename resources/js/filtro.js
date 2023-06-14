@@ -173,7 +173,7 @@ $(document).ready(function () {
                             '<td class="contentnivel" style="text-align: center;">' +
                                 '<p class="nivel_publicacion">' + publicacion.nivel + '</p>' +
                             '</td>' +
-                            '<td style="font-size: large; font-weight: 500;">' + 
+                            '<td class="jugadores" >' + 
                                 publicacion.ac_apuntados + " " +
                                 '/' +
                                " " + publicacion.num_max_apuntados + 

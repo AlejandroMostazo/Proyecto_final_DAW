@@ -12,8 +12,9 @@
         
         <canvas id="canvas" style="float: left;"></canvas>
         
-
-        <x-application-logo></x-application-logo>
+        <div id="primerLogo">
+            <x-application-logo></x-application-logo>
+        </div>
 
         <div id="content-form" class="flex-center" style="flex-direction:column;">
 
@@ -22,19 +23,21 @@
                 <source src="{{ asset('videos/login.mp4') }}" type="video/mp4" />
             </video>
             
-            
             <!-- Validation Errors -->
             <x-auth-validation-errors  :errors="$errors" />
             <x-auth-session-status  :status="session('status')" />
-            
-            <div id="change">
+                
+            <div class="change" style="transform: translateX(23px);" >
                 <span>Iniciar Sesión</span>
                 <a href="{{ route('register') }}" >Regristrarse</a>
             </div>    
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST" style="position: relative;" action="{{ route('login') }}">
                 @csrf
 
-
+                <div id="segundoLogo">
+                    <x-application-logo></x-application-logo>
+                </div>
+                
                 <!-- Email Address -->
                 <div class="content-input">
                     <x-label for="email" :value="__('Email')" />

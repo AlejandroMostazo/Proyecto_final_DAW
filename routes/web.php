@@ -25,7 +25,6 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/deportes/edit/{id}', [DeporteController::class, 'edit'])->name('deportes.edit');
     Route::put('/deportes/update/{id}', [DeporteController::class, 'update'])->name('deportes.update');
     Route::delete('/deportes/delete/{id}', [DeporteController::class, 'delete'])->name('deportes.delete');
-    Route::get('/deportes/mostrar', [DeporteController::class, 'mostrar'])->name('deportes.mostrar');
 });
 
 //ruta para añadir los deportes que mas te gustan
@@ -41,9 +40,8 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::post('/ubicaciones', [UbicacionController::class, 'store'])->name('ubicaciones.store');
     Route::get('/ubicaciones/{id}/edit', [UbicacionController::class, 'edit'])->name('ubicaciones.edit');
     Route::put('/ubicaciones/{id}', [UbicacionController::class, 'update'])->name('ubicaciones.update');
-
+    
     Route::delete('/ubicaciones/{id}', [UbicacionController::class, 'delete'])->name('ubicaciones.delete');
-    Route::get('/ubicaciones', [UbicacionController::class,"mostrarUbicaciones"])->name('ubicaciones');
 });
 
 
@@ -56,6 +54,8 @@ Route::get('/perfil', function () {
 })->middleware(['auth'])->name('perfil');
 
 //(lo puede hacer todo el mundo)
+Route::get('/deportes/mostrar', [DeporteController::class, 'mostrar'])->name('deportes.mostrar');
+Route::get('/ubicaciones', [UbicacionController::class,"mostrarUbicaciones"])->name('ubicaciones');
 Route::get('/publicacion/buscar', [PublicacionesController::class, 'buscar'])->name('publicacion.buscar');
 Route::get('/publicaciones', [PublicacionesController::class,"mostrarPublicaciones"])->name('publicaciones');
 

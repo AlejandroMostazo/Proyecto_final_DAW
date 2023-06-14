@@ -11,7 +11,7 @@
                 @csrf
                 @method('PUT')
 
-                <div class="space-around">
+                <div id="content-selects" class="space-around">
                     <div style="margin-top: 35px;" class="divinput">
                         <label class="labelPublicacion"><i class="fa-solid fa-volleyball"></i> Deporte</label>
                         <select id="deporte_id" class="select" name="deporte_id" required>
@@ -31,7 +31,7 @@
                     </div>
                 </div>
 
-                <div style="margin-bottom: 35px;" class="divinput space-around">
+                <div id="content-niveles" style="margin-bottom: 35px;" class="divinput space-around">
                     <label class="labelPublicacion" for="nivel">Destreza</label>
                     <input id="nivel" type="range" min="1" max="3" value="1" >
 
@@ -77,5 +77,5 @@
                 </form> 
                 </div>
         </div>    
-    </div>  
+    </div>
 </x-app-layout>

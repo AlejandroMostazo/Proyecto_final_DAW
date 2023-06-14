@@ -7,9 +7,11 @@
         
         <canvas id="canvas" style="float: left;"></canvas>
         
-        <x-application-logo></x-application-logo>
+        <div id="primerLogo">
+            <x-application-logo></x-application-logo>
+        </div>
 
-        <div id="content-form" class="flex-center" style="flex-direction:column;">
+        <div id="content-form" class="flex-center register" style="flex-direction:column;">
 
             
             <video loop muted autoplay>
@@ -21,7 +23,7 @@
             <x-auth-validation-errors  :errors="$errors" />
             <x-auth-session-status  :status="session('status')" />
             
-            <div id="change" style="margin: 30px 0px;">
+            <div class="change" style="margin: 30px 0px;">
                 <a href="{{ route('login') }}">Iniciar Sesión</a>
                 <span>Regristrarse</span>
             </div>    
@@ -85,7 +87,7 @@
                     <input type="file" id="fotoInput" name="foto" style="display: none;">
                 </div>
 
-                <div style="width: 100%; text-align:center">
+                <div style="width: 100%; text-align:center; transform:translate(-12px)">
                     <x-button >
                         {{ __('Registrarse') }}
                     </x-button>
