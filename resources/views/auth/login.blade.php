@@ -7,8 +7,10 @@
     </script>
 
     <div style="color: #fff;" id="contenedor-login">
-
-        <a id="entrarComoInvitado" class="efecto" href="{{ route('publicaciones') }}" >Entrar como invitado</a>
+    
+        
+        <a  class="efecto entrarComoInvitado" href="{{ route('publicaciones') }}" >{{ __('Entrar como invitado') }}</a>
+        <a style="top: 10px" class="entrarComoInvitado" href="{{ route('lang.change') }}"><i style="font-size: xx-large;" class="fa-solid fa-language"></i></a>
         
         <canvas id="canvas" style="float: left;"></canvas>
         
@@ -22,13 +24,14 @@
                 <source src="{{ asset('videos/login.mp4') }}" type="video/mp4" />
             </video>
             
+
             <!-- Validation Errors -->
             <x-auth-validation-errors  :errors="$errors" />
             <x-auth-session-status  :status="session('status')" />
                 
             <div class="change" style="transform: translateX(23px);" >
-                <span>Iniciar Sesión</span>
-                <a href="{{ route('register') }}" >Regristrarse</a>
+                <span>{{ __('Iniciar Sesión') }}</span>
+                <a href="{{ route('register') }}" >{{ __('Regristrarse') }}</a>
             </div>    
             <form method="POST" style="position: relative;" action="{{ route('login') }}">
                 @csrf
@@ -48,10 +51,10 @@
 
                 <!-- Password -->
                 <div class="content-input">
-                    <x-label for="password" :value="__('Password')" />
+                    <x-label for="password" :value="__('Contraseña')" />
                     <div class="flex-center">
                         <i class="fa-solid fa-lock"></i>
-                        <x-input id="password" placeholder="password" type="password" name="password" required autocomplete="current-password" />
+                        <x-input id="password" placeholder="{{__('Contraseña')}}" type="password" name="password" required autocomplete="current-password" />
                     </div>
                 </div>
 

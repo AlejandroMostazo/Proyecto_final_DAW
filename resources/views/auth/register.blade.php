@@ -11,12 +11,15 @@
             <x-application-logo></x-application-logo>
         </div>
 
+        <a style="top: 10px" class="entrarComoInvitado" href="{{ route('lang.change') }}"><i style="font-size: xx-large;" class="fa-solid fa-language"></i></a>
+
+
         <div id="content-form" class="flex-center register" >
 
             <div style="height: 100%;">
                 <div id="changeRegistro" class="change">
-                    <a href="{{ route('login') }}">Iniciar Sesión</a>
-                    <span>Regristrarse</span>
+                    <a href="{{ route('login') }}">{{ __('Iniciar Sesión') }}</a>
+                    <span>{{ __('Regristrarse') }}</span>
                 </div>    
                 
                 <video id="videoRegistro" loop muted autoplay>
@@ -33,7 +36,7 @@
                     
                     <!-- Name -->
                     <div>
-                        <x-label class="margin-auto" class="margin-auto" for="name" :value="__('Name *')" />
+                        <x-label class="margin-auto" class="margin-auto" for="name" :value="__('Nombre') " /> *
                         <div class="flex-center">
                             <x-input id="name" type="text" placeholder="user-name *" name="name" :value="old('name')" required autofocus />
                         </div>
@@ -51,24 +54,24 @@
                     <!-- Password -->
                     <div class="content-input">
                         <div style="color: #F23005" id="divpwd"></div>
-                        <x-label class="margin-auto" for="password" :value="__('Password *')" />
-                        <a href="#generarpwd" id="generarpwd"><i class="fa-solid fa-key"></i>Generar</a>
+                        <x-label class="margin-auto" for="password" :value="__('Contraseña')" /> *
+                        <a id="generarpwd"><i class="fa-solid fa-key"></i>{{ __('Generar') }}</a>
                         <div class="flex-center">
-                            <x-input id="password" placeholder="password*" type="password" name="password" required />
+                            <x-input id="password" placeholder="{{ __('Contraseña') }} *" type="password" name="password" required />
                         </div>
                     </div>
     
                     <!-- Confirm Password -->
                     <div class="content-input">
-                        <x-label class="margin-auto" for="password_confirmation" :value="__('Confirm Password *')" />
+                        <x-label class="margin-auto" for="password_confirmation" :value="__('Confirmar Contraseña')" /> *
                         <div class="flex-center">
-                            <x-input id="password_confirmation" placeholder="confirm password*" type="password" name="password_confirmation" required />
+                            <x-input id="password_confirmation" placeholder="{{ __('Confirmar Contraseña') }} *" type="password" name="password_confirmation" required />
                         </div>
                     </div>
                     
                     <!-- Fecha de nacimiento -->
                     <div class="content-input">
-                        <x-label class="margin-auto" for="nacimiento" :value="__('Fecha de Nacimiento *')" />
+                        <x-label class="margin-auto" for="nacimiento" :value="__('Fecha de Nacimiento')" /> *
                         <div class="flex-center">
                             <x-input id="nacimiento" type="date" max="{{ \Carbon\Carbon::now()->subYears(3)->format('Y-m-d') }}" required name="nacimiento" :value="old('nacimiento')" />
                         </div>
@@ -76,21 +79,21 @@
     
                     <!-- Genero -->
                     <div class="content-input">
-                        <x-label class="margin-auto" for="genero" :value="__('Genero')" />
+                        <x-label class="margin-auto" for="genero" :value="__('Género')" />
                         <div class="flex-center">
                             <x-select id="genero" name="genero" :value="old('genero')" />
                         </div>
                     </div>
                     
                     <div class="content-input" style="padding: 10px;">
-                        <x-label class="margin-auto" for="foto">Foto de perfil:</x-label>
+                        <x-label class="margin-auto" for="foto">{{ __('Foto de Perfil') }}</x-label>
                         <div id="dropZone" class="drop-zone"><i class="fa-solid fa-image"></i></div>
                         <input type="file" id="fotoInput" name="foto" style="display: none;">
                     </div>
     
                     <div id="boton-registro">
                         <x-button >
-                            {{ __('Registrarse') }}
+                            {{ __('Regristrarse') }}
                         </x-button>
                     </div>
                 </form>

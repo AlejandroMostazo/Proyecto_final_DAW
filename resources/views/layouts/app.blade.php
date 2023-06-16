@@ -48,6 +48,7 @@
                 <!-- Page Content -->
                 <main class="overflow-auto">
                     {{ $slot }}
+                    <a class="flex-center lang" href="{{ route('lang.change') }}"><i style="font-size: xx-large;" class="fa-solid fa-language"></i></a>
                 </main>
             </div>
         </div>

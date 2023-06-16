@@ -13,7 +13,7 @@
 
                 <div id="content-selects" class="space-around">
                     <div style="margin-top: 35px;" class="divinput">
-                        <label class="labelPublicacion"><i class="fa-solid fa-volleyball"></i> Deporte</label>
+                        <label class="labelPublicacion"><i class="fa-solid fa-volleyball"></i> {{__('Deportes')}}</label>
                         <select id="deporte_id" class="select" name="deporte_id" required>
                             @foreach($deportes as $deporte)
                                 <option value="{{ $deporte->id }}" @if($publicacion->deporte_id == $deporte->id) selected @endif>{{ $deporte->nombre }}</option>
@@ -21,7 +21,7 @@
                         </select>
                     </div>
                     <div class="divinput">
-                        <label style="margin-top: 35px;" class="labelPublicacion"><i class="fa-solid fa-location-dot"></i> Ubicacion</label>
+                        <label style="margin-top: 35px;" class="labelPublicacion"><i class="fa-solid fa-location-dot"></i> {{__('Ubicaciones')}}</label>
                         
                         <select id="ubicacion_id" class="select" name="ubicacion_id" required>
                             @foreach($ubicaciones as $ubicacion)
@@ -32,7 +32,7 @@
                 </div>
 
                 <div id="content-niveles" style="margin-bottom: 35px;" class="divinput space-around">
-                    <label class="labelPublicacion" for="nivel">Destreza</label>
+                    <label class="labelPublicacion" for="nivel">{{__('Destreza')}}</label>
                     <input id="nivel" type="range" min="1" max="3" value="1" >
 
                     <select hidden name="nivel" id="valorNivel">
@@ -49,12 +49,12 @@
                     <div id="contentplayers" class="space-around">
                         <div style="text-align:center">
                             <i style="font-size:xxx-large;" class="bi bi-person-fill"></i>
-                            <h1 style="font-weight: 900; font-size:20px; margin-top: -20px">Jugadores</h1>
+                            <h1 style="font-weight: 900; font-size:20px; margin-top: -20px">{{__('Jugadores')}}</h1>
                         </div>
                         <div>
                             <div style="font-weight: 900;" class="space-around">
-                                <label style="color:#151826 !important">Participando</label>
-                                <label style="color:#151826 !important">Total</label>
+                                <label style="color:#151826 !important">{{__('Participando')}}</label>
+                                <label style="color:#151826 !important">{{__('Total')}}</label>
                             </div>
                             <input id="ac_apuntados" class="players" type="number" name="ac_apuntados" value="{{ $publicacion->ac_apuntados }}" min="1" required>
                             <span style="color: #027353; font-weight: 900;">/</span>
@@ -68,12 +68,12 @@
                 </div>
 
                 <div class="divinput flex-center">
-                    <button style="float: none; margin-left: 17px;" class="btnf"><i class="fa-solid fa-retweet"></i> Actualizar publicación</button>    
+                    <button style="float: none; margin-left: 17px;" class="btnf"><i class="fa-solid fa-retweet"></i> {{__('Actualizar publicación')}}</button>    
                 </form>
                 <form action="{{ route('publicacion.delete')}}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button style="float: none; margin: 5px 0 0 17px ; " class="btnf btnspublicacion" type="submit"><i class="bi bi-trash3-fill"></i> Eliminar Publicacción</button>
+                    <button style="float: none; margin: 5px 0 0 17px ; " class="btnf btnspublicacion" type="submit"><i class="bi bi-trash3-fill"></i> {{__('Eliminar Publicacción')}}</button>
                 </form> 
                 </div>
         </div>    

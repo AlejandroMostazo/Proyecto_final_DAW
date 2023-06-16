@@ -7,18 +7,18 @@
                 @csrf
                 @method('PUT')
                 <div style="padding: 10px;">
-                    <label for="nombre" class="block" >Nombre:</label>
+                    <label for="nombre" class="block" >{{__('Nombre')}}:</label>
                     <input type="text" name="nombre" id="nombre" value="{{ $deporte->nombre }}" class="inputText">
                 </div>
                 <div style="padding: 10px;">
-                    <label for="calle" class="block">Clase del Icono:</label>
+                    <label for="calle" class="block">{{__('Clase del Icono')}}:</label>
                     <input type="text" name="icono" id="icono" value="{{ $deporte->icono }}" class="inputText">
                 </div>
                 <div style="padding: 10px;">
-                    <label for="localidad" class="block">Localidad:</label>
+                    <label for="color" class="block">{{__('Color')}}:</label>
                     <input  type="color" name="color" id="color" value="{{ $deporte->color }}" class="inputText">
                 </div>
-                <button type="submit" style="float: none;" class="btnf">Guardar</button>
+                <button type="submit" style="float: none;" class="btnf">{{__('Guardar')}}</button>
             </form>
         </div>
     </div>

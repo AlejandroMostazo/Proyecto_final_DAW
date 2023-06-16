@@ -14,15 +14,15 @@
         <h1 style="font-weight: bold; font-size:xx-large">{{ Auth::user()->name }}</h1>
         <div id="tablaUsuario">
             <div class="datosuser space-around">
-                <span>Genero</span>
+                <span>{{__('Género')}}</span>
                 <span>{{ Auth::user()->genero }}</span>
             </div>
             <div class="datosuser space-around">
-                <span>Edad</span>
+                <span>{{__('Edad')}}</span>
                 <span>{{ \Carbon\Carbon::parse(Auth::user()->nacimiento)->age }}</span>
             </div>
             <div class="titulo-fav space-around">
-                <span>Deportes favoritos</span>
+                <span>{{__('Deportes favoritos')}}</span>
             </div>
                 @forelse (Auth::user()->deportesFav as $deporte)
                     <div class="deporte-fav">
@@ -31,7 +31,7 @@
                     </div>
                 @empty
                     <div class="deporte-fav">
-                        <span class="no-grid">No se han añadido deportes favoritos</span>
+                        <span class="no-grid">{{__('No se han añadido deportes favoritos')}}</span>
                     </div>
                 @endforelse
         </div>

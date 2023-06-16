@@ -13,11 +13,11 @@
                 <p>{{ $ubicacion->localidad }}</p>
                 @if (Auth::user() && Auth::user()->admin)
                     <div class="space-around">
-                        <a href="{{ route('ubicaciones.edit', $ubicacion->id) }}" class="btn" style="font-size: 20px;" ><i class="fa-solid fa-pen"></i> Editar</a>
+                        <a href="{{ route('ubicaciones.edit', $ubicacion->id) }}" class="btn" style="font-size: 20px;" ><i class="fa-solid fa-pen"></i> {{__('Editar')}}</a>
                         <form action="{{ route('ubicaciones.delete', $ubicacion->id) }}" method="POST" class="inline-block">
                             @csrf
                             @method('DELETE')
-                            <button class="btn" style="font-size: 20px;" type="submit"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
+                            <button class="btn" style="font-size: 20px;" type="submit"><i class="fa-solid fa-trash-can"></i> {{__('Eliminar')}}</button>
                         </form>
                     </div>
                 @else 

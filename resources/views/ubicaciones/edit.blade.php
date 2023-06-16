@@ -9,27 +9,27 @@
                 @csrf
                 @method('PUT')
                 <div style="padding: 10px;">
-                    <label for="nombre" class="block" >Nombre:</label>
+                    <label for="nombre" class="block" >{{__('Nombre')}}:</label>
                     <input type="text" name="nombre" id="nombre" value="{{ $ubicacion->nombre }}" class="inputText">
                 </div>
                 <div style="padding: 10px;">
-                    <label for="calle" class="block">Calle:</label>
+                    <label for="calle" class="block">{{__('Calle')}}:</label>
                     <input type="text" name="calle" id="calle" value="{{ $ubicacion->calle }}" class="inputText">
                 </div>
                 <div style="padding: 10px;">
-                    <label for="localidad" class="block">Localidad:</label>
+                    <label for="localidad" class="block">{{__('Localidad')}}:</label>
                     <input type="text" name="localidad" id="localidad" value="{{ $ubicacion->localidad }}" class="inputText">
                 </div>
                 <div style="padding: 10px;">
-                    <label for="url" class="block">URL Ubicación:</label>
+                    <label for="url" class="block">URL {{__('Ubicación')}}:</label>
                     <input type="text" name="url" id="url" class="inputText" value="{{ $ubicacion->url }}">
                 </div>
                 <div style="padding: 10px;">
-                    <label for="foto" class="block">Imágen:</label>
+                    <label for="foto" class="block">{{__('Imágen')}}:</label>
                     <div id="dropZone" class="drop-zone"><i class="fa-solid fa-image"></i></div>
                     <input type="file" id="fotoInput" name="foto" style="display: none;">
                 </div>
-                <button type="submit" style="float: none;" class="btnf">Guardar</button>
+                <button type="submit" style="float: none;" class="btnf">{{__('Guardar')}}</button>
             </form>
         </div>
     </div>

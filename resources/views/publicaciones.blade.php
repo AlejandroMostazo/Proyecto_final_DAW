@@ -12,15 +12,15 @@
             <div id="filtros" class="space-between">
                 <span id="activefilters" class="btnf">
                     <i class="fa-solid fa-filter"></i>
-                    <span>Filtros</span>
+                    <span>{{ __('Filtros')}}</span>
                 </span>
                 
                 <div class="flex-center">
                     @if (Auth::user() && $user->publicacion_id != null && \App\Models\Publicacion::where('user_id', Auth::user()->id)->count() == 0)
-                    <a  class="btn btnspublicacion" href="{{ route('publicacion.desapuntarse') }}"><i class="fa-solid fa-user-minus"></i> Desapuntarse</a>
+                    <a  class="btn btnspublicacion" href="{{ route('publicacion.desapuntarse') }}"><i class="fa-solid fa-user-minus"></i> {{__('Desapuntarse')}}</a>
                     @endif
                     @if (Auth::user() && \App\Models\Publicacion::where('user_id', '=', $user->id)->count() > 0)
-                        <a href="{{ route('publicacion.edit', ['id' => \App\Models\Publicacion::where('user_id', $user->id)->first()]) }}" class="btn btnspublicacion" type="submit"><i class="bi bi-tag-fill"></i> Mi Publicación</a>
+                        <a href="{{ route('publicacion.edit', ['id' => \App\Models\Publicacion::where('user_id', $user->id)->first()]) }}" class="btn btnspublicacion" type="submit"><i class="bi bi-tag-fill"></i> {{__('Mi Publicación')}}</a>
                     @endif
                 </div>
             </div>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="flex-center">
                     <div id="selctDeportes" class="selectFiltro" >
-                        <option >Deportes </option>
+                        <option >{{__('Deportes')}} </option>
                         <i class="fa-solid fa-angle-down"></i>
                         <div id="contentDeportes">
                             @foreach($deportes as $deporte)
@@ -50,7 +50,7 @@
                 </div>
                 <div class="flex-center" >
                     <div id="selctUbicaciones" class="selectFiltro" >
-                        <option >Ubicaciones </option>
+                        <option >{{__('Ubicaciones')}} </option>
                         <i class="fa-solid fa-angle-down"></i>
                         <div id="contentUbicaciones">
                             @foreach($ubicaciones as $ubicacion)
@@ -66,25 +66,25 @@
                 
                 <div class="flex-center">
                     <div id="selctDestreza" class="selectFiltro" >
-                        <option>Destreza </option>
+                        <option>{{__('Destreza')}} </option>
                         <i class="fa-solid fa-angle-down"></i>
                         <div id="contentDestrezas">
                             <div>
                                 <input class="hidden" type="checkbox" name="nivel[]" value="Principiante" id="Principiante">
-                                <label class="labelcheck" for="Principiante">Principiante</label>
+                                <label class="labelcheck" for="Principiante">{{__('Principiante')}}</label>
                             </div>
                             <div>
                                 <input class="hidden" type="checkbox" name="nivel[]" value="Intermedio" id="Intermedio">
-                                <label class="labelcheck" for="Intermedio">Intermedio</label>
+                                <label class="labelcheck" for="Intermedio">{{__('Intermedio')}}</label>
                             </div>
                             <div>
                                 <input class="hidden" type="checkbox" name="nivel[]" value="Profesional" id="Profesional">
-                                <label class="labelcheck" for="Profesional">Profesional</label>
+                                <label class="labelcheck" for="Profesional">{{__('Profesional')}}</label>
                             </div>      
                         </div>
                     </div>
                 </div>
-                <button class="btn" style="transform: scale(0.8);" type="reset"><i class="fa-solid fa-broom"></i> Limpiar</button>
+                <button class="btn" style="transform: scale(0.8);" type="reset"><i class="fa-solid fa-broom"></i> {{__('Limpiar')}}</button>
             </div>
         </form>
 

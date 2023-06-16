@@ -11,15 +11,17 @@
     <div>
         <form method="GET" action="{{ route('publicacion.buscar') }}">
             <div class="relative">
-                <input class="search" type="text" id="buscador" name="buscador" placeholder="Encontrar partido ...">
+                <input class="search" type="text" id="buscador" name="buscador" placeholder="{{__('Encontrar partido ...')}}">
                 <button class="btn-lupa icons" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
-                
         </form>
     </div>
 
+        
+
     <!-- Icon user and dropdown -->
     <div style="text-align: center;">
+
         <x-dropdown>
             <x-slot name="trigger">
                 <button class="icon-user">

@@ -8,18 +8,18 @@
             <form method="POST" class="flex-center" style="flex-direction: column;" action="{{ route('deportes.store') }}">
                 @csrf
                 <div style="padding: 10px;">
-                    <label for="nombre" class="block" >Nombre:</label>
+                    <label for="nombre" class="block" >{{__('Nombre')}}:</label>
                     <input type="text" name="nombre" id="nombre" class="inputText" required placeholder="Nombre*">
                 </div>
                 <div style="padding: 10px;">
-                    <label for="icono" class="block">Icono:</label>
+                    <label for="icono" class="block">{{__('Icono')}}:</label>
                     <input type="text" name="icono" class="inputText" required placeholder="Calse FW o B*">
                 </div>
                 <div style="padding: 10px;">
                     <label for="color" class="block">Color:</label>
                     <input type="color" name="color" id="color" class="inputText">
                 </div>
-                <button type="submit" style="float: none;" class="btnf">Crear</button>
+                <button type="submit" style="float: none;" class="btnf">{{__('Crear')}}</button>
             </form>
         </div>
     </div>

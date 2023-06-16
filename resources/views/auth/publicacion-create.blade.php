@@ -12,7 +12,7 @@
                     <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                     <div id="content-selects" class="space-around">
                         <div style="margin-top: 35px;" class="divinput">
-                            <label class="labelPublicacion"><i class="fa-solid fa-volleyball"></i> Deporte</label>
+                            <label class="labelPublicacion"><i class="fa-solid fa-volleyball"></i> {{__('Deportes')}}</label>
                             <select id="deporte_id" class="select" name="deporte_id" :value="old('deporte_id')" required>
                                 @foreach($deportes as $deporte)
                                     <option value="{{ $deporte->id }}">{{ $deporte->nombre }}</option>
@@ -20,7 +20,7 @@
                             </select>
                         </div>
                         <div class="divinput">
-                            <label style="margin-top: 35px;" class="labelPublicacion"><i class="fa-solid fa-location-dot"></i> Ubicacion</label>
+                            <label style="margin-top: 35px;" class="labelPublicacion"><i class="fa-solid fa-location-dot"></i> {{__('Ubicaciones')}}</label>
                             
                             <select id="ubicacion_id" class="select" name="ubicacion_id" :value="old('ubicacion_id')" required>
                                 @foreach($ubicaciones as $ubicacion)
@@ -32,7 +32,7 @@
             
             
                     <div id="content-niveles" class="divinput space-around">
-                        <label class="labelPublicacion" for="nivel">Destreza</label>
+                        <label class="labelPublicacion" for="nivel">{{__('Destreza')}}</label>
                         <input id="nivel" type="range"  min="1" max="3" value="1" >
 
                         <select hidden name="nivel" id="valorNivel">
@@ -49,12 +49,12 @@
                         <div id="contentplayers" class="space-around">
                             <div style="text-align:center">
                                 <i style="font-size:xxx-large;" class="bi bi-person-fill"></i>
-                                <h1 style="font-weight: 900; font-size:20px; margin-top: -20px">Jugadores</h1>
+                                <h1 style="font-weight: 900; font-size:20px; margin-top: -20px">{{__('Jugadores')}}</h1>
                             </div>
                             <div>
                                 <div style="font-weight: 900;" class="space-around">
-                                    <label style=" color:#151826 !important" >Participando</label>
-                                    <label style=" color:#151826 !important">Total</label>
+                                    <label style=" color:#151826 !important" >{{__('Participando')}}</label>
+                                    <label style=" color:#151826 !important">{{__('Total')}}</label>
                                 </div>
                                 <input id="ac_apuntados" class="players"  type="number" name="ac_apuntados" value="1" min="1" required>
                                 <span style="color: #027353; font-weight: 900;">/</span>
@@ -67,7 +67,7 @@
                         <input id="fecha_hora" class="inputText" type="datetime-local" name="fecha_hora" value="old('fecha_hora')" min="{{ date('Y-m-d\TH:i') }}" required >
                     </div>
                     <div class="divinput">
-                        <button style="float: none; margin-left: 17px;" class="btnf"><i class="fa-solid fa-circle-plus"></i> Crear publicación</button>
+                        <button style="float: none; margin-left: 17px;" class="btnf"><i class="fa-solid fa-circle-plus"></i> {{__('Crear publicación')}}</button>
                     </div>
                 </form>
             </div>    

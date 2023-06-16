@@ -7,16 +7,16 @@
         @foreach($deportes as $deporte)
             <div class="card">
                 <div class="contenticon">
-                    <p class="titles">{{ $deporte->nombre }}</p>
+                    <p class="titles"> {{ $deporte->nombre }}</p>
                     <i style="color: {{ $deporte->color }} " class="{{$deporte->icono}}"></i> 
                 </div>
                 @if (Auth::user() && Auth::user()->admin)
                     <div class="space-around">
-                        <a href="{{ route('deportes.edit', $deporte->id) }}" class="btn" style="font-size: 20px;" ><i class="fa-solid fa-pen"></i> Editar</a>
+                        <a href="{{ route('deportes.edit', $deporte->id) }}" class="btn" style="font-size: 20px;" ><i class="fa-solid fa-pen"></i> {{ __('Editar') }} </a>
                         <form action="{{ route('deportes.delete', $deporte->id) }}" method="POST" class="inline-block">
                             @csrf
                             @method('DELETE')
-                            <button class="btn" style="font-size: 20px;" type="submit"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
+                            <button class="btn" style="font-size: 20px;" type="submit"><i class="fa-solid fa-trash-can"></i> {{ __('Eliminar') }}</button>
                         </form>
                     </div>
                 @endif

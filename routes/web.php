@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Deporte\DeporteController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\UbicacionController;
-
+use App\Http\Controllers\LanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +58,8 @@ Route::get('/deportes/mostrar', [DeporteController::class, 'mostrar'])->name('de
 Route::get('/ubicaciones', [UbicacionController::class,"mostrarUbicaciones"])->name('ubicaciones');
 Route::get('/publicacion/buscar', [PublicacionesController::class, 'buscar'])->name('publicacion.buscar');
 Route::get('/publicaciones', [PublicacionesController::class,"mostrarPublicaciones"])->name('publicaciones');
+
+Route::get('/lang', 'App\Http\Controllers\LanguageController@change')->name('lang.change');
 
 
 Route::get('/noticias', function () {

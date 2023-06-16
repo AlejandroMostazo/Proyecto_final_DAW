@@ -1,0 +1,65 @@
+{
+
+    "Iniciar Sesión": "Log In",
+    "Editar": "Edit",
+    "Eliminar": "Delete",
+    "Entrar como invitado": "Log in as a guest",
+    "Regristrarse": "Register",
+    "Contraseña": "Password",
+    "Mantener sesión iniciada": "Keep logged in",
+    "Nombre": "Name",
+    "Generar": "Generate",
+    "Confirmar Contraseña": "Confirm Password",
+    "Fecha de Nacimiento": "Date of Birth",
+    "Género": "Gender",
+    "Foto de Perfil": "Profile Photo",
+    "Mi Publicación": "My Publication",
+
+    "Filtros": "Filters",
+    "Desapuntarse": "Unsubscribe",
+    "Deportes": "Sports",
+    "Ubicaciones": "Locations",
+    "Destreza": "Skill",
+    "Limpiar": "Clear",
+    "Principiante": "Starter",
+    "Intermedio": "Intermediate",
+    "Profesional": "Professional",
+
+    "Encontrar partido ...": "Find match ...",
+    "Perfil": "Profile",
+    "Cerrar sesión": "Log out",
+    "Publicaciones": "Publications",
+    "Crear Equipo": "Create Team",
+    "Noticias": "News",
+
+    "Jugadores": "Players",
+    "Participando": "Participating",
+    "Total": "Full",
+    "Crear publicación": "Create publication",
+
+    "Calle": "Street",
+    "Localidad": "Town",
+    "Ubicación": "Site",
+    "Imágen": "Photo",
+    "Guardar": "Save",
+    "Crear": "Create",
+
+    "Clase del Icono": "Icon Class",
+    "Icono": "Icon",
+
+    "Edad": "Age",
+    "Deportes favoritos": "Favorite sports",
+    "No se han añadido deportes favoritos": "No favourite sports have been added",
+    "Correo electrónico": "E-mail address",
+    "Nuena Contraseña": "New Password",
+    "Eliminar deportes favoritos": "Delete Favorite sports",
+    "Añade Deportes a Favoritos": "Add Sports to Favourites",
+    "Añadir a deportes favoritos": "Add to favourite sports",
+    "Añadir": "Add",
+
+    "Sin deporte Favoritos": "No sport Favourites",
+    "Favoritos": "Favorites",
+
+    "Actualizar publicación": "Update Publication",
+    "Eliminar Publicacción": "Delete Publication"
+}

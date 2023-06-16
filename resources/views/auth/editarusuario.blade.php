@@ -34,7 +34,7 @@
             </div>
             <div id="tablaUsuario">
                 <div class="datosuser space-around">
-                    <span>Genero</span>
+                    <span>{{__('Género')}}</span>
                     <select id="genero" class="inputText" name="genero">
                         <option></option>
                         <option value="Male" {{ auth()->user()->genero == 'Male' ? 'selected' : '' }}>Male</option>
@@ -42,50 +42,50 @@
                     </select>
                 </div>
                 <div class="datosuser space-around">
-                    <span>Edad</span>
+                    <span>{{__('Edad')}}</span>
                     <input class="inputText" type="date" name="nacimiento" id="nacimiento" max="{{ \Carbon\Carbon::now()->subYears(3)->format('Y-m-d') }}" value="{{ auth()->user()->nacimiento }}">
                 </div>
                 <div class="titulo-fav space-around">
-                    <span>Deportes favoritos</span>
+                    <span>{{__('Deportes favoritos')}}</span>
                 </div>
                 <div class="deporte-fav">
                     @forelse (Auth::user()->deportesFav as $deporte)
                         <span>{{ $deporte->nombre }}</span>
                         <i style="color:{{ $deporte->color }};" class="{{ $deporte->icono }}"></i>
                     @empty
-                        <span class="no-grid">No se han añadido deportes favoritos</span>
+                        <span class="no-grid">{{__('No se han añadido deportes favoritos')}}</span>
                     @endforelse
                 </div>
             </div>
             <div id="otroscampos">
                 <div class="divinput">
-                    <label for="email">Correo electrónico:</label>
+                    <label for="email">{{__('Correo electrónico')}}:</label>
                     <input class="inputText" type="email" name="email" id="email" value="{{ auth()->user()->email }}">
                     @error('email')
                         <span class="text-red-500 text-xs">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="divinput">
-                    <label for="password">Contraseña:</label>
-                    <input type="password" name="password" id="password" placeholder="Nuena Contraseña" class="inputText" value="{{ old('password') }}">
+                    <label for="password">{{__('Contraseña')}}:</label>
+                    <input type="password" name="password" id="password" placeholder="{{__('Nuena Contraseña')}}" class="inputText" value="{{ old('password') }}">
                     @error('password')
                         <span class="text-red-500 text-xs">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="divinput">
-                    <label for="password_confirmation">Confirmar contraseña:</label>
-                    <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirmar Contraseña" class="inputText" value="{{ old('password') }}">
+                    <label for="password_confirmation">{{__('Confirmar Contraseña')}}:</label>
+                    <input type="password" name="password_confirmation" id="password_confirmation" placeholder="{{__('Confirmar Contraseña')}}" class="inputText" value="{{ old('password') }}">
                     @error('password_confirmation')
                          <span class="text-red-500 text-xs">{{ $message }}</span>
                     @enderror
                 </div>
             </div>
             <div id="divbtnactualizar">
-                <button type="submit" class="btnf"> Guardar</button>
+                <button type="submit" class="btnf"> {{__('Guardar')}}</button>
             </div>
         </form>
         <ul id="deportes-favoritos">
-            <p style="margin-bottom: 15px; font-weight: bold">Eliminar deportes favoritos</p>
+            <p style="margin-bottom: 15px; font-weight: bold">{{__('Eliminar deportes favoritos')}}</p>
             @forelse (Auth::user()->deportesFav as $deporte)
             <form action="{{ route('deportes-fav.delete', $deporte->id) }}" method="POST">
                 @csrf
@@ -96,14 +96,14 @@
                 </li>
             </form>
             @empty
-            <a>Añade Deportes a Favoritos</a>
+            <a>{{__('Añade Deportes a Favoritos')}}</a>
             @endforelse
         </ul>
         <form method="POST" action="{{ route('deportes.fav.store') }}">
         @csrf
         
         <div id="deportes-favoritos">         
-        <p style="margin-bottom: 15px; font-weight: bold">Añadir a deportes favoritos</p>
+        <p style="margin-bottom: 15px; font-weight: bold">{{__('Añadir a deportes favoritos')}}</p>
             @foreach ($deportes as $deporte)
                 @if(!Auth::user()->deportesFav->contains('id', $deporte->id))
                     <span style="margin: 5px;" for="deporte_{{ $deporte->id }}">
@@ -112,7 +112,7 @@
                     </span>
                 @endif
             @endforeach
-            <button style="float: none;" class="btn">Añadir</button>
+            <button style="float: none;" class="btn">{{__('Añadir')}}</button>
         </div>
     </form>
 

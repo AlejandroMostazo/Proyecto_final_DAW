@@ -16,15 +16,15 @@
                     @endif
                     <h1 class="title-publicacion" style="font-weight: bold; font-size:xx-large">{{ $user->name }}</h1>
                     <div class="cardusuarios space-around">
-                        <span>Genero</span>
+                        <span>{{__('Género')}}</span>
                         <span>{{ $user->genero }}</span>
                     </div>
                     <div class="space-around cardusuarios">
-                        <span>Edad</span>
+                        <span>{{__('Edad')}}</span>
                         <span>{{ \Carbon\Carbon::parse($user->nacimiento)->age }}</span>
                     </div>
                     <div>
-                        <span class="flex-center">Favoritos:</span>
+                        <span class="flex-center">{{__('Favoritos')}}:</span>
                         @forelse ($user->deportesFav as $deporte)
                             <div class="deporte-fav space-around">
                                 <span>{{ $deporte->nombre }}</span>
@@ -32,7 +32,7 @@
                             </div>
                         @empty
                             <div class="deporte-fav">
-                                <span an class="no-grid">Sin deporte Favoritos</span>
+                                <span an class="no-grid">{{__('Sin deporte Favoritos')}}</span>
                             </div>
                         @endforelse
                     </div>
