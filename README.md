@@ -8,12 +8,14 @@ reunión con una fecha, lugar y deporte previamente escogidos para
 reunir nuevas personas para jugar juntos.
 
 ### Objetivos
- * Login y registro de usuarios,
-   (Perfil con los datos de usuario).
- * Landing page con todos los posts.
- * Página donde se podrán crear de forma personalizada los posts.
+ * Login y registro de usuarios.
+ * Perfil para los usuarios con sus datos y capacidad de editarlo.
+ * Página con todos los posts, para buscarlos y poder apuntarte.
+ * Página donde se podrán crear de forma personalizada
+    los posts para las quedadad depottivas.
  * Buscador y menú de filtros para los posts.
  * Página de interes deportivo con API.
+ * Desplegar la pagina a AWS.
 
 ### Back-End
  * JS API Web que rellene datos.
