@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\Models\Deporte;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 
 class UserController extends Controller
@@ -61,13 +62,19 @@ class UserController extends Controller
     }
 
 
-    public function delete($id)
+    public function delete($id, Request $request)
     {
         $user = User::findOrFail($id);
         
         $user->delete();
 
-        return redirect()->route('/login');
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 
 }

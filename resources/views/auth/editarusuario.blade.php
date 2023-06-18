@@ -12,6 +12,11 @@
                 <button type="submit" id="iconodelete">
                     <i class="fa-solid fa-trash-can"></i>
                 </button>
+                <script>
+                    iconodelete.addEventListener('click', function () {
+                        localStorage.clear();
+                    });
+                </script>
             </form>
             <form id="fotoPerfil" action="{{ route('subirFoto',  ['id' => $user->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
