@@ -42,3 +42,7 @@ reunir nuevas personas para jugar juntos.
  * Creación de lógica para login, formularios, para crear publicaciones y añadir Deportes y Ubicaciones (haciendo que solo sea el administrador el que pueda añadir en estad dos últimas) ademas de mostrar el contenido de estas tablas con sus respectivas vistas y rutas.
  * Creación de los controladores y modelos correspondientes.
 
+### Entrega final del Proyecto:
+
+ * Landing page como login que cuenta con un ** video, un canvas y un efecto de sonido ** al pulsar en mantener la sesión iniciada.
+
