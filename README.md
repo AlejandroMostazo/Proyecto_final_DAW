@@ -40,6 +40,10 @@ reunir nuevas personas para jugar juntos.
 ### Esquema Entidad Relación
    ![imaen](https://github.com/AlejandroMostazo/Proyecto_final_DAW/blob/main/esquemaEntidadRelacion.png)
 
+### WEB:
+
+    [SportMeetUp](http://3.208.195.87)
+
 ### Revisión (checkpoint)
  - Realizado hasta ahora:
 
