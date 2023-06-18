@@ -42,7 +42,7 @@ reunir nuevas personas para jugar juntos.
 
 ### WEB:
 
-    [SportMeetUp](http://3.208.195.87)
+   [SportMeetUp](http://ec2-3-208-195-87.compute-1.amazonaws.com)
 
 ### Revisión (checkpoint)
  - Realizado hasta ahora:
