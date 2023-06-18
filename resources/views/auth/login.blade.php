@@ -31,7 +31,7 @@
                 
             <div class="change" style="transform: translateX(23px);" >
                 <span>{{ __('Iniciar Sesión') }}</span>
-                <a href="{{ route('register') }}" >{{ __('Regristrarse') }}</a>
+                <a href="{{ route('register') }}" >{{ __('Registrarse') }}</a>
             </div>    
             <form method="POST" style="position: relative;" action="{{ route('login') }}">
                 @csrf
