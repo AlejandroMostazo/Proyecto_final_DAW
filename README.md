@@ -44,6 +44,10 @@ reunir nuevas personas para jugar juntos.
 
    [SportMeetUp](http://ec2-3-208-195-87.compute-1.amazonaws.com)
 
+### Video:
+
+    [Video Turorial](https://youtu.be/kP1ntJnJtpw)
+
 ### Revisión (checkpoint)
  - Realizado hasta ahora:
 
