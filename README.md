@@ -44,5 +44,5 @@ reunir nuevas personas para jugar juntos.
 
 ### Entrega final del Proyecto:
 
- * Landing page como login que cuenta con un ** video, un canvas y un efecto de sonido ** al pulsar en mantener la sesión iniciada.
+ * Landing page como login que cuenta con un **video, un canvas y un efecto de sonido** al pulsar en mantener la sesión iniciada.
 
