@@ -19,7 +19,7 @@
             <div style="height: 100%;">
                 <div id="changeRegistro" class="change">
                     <a href="{{ route('login') }}">{{ __('Iniciar Sesión') }}</a>
-                    <span>{{ __('Regristrarse') }}</span>
+                    <span>{{ __('Registrarse') }}</span>
                 </div>    
                 
                 <video id="videoRegistro" loop muted autoplay>
