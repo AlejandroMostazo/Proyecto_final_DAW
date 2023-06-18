@@ -93,7 +93,7 @@
     
                     <div id="boton-registro">
                         <x-button >
-                            {{ __('Regristrarse') }}
+                            {{ __('Registrarse') }}
                         </x-button>
                     </div>
                 </form>
