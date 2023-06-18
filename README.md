@@ -70,4 +70,9 @@ reunir nuevas personas para jugar juntos.
  * Para el proyecto también se diseñó y creó un icono **SVG** como logo o marca de la página.
  * Por último menciono que la página esta totalmente traducida, con la posibilidad cambiar entre inglés o español. (Los datos de la base de datos he dedidico no traducirlos ya que una vez que creas más no se podran traducir).
 
+ * Tutoriales:
+- Desplegar la pagina: https://medium.com/nerd-for-tech/how-to-deploy-laravel-project-on-ec2-aws-6d004a57bb1f
+
+- Para que funcionen las rutas: https://laracasts.com/discuss/channels/servers/laravel-routing-not-working-after-upgrade-of-lamp
+
 
