@@ -5,6 +5,31 @@
         <link href="{{ asset('css/perfil.css') }}" rel="stylesheet" type="text/css">
     </x-slot>
 
+<div>
+    <table id="tablaPublicaciones">
+        <tbody>
+            <tr class="border-publicaciones">
+                <td class="tdpublicaciones">
+                    <i style="color: {{ $publicacion->deporte->color }}" class="{{ $publicacion->deporte->icono }} iconosDeportes"></i>
+                    <div class="content-text-publicacion">
+                        <p class="title-publicacion">{{ $publicacion->deporte->nombre }}</p>
+                        <p class="text-publicacion"><i class="fa-solid fa-location-dot"></i> {{ $publicacion->ubicacion->calle }}, {{ $publicacion->ubicacion->localidad }}</p>
+                        <p class="text-publicacion"><i class="fa-regular fa-clock"></i> {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $publicacion->fecha_hora)->formatLocalized('%d  %b  %Y, %H:%I') }}</p>
+                    </div>
+                </td>
+                <td class="contentnivel" style="text-align: center;" >          
+                    <p style="font-weight: normal;" class="nivel_publicacion">{{ $publicacion->nivel }}</p>
+                </td>
+                <td class="jugadores">
+                    {{ $publicacion->ac_apuntados }}
+                    /
+                    {{ $publicacion->num_max_apuntados }}
+                </td> 
+            </tr>
+        </tbody>
+    </table>
+</div>
+
     <div id="contenedorCards" class="flex-center" style="padding-bottom: 50px;">
         @foreach($users as $user)
             <div class="card ">

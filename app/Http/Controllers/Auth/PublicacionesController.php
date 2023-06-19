@@ -116,8 +116,9 @@ class PublicacionesController extends Controller
     public function mostrarApuntados($id)
     {
         $users = User::where('publicacion_id', '=', $id)->paginate(6);
-        
-        return view('apuntados', compact('users'));
+        $publicacion = Publicacion::where('id', '=', $id)->first();
+
+        return view('apuntados', compact('users', 'publicacion'));
     }
 
     public function deletePublicacion()
