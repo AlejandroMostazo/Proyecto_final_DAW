@@ -7,7 +7,7 @@
         <script defer src="{{ mix('js/verApuntados.js') }}"></script>
     </x-slot>
 
-    <div style="height: 80vh;">    
+    <div style="height: 90vh;">    
         @if (Auth::user()) 
             <div id="filtros" class="space-between">
                 <span id="activefilters" class="btnf">
