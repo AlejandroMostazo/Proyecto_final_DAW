@@ -16,6 +16,9 @@
                 </span>
                 
                 <div class="flex-center">
+                    @if (Auth::user() && $user->publicacion_id != null)
+                    <a class="btn btnspublicacion" style="text-align: center; padding:7px 12px" href="{{ route('apuntados', ['id' => Auth::user()->publicacion_id]) }}"><i class="fa-solid fa-eye"></i></a>
+                    @endif
                     @if (Auth::user() && $user->publicacion_id != null && \App\Models\Publicacion::where('user_id', Auth::user()->id)->count() == 0)
                     <a  class="btn btnspublicacion" href="{{ route('publicacion.desapuntarse') }}"><i class="fa-solid fa-user-minus"></i> {{__('Desapuntarse')}}</a>
                     @endif
