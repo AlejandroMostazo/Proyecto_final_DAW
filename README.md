@@ -78,6 +78,8 @@ reunir nuevas personas para jugar juntos.
  * Este proyecto cuenta con distintos tipos de **funcionavilidades/interactividades** creadas en js como el efecto del despliegue de los filtros, **drag and drop** para las fotos de usuarios y ubicaciones, etc.
  * Todo el proyecto cuenta con sus respectivas **media querys** para hacer que sea 100% **responsive**. También se emplea el uso de **flexbox** y **grid**.
  * Para el proyecto también se diseñó y creó un icono **SVG** como logo o marca de la página.
+ * Cuando se supera la fecha y la hora de la publicación esta se elimina automáticamente.
+ * Los usuarios que se hayan apuntado a alguna publicación tendrá un boton que le lleve directamente a la publicación para ve quienes hay apuntados.
  * Por último menciono que la página esta totalmente traducida, con la posibilidad cambiar entre inglés o español. (Los datos de la base de datos he dedidico no traducirlos ya que una vez que creas más no se podran traducir).
 
  * Tutoriales:
