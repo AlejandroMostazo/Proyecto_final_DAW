@@ -44,6 +44,10 @@ reunir nuevas personas para jugar juntos.
 
    [SportMeetUp](http://ec2-3-208-195-87.compute-1.amazonaws.com)
 
+### Video:
+   
+   [Video Turorial](https://youtu.be/kP1ntJnJtpw)
+
 ### Revisión (checkpoint)
  - Realizado hasta ahora:
 
@@ -59,8 +63,10 @@ reunir nuevas personas para jugar juntos.
 
  * Landing page como login que cuenta con un **video, un canvas y un efecto de sonido** que se reproduce al pulsar en "mantener la sesión iniciada".
  * Dentro de la vista para registrarse la página cuenta con un boton que **genera de forma automática** una contraseña segua usando carácteres **aleatorios**.
+ * Los usuarios también tienen la posibilidad de editar su perfil además de añadir y/o eliminar deportes a favoritos.
  * El proyecto cuenta con un **almacenamiento local** donde si pulsas en mantener la sesión se guarda una variable que hace que hasta que no se cierre la sesión cuando accedes a la landing page pase se te redirigira a la página de publicaciones con tu cuenta iniciada. Además hay otra variable más para guardar la preferencia del estado del nav izquierdo (plegado o desplegado).
  * Diferentes vistas para **invitados, administrador y usuarios registrados**, controlados por **middlewares**.
+ * Como administrador este podra editar, crear o eliminar tanto distintos deportes como ubicaciones.
  * Las diferentes vistas tienen sus correspondientes **grupos de rutas**, existe **una plantilla** genérica aplicada a todas las páginas, **componentes dinámicos** como algunos inputs, labels o los links del nav y en todas las páginas donde se muestan datos existe una **paginación**.
  * La pagina cuenta con 2 **animaciones** una que aparece solo cuando se espera a que se reciban los datos del Fetch de una **API** de noticias deportivas y la propia animación del nav vertical.
  * Cada función de **js esta dividida en diferentes archivos** para sus respectivas vistas.
